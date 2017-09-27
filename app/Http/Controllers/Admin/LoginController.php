@@ -27,7 +27,7 @@ class LoginController extends Controller
         
         $user=User::where('user_name','=',$input['user_name'])->first();
        //验证码判断,开发阶段不启用
-        // if($input['code']!=session('adminCode')){
+        // if($input['adminCode']!=session('adminCode')){
         //     return redirect('admin/login')->with('errors','验证码输入错误')->withInput();
         // }
 
@@ -38,8 +38,13 @@ class LoginController extends Controller
         if(!Hash::check($input['user_password'],$user->user_password)){
             return redirect('admin/login')->with('errors','密码错误')->withInput();
         }
+        
+        //登录成功,维护最后登录ip和时间,设置后台登录session
+        $ip = $Request->getClientIp();
+        $time=date("Y-m-d",time());
 
         session(['adminUser'=>$user,'adminFlag'=>'true']);
+        User::where('user_name','=',$input['user_name'])->update(['last_login_ip'=>$ip,'last_login_time'=>$time]);
         return redirect('admin/index');
 
     }
@@ -63,7 +68,7 @@ class LoginController extends Controller
         // 获取验证码的内容
         $phrase = $builder->getPhrase();
         // 把内容存入session
-        \Session::flash('adminCode', $phrase);
+        Session::flash('adminCode', $phrase);
         // 生成图片
         header("Cache-Control: no-cache, must-revalidate");
         header("Content-Type:image/jpeg");

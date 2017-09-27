@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/test', function () {
-    
+  
 });
 //登录路由
 Route::get('/admin/login',"Admin\LoginController@login");
@@ -23,7 +23,14 @@ Route::post('/admin/dologin',"Admin\LoginController@dologin");
 //验证码路由
 Route::get('/captcha/{tmp}', 'Admin\LoginController@captcha');
 
-//后台首页
-Route::get('/admin/index',"Admin\IndexController@index");
-Route::get('admin/info','Admin\IndexController@info');
+Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
+	//后台首页
+	Route::get('/index',"IndexController@index");
+
+	//后台用户资源控制器路由
+	Route::resource('/user',"UserController");
+
+	//后台管理前台用户
+	Route::get('/homeuser',"UserController@table");
+});
 
