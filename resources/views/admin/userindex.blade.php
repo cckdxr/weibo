@@ -41,12 +41,8 @@
                                     <td>
                                         <span class="btn-group">
                                             <a href="{{ url('admin/user/'.$v['user_id'].'/edit')}}" class="btn btn-small" ><i class="icon-pencil" ></i></a>
-                                            
-                                            <form action="{{url('admin/user/'.$v['user_id'])}}" method="post" style="float: right;">
-                                             {{ csrf_field()}}
-                                             {{ method_field('DELETE')}}
-                                             <button class="btn btn-small"><i class="icon-trash"></i></button>
-                                            </form>  
+                                            <!-- <a href="javascript:;" onclick=" delUser({{$v['user_id']}})" class="btn btn-small" ><i class="icon-trash" ></i></a> -->
+                                            <a href="javascript:;" onclick=" delUser('{{$v->user_id}}')" class="btn btn-small"><i class="icon-trash" ></i></a>
                                         </span>
                                     </td>
                                 </tr>
@@ -67,4 +63,29 @@
             
         </div>
         <!-- Main Container End -->
+        <script type="text/javascript">
+            function delUser(id){
+                  layer.confirm('确认删除？', {
+                btn: ['确认','取消'] //按钮
+            }, function(){
+//       
+                $.post("{{url('admin/user/')}}/"+id,{'_method':'delete','_token':"{{csrf_token()}}"},function(data){
+//   
+                  
+                    if(data.status == 0){
+                        location.href = location.href;
+                        layer.msg(data.msg, {icon: 6});
+                    }else{
+                        location.href = location.href;
+                        layer.msg(data.msg, {icon: 5});
+                    }
+
+
+                })
+//
+
+            });
+        }
+
+        </script>
         @endsection

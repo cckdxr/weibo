@@ -240,12 +240,12 @@
                 <!-- Username and Functions -->
                 <div id="mws-user-functions">
                     <div id="mws-username">
-                        Hello, John Doe
+                        Hello, {{@ Session::get('adminUser')['user_name'] }}
+                        {{@ Session::get('adminUser')['user_msg'] }}
                     </div>
                     <ul>
-                    	<li><a href="#">Profile</a></li>
-                        <li><a href="#">Change Password</a></li>
-                        <li><a href="index.html">Logout</a></li>
+                    	<li><a href="{{URL('admin/repassword')}}">Change Password</a></li>
+                        <li><a href="{{URL('admin/logout')}}">Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -269,22 +269,16 @@
                 <span></span>
             </div>
             
-        	<!-- Searchbox -->
-        	<div id="mws-searchbox" class="mws-inset">
-            	<form action="typography.html">
-                	<input type="text" class="mws-search-input" placeholder="关键字...">
-                    <button type="submit" class="mws-search-submit"><i class="icon-search"></i></button>
-                </form>
-            </div>
+        	
             
             <!-- Main Navigation -->
             <div id="mws-navigation">
                 <ul>
-                    <li class="active"><a href="dashboard.html"><i class="icon-home"></i> 首页控制台</a></li>
+                    <li class="active"><a href="{{url('/admin/index')}}"><i class="icon-home"></i> 首页控制台</a></li>
                     
                     <li><a href="{{url('/admin/homeuser')}}"><i class="icon-table"></i> 前台用户管理</a></li>
                     <li>
-                        <a href="#"><i class="icon-list"></i> 后台用户管理</a>
+                        <a href="javascript:;"><i class="icon-list"></i> 后台用户管理</a>
                         <ul>
                             <li><a href="{{url('/admin/user/create')}}">新增用户</a></li>
                             <li><a href="{{url('/admin/user')}}">用户列表</a></li>  
@@ -345,6 +339,6 @@
 
     <!-- Demo Scripts (remove if not needed) -->
     <script src="{{asset('/admin/js/demo/demo.dashboard.js')}}"></script>
-
+    <script type="text/javascript" src="{{asset('layer/layer.js')}}"></script>
 </body>
 </html>

@@ -42,14 +42,17 @@ class LoginController extends Controller
         //登录成功,维护最后登录ip和时间,设置后台登录session
         $ip = $Request->getClientIp();
         $time=date("Y-m-d",time());
-
+        $user=$user->toArray();
         session(['adminUser'=>$user,'adminFlag'=>'true']);
         User::where('user_name','=',$input['user_name'])->update(['last_login_ip'=>$ip,'last_login_time'=>$time]);
         return redirect('admin/index');
 
     }
-
-   
+    //退出登录
+    public function logout(){
+        session(['adminUser'=>'','adminFlag'=>'false']);
+        return redirect('admin/login');
+    }
 
     public function captcha($tmp)
     {

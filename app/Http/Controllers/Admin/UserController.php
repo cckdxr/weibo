@@ -78,7 +78,6 @@ class UserController extends Controller
          $input['user_password']=Hash::make($input['user_password']);
          $res=User::create($input);
          if($res){
-            echo "<script> alert('添加成功')</script>";
             return redirect('admin/user');
          }else{
             return redirect('admin/user/create')->with('errors','添加失败')->withInput();
@@ -119,6 +118,15 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $user=$request->except(['_token','_method']);
+
+        $res=User::where('user_id',$id)->update($user);
+        if($res){
+            return redirect('admin/user');
+        }else{
+            return redirect('admin/user/'.$id.'/edit')->with('errors','用户修改失败');
+        }
+        
     }
 
     /**
@@ -129,10 +137,61 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+
         //
-        echo 'shanchu';
+       $res = User::where('user_id',$id)->delete();
+       //执行删除操作
+        
+        if($res){
+          $data=['status'=>0,'msg'=>'删除成功'];
+        }else{
+            $data=['status'=>1,'msg'=>'删除失败'];
+        }
+        return $data;
     }
 
+    //额外修改密码
+    public function repassword(){
+        return view('admin/userrepassword');
+    }
+    //额外修改
+    public function dorepassword(Request $request){
+        $user_id=Session::get('adminUser')['user_id'];
+        $pass=$request->except('_token');
+
+        //验证原密码是否正确
+         if(!Hash::check($pass['old_password'],Session::get('adminUser')['user_password'])){
+            return redirect('admin/repassword')->with('errors','原密码错误');
+        }
+        //新密码输入验证
+        $rule=[
+            'new_password'=>'required|between:4,18',
+            'renew_password'=>'same:new_password'
+        ];
+        $msg = [
+            'new_password.required'=>'必须输入新密码',
+            'new_password.between'=>'密码必须在4-18位之间',
+            'renew_password.same'=>'两次输入密码必须相同'
+        ];
+//        进行手工表单验证
+        $validator = Validator::make($pass,$rule,$msg);
+//        如果验证失败
+        if ($validator->fails()) {
+            return redirect('admin/repassword')
+                ->withErrors($validator);
+        }
+
+         $input=array('user_password'=>Hash::make($pass['new_password']));
+         $res=User::where('user_id',$user_id)->update($input);
+         if($res){
+            return redirect('admin/index');
+         }else{
+            return redirect('admin/repassword')->with('errors','密码修改失败');
+         }
+
+    }
+
+    //额外 前台用户方法
     public function homeusershow(){
         echo '前台用户管理qwdqwd';
     }

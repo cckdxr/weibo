@@ -20,6 +20,7 @@ Route::get('/test', function () {
 //登录路由
 Route::get('/admin/login',"Admin\LoginController@login");
 Route::post('/admin/dologin',"Admin\LoginController@dologin");
+Route::get('/admin/logout',"Admin\LoginController@logout");
 //验证码路由
 Route::get('/captcha/{tmp}', 'Admin\LoginController@captcha');
 
@@ -29,8 +30,11 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
 
 	//后台用户资源控制器路由
 	Route::resource('/user',"UserController");
+	//后台修改密码
+	Route::get('/repassword',"UserController@repassword");
+	Route::post('/dorepassword',"UserController@dorepassword");	
 
 	//后台管理前台用户
-	Route::get('/homeuser',"UserController@table");
+	Route::get('/homeuser',"UserController@homeusershow");
 });
 

@@ -15,7 +15,7 @@
                     	<span>用户修改</span>
                     </div>
                     <div class="mws-panel-body no-padding">
-                    	<form class="mws-form" action="{{URL('admin/user')}}" method="post">
+                    	<form class="mws-form" action="{{URL('admin/user/'.$res['user_id'])}}" method="post">
                             @if (count($errors) > 0)
                             <div class="alert alert-danger">
                                 <ul>
@@ -33,7 +33,7 @@
                                 <div class="mws-form-row">
                                     <label class="mws-form-label">用户名</label>
                                     <div class="mws-form-item">
-                                        <input type="text" name="user_name" value="{{$res['user_name']}}" class="small">
+                                        <input type="text" name="user_name" disabled="disabled" value="{{$res['user_name']}}" class="small">
                                     </div>
                                 </div>
                                
@@ -43,18 +43,7 @@
                     				<div class="mws-form-item">
                     					<textarea rows="" cols="" name="user_msg" class="large">{{$res['user_msg']}}</textarea>
                     				</div>
-                    			</div>
-                    		<!-- 	<div class="mws-form-row">
-                    				<label class="mws-form-label">Dropdown List</label>
-                    				<div class="mws-form-item">
-                    					<select class="large">
-                    						<option>Option 1</option>
-                    						<option>Option 3</option>
-                    						<option>Option 4</option>
-                    						<option>Option 5</option>
-                    					</select>
-                    				</div>
-                    			</div> -->
+                    			</div>                    		
                     			<div class="mws-form-row">
                     				<label class="mws-form-label">用户类型</label>
                     				<div class="mws-form-item clearfix">
@@ -69,8 +58,10 @@
                     		</div>
                     		<div class="mws-button-row">
                                 {{ csrf_field() }}
+                                {{ method_field('put')}}
                     			<input type="submit" value="确定" class="btn btn-danger">
-                    			<input type="reset" value="重置" class="btn ">
+                                <input type="reset" value="重置" class="btn ">
+                    			<input type="button" onclick="history.go(-1)" value="返回" class="btn ">
                     		</div>
                     	</form>
                     </div>    	
