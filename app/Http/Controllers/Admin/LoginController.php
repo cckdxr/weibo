@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Gregwar\Captcha\CaptchaBuilder;
 use Gregwar\Captcha\PhraseBuilder;
 //model类
-use App\User;
+use App\Model\Admin\User;
 use Session;
 
 class LoginController extends Controller

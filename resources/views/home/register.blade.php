@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -9,6 +9,7 @@
 <script src="script/datecreate.js" language="javascript"></script>
 <script src="script/trim.js" language="javascript"></script>
 <script src="script/register.js" language="javascript"></script>
+<script src="{{asset('/admin/js/libs/jquery-1.8.3.min.js')}}"></script>
 </head>
 <body>
 <div id="container">
@@ -31,8 +32,8 @@
         <!-- top部分的文字导航 -->
         <div id="topWordMenu">
         	<ul>
-            	<li>已有灵步账号，<a href="login.html">请登录</a></li>
-                <li><a href="SBGG.html">随便逛逛</a></li>
+            	<li>已有灵步账号，<a href="/home/login">请登录</a></li>
+                <li><a href="/home/index">随便逛逛</a></li>
                 <li><a href="#">手机</a></li>
                 <li><a href="#">帮助</a></li>
             </ul>
@@ -47,42 +48,67 @@
       <div id="bannerWord3">已经是灵步微博用户？<a href="login.html">登陆微博</a></div>
     </div>
     <div id="main">
-      <form action="CustomerIndex.html" method="post" onsubmit="return checkForm()">
+      <form action="/home/doregister" id="art_form" method="post" onsubmit="return checkForm()">
       <table width="765" border="0" cellpadding="0" cellspacing="0">
+        @if (count($errors) > 0)
+          <div class="alert alert-danger">
+            <ul>
+              @if(is_object($errors))
+                @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+                @endforeach
+              @else
+                <li>{{ $errors }}</li>
+              @endif
+            </ul>
+          </div>
+        @endif
         <tr>
           <td width="71">&nbsp;</td>
           <td width="86" align="center" valign="middle" class="wordleft">用 &nbsp;户&nbsp; 名</td>
-          <td width="189" align="center" valign="middle"><input name="userID" type="text" class="form" id="userID" onblur="checkUserId(img1,this)" onfocus="getfocus(this,img1)" /></td>
-          <td width="419" align="left" valign="middle" class="wordright"><img name="img1" width="16" height="16" id="img1" /><div class="registertip" id="userIDtip">请输入真实姓名，方便您的朋友与你联系</div></td>
+          <td width="189" align="center" valign="middle"><input name="user_name" value="{{old('user_name')}}" type="text" class="form" id="userID" onblur="checkUserId(img1,this)" onfocus="getfocus(this,img1);this.select();" /></td>
+          <td width="419" align="left" valign="middle" class="wordright"><img name="img1" width="16" height="16" id="img1" /><div class="registertip" id="userIDtip">请输入您的微博用户名(2至20位)</div></td>
         </tr>
         <tr>
           <td>&nbsp;</td>
           <td align="center" valign="middle" class="wordleft">昵 &nbsp; &nbsp;&nbsp;&nbsp;称</td>
-          <td align="center" valign="middle"><input name="userName" type="text" class="form" id="userName" onfocus="getfocus(this,img2)" onblur="checkUserName(img2,this)" maxlength="20" /></td>
+          <td align="center" valign="middle"><input name="nick_name" value="{{old('nick_name')}}" type="text" class="form" id="userName" onfocus="getfocus(this,img2);this.select();" onblur="checkUserName(img2,this)" maxlength="20" /></td>
           <td align="left" valign="middle" class="wordright"><img name="img2" width="16" height="16" id="img2" /><div class="registertip" id="userNametip">请输入4到20位数字、字符、中文，一旦注册，不得修改</div></td>
         </tr>
         <tr>
           <td>&nbsp;</td>
           <td align="center" valign="middle" class="wordleft">手 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机</td>
-          <td align="center" valign="middle" class="a"><input name="userTel" type="text" class="form" id="userTel" onblur="checkUserTel(img3,this)" onfocus="getfocus(this,img3)" /></td>
+          <td align="center" valign="middle" class="a"><input name="phone" value="{{old('phone')}}" type="text" class="form" id="userTel" onblur="checkUserTel(img3,this)" onfocus="getfocus(this,img3);this.select();" /></td>
           <td align="left" valign="middle" class="wordright"><img name="img3" width="16" height="16" id="img3" /><div class="registertip" id="userTeltip">请输入您的手机号码，之后可以用手机及时发布信息</div></td>
         </tr>
+
+
         <tr>
           <td>&nbsp;</td>
           <td align="center" valign="middle" class="wordleft">电子邮箱</td>
-          <td align="center" valign="middle"><input name="userMail" type="text" class="form" id="userMail" onblur="checkUserMail(img4,this)" onfocus="getfocus(this,img4)" /></td>
+          <td align="center" valign="middle"><input name="email" type="text" value="{{old('email')}}" class="form" id="userMail" onblur="checkUserMail(img4,this)" onfocus="getfocus(this,img4);this.select();" /></td>
           <td align="left" valign="middle" class="wordright"><img name="img4" width="16" height="16" id="img4" /><div class="registertip" id="userMailtip">找回账户和密码用，如123@163.com</div></td>
         </tr>
         <tr>
           <td>&nbsp;</td>
+          <td align="center" valign="middle" class="wordleft">头像</td>
+          <td ><input name="file_upload" type="file"  id="file_upload" multiple="true" style="border:none" /></td>
+          <td align="left" valign="middle" class="wordright" >
+            {{--<img name="img4" width="16" height="16" id="img4" /><div class="registertip" id="userMailtip">请选择头像</div>--}}
+            <img id="abcd" alt="上传后显示图片"  style="max-width:100px;max-height:100px;" />
+            <input type="hidden" name="user_headpic" value="" id="filename" />
+          </td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
           <td align="center" valign="middle" class="wordleft">创建密码</td>
-          <td align="center" valign="middle"><input name="userPass" type="password" class="form" id="userPass" onfocus="getfocus(this,img5)" onblur="checkUserPass(img5,this)" maxlength="20" /></td>
+          <td align="center" valign="middle"><input name="user_password" type="password" value="{{old('user_password')}}" class="form" id="userPass" onfocus="getfocus(this,img5);this.select();" onblur="checkUserPass(img5,this)" maxlength="20" /></td>
           <td align="left" valign="middle" class="wordright"><img name="img5" width="16" height="16" id="img5" /><div class="registertip" id="userPasstip">密码由6到20个字母、数字、特殊符号组成，字母区分大小写</div></td>
         </tr>
         <tr>
           <td>&nbsp;</td>
           <td align="center" valign="middle" class="wordleft">密码确认</td>
-          <td align="center" valign="middle"><input name="userRpass" type="password" class="form" id="userRpass" onblur="checkUserRpass(img6,this)" onfocus="getfocus(this,img6)" maxlength="20" /></td>
+          <td align="center" valign="middle"><input name="userRpass" type="password" value="{{old('userRpass')}}" class="form" id="userRpass" onblur="checkUserRpass(img6,this)" onfocus="getfocus(this,img6);this.select();" maxlength="20" /></td>
           <td align="left" valign="middle" class="wordright"><img name="img6" width="16" height="16" id="img6" /><div class="registertip" id="userRpasstip">请再次输入密码</div></td>
         </tr>
         <tr>
@@ -98,7 +124,7 @@
         <tr>
           <td>&nbsp;</td>
           <td align="center" valign="middle" class="wordleft">出生年月</td>
-          <td align="left" valign="middle"><select name="year" class="form2" id="year">
+          <td align="left" valign="middle"><select name="year"  class="form2" id="year" style="width:70px">
           </select>   <select name="month" class="form3" id="month">
           </select>
           <select name="date" class="form3" id="date">
@@ -108,14 +134,15 @@
         <tr>
           <td>&nbsp;</td>
           <td align="center" valign="middle" class="wordleft">验 &nbsp;证 &nbsp;码</td>
-          <td align="center" valign="middle"><input name="verify" type="text" class="form" id="verify" onblur="checkVertyCode(img7,this)" onfocus="getfocus(this,img7)" maxlength="4" /></td>
+          <td align="center" valign="middle"><input name="homeCode" type="text" class="form" id="verify"  onfocus="getfocus(this,img7);this.select();" maxlength="4" /></td>
           <td align="left" valign="middle" class="verifyword"> <span class="wordright">
-          <div id="yanzhengma1"><img alt="" name="img7" width="16" height="16" align="absmiddle" id="img7" /></div></span>
-          <div id="yanzhengma">2356</div>
-          看不清？<a href="javascript:createCode()">换一换</a></td>
+          <div id="yanzhengma1"><img src="/home/captcha/1"  onclick="this.src='http://www.cweibo.com/captcha/1?'+Math.random()" width="100" height="25"  /></div></span>
+
+          </td>
         </tr>
         <tr>
           <td height="35" colspan="4" align="center">
+            {{csrf_field() }}
             <input name="checkbox" type="checkbox" id="checkbox" onclick="deal(this,button)" />
             我已经看过
           ，并同意<a href="#">《灵步网使用协议》</a></td>
@@ -151,5 +178,43 @@
     <!-- footer部分结束 -->
 </div>
 </div>
+<script type="text/javascript">
+    $(function () {
+        $("#file_upload").change(function () {
+            uploadImage();
+        })
+    })
+    function uploadImage() {
+//  判断是否有选择上传文件
+        var imgPath = $("#file_upload").val();
+        if (imgPath == "") {
+            alert("请选择上传图片！");
+            return;
+        }
+        //判断上传文件的后缀名
+        var strExtension = imgPath.substr(imgPath.lastIndexOf('.') + 1);
+        if (strExtension != 'jpg' && strExtension != 'gif'
+            && strExtension != 'png' && strExtension != 'bmp') {
+            alert("请选择图片文件");
+            return;
+        }
+        var formData = new FormData($('#art_form')[0]);
+
+        $.ajax({
+            type: "POST",
+            url: "/home/upload",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(data) {
+                $('#abcd').attr('src',data);
+                $('#filename').attr('value',data)
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                alert("上传失败，请检查网络后重试");
+            }
+        });
+    }
+</script>
 </body>
 </html>

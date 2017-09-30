@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\User;
+use App\Model\Admin\User;
 use Session;
 use Illuminate\Http\Request;
 
@@ -45,18 +45,21 @@ class UserController extends Controller
          $input = $request->except('_token');
 
          $rule=[
-            'user_name'=>'required|between:4,18',
+            'user_name'=>'required|between:4,18|unique:t_adminuser',
             'user_password'=>'required|between:4,18',
             'repassword'=>'same:user_password',
             'user_msg'=>'between:0,255',
+             'user_level'=>'required',
         ];
         $msg = [
             'user_name.required'=>'用户名必须输入',
             'user_name.between'=>'用户名必须在4-18位之间',
+            'user_name.unique'=>'用户名已存在',
             'user_password.required'=>'密码必须输入',
             'user_password.between'=>'密码必须在4-18位之间',
             'repassword.same'=>'两次输入密码必须相同',
-            'user_msg.between'=>'个性签名不能超过255位'
+            'user_msg.between'=>'个性签名不能超过255位',
+            'user_level.required'=>'请选择用户类型'
         ];
 //        进行手工表单验证
         $validator = Validator::make($input,$rule,$msg);
@@ -66,12 +69,6 @@ class UserController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
-//       
-//        用户名是否存在
-         $user = User::where('user_name','=',$input['user_name'])->first();
-         if($user){
-             return redirect('admin/user/create')->with('errors','此用户已存在')->withInput();
-         }
 //       
          unset($input['repassword']);
          $input['user_id']=md5(time());
@@ -190,9 +187,12 @@ class UserController extends Controller
          }
 
     }
-
-    //额外 前台用户方法
+       //额外 后台控制前台用户方法
     public function homeusershow(){
-        echo '前台用户管理qwdqwd';
+       $users=\App\Model\Home\User::all();
+       $type=['普通用户','企业用户','商业用户','广告用户','大V用户'];
+       return view('admin.homeuserindex',['users'=>$users,'type'=>$type]);
+
     }
+ 
 }

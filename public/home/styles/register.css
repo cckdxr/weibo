@@ -69,7 +69,7 @@
   /* 页面主体 */
   #banner{
 	  width:767px;
-	  height:465px;
+	  height:auto;
 	  margin:0px auto;
 	  color:#cccccc;
 	  background-color:#FFF;
@@ -234,6 +234,7 @@
 			}
 		/* footer部分*/
   #footer{
+	  margin-top:100px;
 	  padding-top:3px;
 	  width:765px;
 	  height:50px;

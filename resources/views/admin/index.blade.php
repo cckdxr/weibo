@@ -1,5 +1,5 @@
     @extends('layouts.head')
-    @section('title','微博后台1')
+    @section('title','微博后台')
         @section('content')
         <!-- Main Container Start -->
         <div id="mws-container" class="clearfix">

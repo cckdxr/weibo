@@ -33,26 +33,26 @@
                                 <div class="mws-form-row">
                                     <label class="mws-form-label">用户名</label>
                                     <div class="mws-form-item">
-                                        <input type="text" name="user_name" class="small">
+                                        <input type="text" name="user_name" onfocus="this.select()" value="{{old('user_name')}}" class="small">
                                     </div>
                                 </div>
                                 <div class="mws-form-row">
                                     <label class="mws-form-label">密码</label>
                                     <div class="mws-form-item">
-                                        <input type="password" name="user_password" class="small">
+                                        <input type="password" name="user_password" value="{{old('user_password')}}" onfocus="this.select()" class="small">
                                     </div>
                                 </div>
                                 <div class="mws-form-row">
                                     <label class="mws-form-label">再次输入密码</label>
                                     <div class="mws-form-item">
-                                        <input type="password" name="repassword" class="small">
+                                        <input type="password" name="repassword"  value="{{old('repassword')}}" onfocus="this.select()"  class="small">
                                     </div>
                                 </div>
                     			
                     			<div class="mws-form-row">
                     				<label class="mws-form-label">个性签名</label>
                     				<div class="mws-form-item">
-                    					<textarea rows="" cols="" name="user_msg" class="large">这个人很懒,没签名~</textarea>
+                    					<textarea rows="" cols="" name="user_msg" onfocus="this.select()" class="large">{{old('user_mag')?old('user_mag'):'这个人很懒,没签名~~'}}</textarea>
                     				</div>
                     			</div>
                     		<!-- 	<div class="mws-form-row">
@@ -70,10 +70,10 @@
                     				<label class="mws-form-label">用户类型</label>
                     				<div class="mws-form-item clearfix">
                     					<ul class="mws-form-list inline">
-                    						<li><input type="radio" name="user_level" value="1"> <label>超级管理员</label></li>
-                    						<li><input type="radio" name="user_level" value="2"> <label>广告维护员</label></li>
-                    						<li><input type="radio" name="user_level" value="3"> <label>话题维护员</label></li>
-                    						<li><input type="radio" name="user_level" checked value="4"> <label>用户维护员</label></li>
+                    						<li><input type="radio" name="user_level" @if(old('user_level')==1) checked @endif value="1"> <label>超级管理员</label></li>
+                    						<li><input type="radio" name="user_level" @if(old('user_level')==2) checked @endif  value="2"> <label>广告维护员</label></li>
+                    						<li><input type="radio" name="user_level" @if(old('user_level')==3) checked @endif value="3"> <label>话题维护员</label></li>
+                    						<li><input type="radio" name="user_level" @if(old('user_level')==4) checked @endif   value="4"> <label>用户维护员</label></li>
                     					</ul>
                     				</div>
                     			</div>

@@ -187,7 +187,7 @@ function checkAll(){
 	var a = (lastPassword == str);
 	var b = (value == randomnum);
 	if(mailresult==true&&resultword==true&&resultnum==true&&resultsix==true&&a==true&&b==true){
-		window.open("CustomerIndex.html");
+		window.open("/home/login");
 	}
 	else{
 		window.alert("用户输入信息不全或不正确，无法注册！");

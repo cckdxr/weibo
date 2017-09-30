@@ -47,12 +47,12 @@
 		var yearobj = document.getElementById("year");
 		//---2、填充年份下拉菜单   1970 - 2011
 		var op;
-		for(var y=nyear-50;y<=2011;y++){
+		for(var y=nyear-50;y<=2017;y++){
 			op = new Option(y,y);
 			yearobj.options.add(op);			
 			}
 		//---3、将默认值设置为当前年份
-		yearobj.value=nyear;
+		yearobj.value=1990;
 			
 		//3、填充月份下拉菜单	
 		//---1、获得月份下拉菜单对象

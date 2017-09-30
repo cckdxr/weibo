@@ -37,7 +37,7 @@ function init(){
 function checkUserId(imgobj,textobj){
 	imgobj.style.visibility = "visible";//设置图片显示
 	textobj.value = trim(textobj.value);//去前后空格
-	if(textobj.value.length==0){//输入的长度判断，出错之后的处理
+	if(textobj.value.length<2 | textobj.value.length>20){//输入的长度判断，出错之后的处理
 		textobj.style.backgroundColor = "#B9E3AB";//设置背景色
 		imgobj.src = "images/err.png";//设置出错图片
 		return false;
@@ -49,7 +49,7 @@ function checkUserId(imgobj,textobj){
 }
 /* 对象获得对象时的操作 */
 function getfocus(textobj,imgobj){
-	imgobj.style.visibility = "hidden";//设置相应的图像对象隐藏
+
 	textobj.style.backgroundColor = "#fff";//设置相应的输入框背景色为白色
 }
 /* 检测用户名的长度大于等于4,则通过检测 */
@@ -134,28 +134,9 @@ function checkUserRpass(imgobj,textobj){//检测重复的密码
 	imgobj.src = "images/ok.png"; 
 	return true;
 }
-/* 检测验证码输入是否和生成的验证码一样！如果一样就回复背景色和设置图片状态，否则，就设置背景色
-	和设置图片状态
- */
-function checkVertyCode(imgobj,textobj){
-	imgobj.style.visibility = "visible";
-	textobj.value = trim(textobj.value);
-	if(textobj.value!=verifytmp){//验证码检测失败
-		textobj.style.backgroundColor = "#B9E3AB";
-		imgobj.src = "images/err.png";
-		return false;
-	}
-	/* 验证码检测成功 */
-	textobj.style.backgroundColor = "#fff";
-	imgobj.src = "images/ok.png"; 
-	return true;
-}
+
 /* 设置纯数字的4位数的验证码，并将验证码存入全局变量，方便做验证操作 */
-function createCode(){//生成验证码
-	verifytmp = Math.floor(Math.random()*(9999-1000+1)+1000);//生成4位数的验证码
-	var yanzhengma = document.getElementById("yanzhengma");
-	yanzhengma.innerHTML = verifytmp;//将验证码写入Web页面
-}
+
 /* 验证协议复选框,如果已勾选就设置注册按钮可用,如果未勾选中设置不可用 */
 function deal(cb,btn){
 	if(cb.checked == true){
@@ -168,19 +149,18 @@ function deal(cb,btn){
 }
 /* 表单提交时检测，如果检测通过就提交表单，如果通不过，就不提交 */
 function checkForm(){
-	if(checkUserId(img1,userID)==false) return false;
-	if(checkUserName(img2,userName)==false) return false;
-	if(checkUserTel(img3,userTel)==false) return false;
-	if(checkUserMail(img4,userMail)==false) return false;
-	if(checkUserPass(img5,userPass)==false) return false;
-	if(checkUserRpass(img6,userRpass)==false) return false;
-	if(checkVertyCode(img7,verify)==false) return false;
+	// if(checkUserId(img1,userID)==false) return false;
+	// if(checkUserName(img2,userName)==false) return false;
+	// if(checkUserTel(img3,userTel)==false) return false;
+	// if(checkUserMail(img4,userMail)==false) return false;
+	// if(checkUserPass(img5,userPass)==false) return false;
+	// if(checkUserRpass(img6,userRpass)==false) return false;
 	return true;
 }
 /* 函数绑定 */
 window.onload = function(){
 	init();//初始化对象
-	createCode();//初始化验证码
+
 	nowday();//获取当前时间并填充
 	var monthobj = document.getElementById("month");//获取对行啊
 	var yearobj =  document.getElementById("year");//
