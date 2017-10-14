@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\home;
 
-use App\model\home\User;
+use App\Model\Home\User;
 use App\Model\Home\Userinfo;
+use App\Model\Home\V_user;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -25,10 +26,45 @@ class LoginController extends Controller
       return view('home.login');
    }
 
-   public function dologin()
-   {
-    echo "denglu验证";
-   }
+    public function dologin(Request $request)
+    {
+        $input=$request->except('_token');
+        $user=V_user::where('user_name','=',$input['log_name'])->first();
+        if(!$user){
+            $user=V_user::where('email','=',$input['log_name'])->first();
+            if(!$user){
+                $user=V_user::where('phone','=',$input['log_name'])->first();
+            }
+        }
+        //验证码判断,开发阶段不启用
+//         if($input['homeCode']!=session('homeCode')){
+//             return redirect('home/index/0')->with('errors','验证码输入错误')->withInput();
+//         }
+
+        if(!$user){
+            return redirect('home/index/0')->with('errors','此用户不存在')->withInput();
+        }
+
+        if(!Hash::check($input['user_password'],$user->user_password)){
+            return redirect('home/index/0')->with('errors','密码错误')->withInput();
+        }
+
+        //登录成功,维护最后登录ip和时间,设置后台登录session
+        $ip = $request->getClientIp();
+        $time=date("Y-m-d",time());
+        $user=$user->toArray();
+
+        session(['homeUser'=>$user,'homeFlag'=>'true']);
+        User::where('user_name','=',$input['log_name'])->update(['last_login_ip'=>$ip,'last_login_time'=>$time]);
+        return redirect('home/u/index');
+    }
+    //退出登录
+    public function logout()
+    {
+        session(['homeUser'=>'','homeFlag'=>'']);
+        return redirect('home/index');
+    }
+
    //注册
     public function register()
     {
@@ -46,6 +82,24 @@ class LoginController extends Controller
             $path = '/uploads/' . $newName;
             return $path;
         }
+    }
+    //ajax上传多头像
+    public function uploads(Request $request)
+    {
+        $files = Input::file('file_upload');
+        $path=[];
+        foreach($files as $file){
+            if ($file->isValid()) {
+                $entension = $file->getClientOriginalExtension();
+                $newName = date('YmdHis') . mt_rand(1000, 9999) . '.' . $entension;
+
+                $file->move(public_path() . '\uploads', $newName);
+                $path[] = '/uploads/' . $newName;
+
+            }
+        };
+        return json_encode($path);
+
     }
     //注册信息上传服务器
     public function doregister(Request $request)
@@ -144,7 +198,7 @@ class LoginController extends Controller
         // 获取验证码的内容
         $phrase = $builder->getPhrase();
         // 把内容存入session
-        Session::flash('homeCode', $phrase);
+        session(['homeCode'=>$phrase]);
         // 生成图片
         header("Content-Type:image/jpeg");
         header("Cache-Control: no-cache, must-revalidate");

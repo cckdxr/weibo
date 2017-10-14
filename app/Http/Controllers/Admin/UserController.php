@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Model\Admin\User;
-use Session;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -190,7 +190,7 @@ class UserController extends Controller
        //额外 后台控制前台用户方法
     public function homeusershow(){
        $users=\App\Model\Home\User::all();
-       $type=['普通用户','企业用户','商业用户','广告用户','大V用户'];
+       $type=['普通用户','企业用户','商业用户','广告用户','大V用户','vip用户','超级vip'];
        return view('admin.homeuserindex',['users'=>$users,'type'=>$type]);
 
     }

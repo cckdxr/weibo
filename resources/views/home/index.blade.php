@@ -1,277 +1,504 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="灵步网微博，灵步网，围脖" />
-<meta name="description" content="灵步网微博——点滴生活，精彩每一天，大家赶快加入吧" />
-<title>灵步网微博</title>
-<link href="home/styles/global.css" type="text/css" rel="stylesheet"  />
-<link href="home/styles/index.css" type="text/css" rel="stylesheet" />
+﻿<!DOCTYPE html>
 
-<script src="home/script/index.js" language="javascript"></script>
-<script src="home/script/trim.js" language="javascript"></script>
-</head>
-<body>
-<!-- 总容器DIV -->
-<div id="container">
-	<!-- top部分DIV -->
-	<div id="top">
-    	<!-- top部分的LogoDIV -->
-    	<div id="topLogo">
-        	<!-- topLogo部分的icoDIV -->
-            <div id="topLogoIco"> <a href="index.html"><img src="home/images/logo_ipad.png" width="72" height="72" alt="" /></a>
-          </div>
-            <!-- topLogo部分的icoDIV结束 -->
-            
-            <!-- topLogo部分的wordDIV -->
-            <div id="topLogoWord"> <a href="index.html"><img src="home/images/LogoMaker.gif" width="128" height="60" alt="" /></a>
-          </div>
-            <!-- topLogo部分的wordDIV -->
-        </div>
-        <!-- top部分的LogoDIV结束 -->
-        
-        <!-- top部分的文字导航 -->
-        <div id="topWordMenu">
-        	<ul>
-            	<li>已有灵步账号，<a href="login.html">请登录</a></li>
-                <li><a href="SBGG.html">随便逛逛</a></li>
-                <li><a href="#">手机</a></li>
-                <li><a href="#">帮助</a></li>
-            </ul>
-        </div>
-        <!-- top部分的文字导航结束 -->
-    </div>
-    <!-- top部分结束 -->
-    <!-- banner部分 -->
-        
-<div id="banner">
-    	<!-- banner部分的登入部分 -->
-        <div id="bannerLogin">
-        	<!-- banner部分表单 -->
-            <form id="bannerLoginForm" action="CustomerIndex.html" method="post" onsubmit="return checkForm()">
-              <!-- 注册提示 -->
-              <div id="bannerLoginFormWord">即刻登录，分享心情</div>
-              <div id="bannerLoginFormID">
-              	  <div id="userIdWord">邮箱|手机号码登入</div>
-                  <div id="userIdInput">
-                    <input name="userId" type="text" class="textForm" id="userId" value="" />
-                  </div>
-              </div>
-              <div id="bannerLoginFormPass">
-              	<div id="userPassWord">密码</div>
-                <div id="userPassInput">
-                  	<input name="userPass" type="password" class="textForm" id="userPass" value="" />
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="initial-scale=1,minimum-scale=1">
+    <meta content="随时随地发现新鲜事！微博带你欣赏世界上每一个精彩瞬间，了解每一个幕后故事。分享你想表达的，让全世界都能听到你的心声！" name="description">
+    <link rel="mask-icon" sizes="any" href="http://img.t.sinajs.cn/t6/style/images/apple/wbfont.svg" color="black">
+    <link rel="shortcut icon" type="image/x-icon" href="http://www.weibo.com/favicon.ico">
+
+
+    <title>微博-随时随地发现新鲜事</title>
+    <link href="{{asset('home/indexsource/frame.css')}}" type="text/css" rel="stylesheet" charset="utf-8">
+    <link href="{{asset('home/indexsource/login_v5.css')}}" type="text/css" rel="stylesheet" charset="utf-8">
+    <link href="{{asset('home/indexsource/skin.css')}}" type="text/css" rel="stylesheet" id="skin_style">
+    <script type="text/javascript" src="{{asset('admin/style/js/jquery.js')}}"></script>
+    <style>
+        #js_style_css_module_global_WB_outframe{height:42px;}
+        .UG_slider ul li {
+            float:left;
+        }
+
+    </style>
+    <style></style><div style="position: absolute; top: -9999px;"><div id="js_style_css_module_global_WB_outframe"></div></div><style></style></head>
+
+<body class="FRAME_login">
+<!--传递field,search,message_len-->
+<input  type="hidden" name="take_field_id" value="{{$field_id}}" >
+<input  type="hidden" name="take_search" value="{{$search}}" >
+<input  type="hidden" name="take_len" value="{{$len}}" >
+
+<div class="B_unlog">
+
+    <div class="WB_miniblog">
+        <div class="WB_miniblog_fb">
+            <div id="weibo_top_public"><!--spec start-->    <!--顶部导航-->
+                <div class="WB_global_nav WB_global_nav_v2 " node-type="top_all">
+                    <div class="gn_header clearfix">
+                        <div class="gn_logo" node-type="logo" data-logotype="logo" data-logourl="//weibo.com?topnav=1&amp;mod=logo">
+                            <a href="http://weibo.com/?topnav=1&amp;mod=logo" class="box" title="" node-type="logolink" suda-uatrack="key=topnav_tab&amp;value=weibologo" target="_top">
+                                <span class="logo"></span>
+                            </a>
+                        </div>
+                        <div class=" gn_search_v2">
+                            <form action="{{url('/home/index/0')}}" method="get" id="searchform" >
+                           <input type="text" placeholder="大家都在搜:90换90" value=""  class="W_input" name="f">
+                            <a href="javascript:void(0);" title="搜索"  onclick="document.getElementById('searchform').submit();"  class="W_ficon ficon_search S_ficon"  target="_top">f</a>
+                            </form>
+                        </div>
+                        <div class="gn_position">
+                           
+                            <div class="gn_login">
+                                <ul class="gn_login_list">
+                                    @if(empty(session('homeFlag')))
+                                        <li><a href="{{url('home/reg')}}" class="S_txt1" target="_black">注册</a></li>
+                                        <li class="W_vline S_line1"></li>
+                                        <li><a node-type="loginBtn" href="javascript:void(0)" class="S_txt1" target="_top">登录</a></li>
+                                    @else
+                                        <li><a href="javascript:;"><em class="W_ficon ficon_home S_ficon">E</em><em class="S_txt1">首页</em></a></li>
+                                        <li><a dot="pos55b9e0848171d" bpfilter="page_frame" href="{{url('home/u/index')}}"><em class="W_ficon ficon_user S_ficon">H</em><em class="S_txt1">{{session('homeUser')['user_name']}}</em></a></li>
+                                        <li class="W_vline S_line1"></li>
+                                        <li><a node-type="loginBtn" href="{{url('home/logout')}}" class="S_txt1" target="_top">退出登录</a></li>
+
+                                    @endif
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              	<div id="submitDIV">
-              	  <input name="submit" type="submit" id="submit" value="登   录" />
-              	  <div id="autoLogin"><input name="autoLg" type="checkbox" id="autoLoginSel" value="" />自动登录</div>
-              	</div>
-              </div>          
-            </form>
-            <!-- 忘记密码 -->
-            <div id="forgetPass"><a href="#">忘记密码？</a></div>
-        </div>
-       
-        <!-- banner部分的登入部分结束 -->
-  </div>
-    <!--banner部分结束-->
-    <!-- main部分 -->
-<div id="main">
-    	<!-- main部分左栏 -->
-    	<div id="mainLeft">
-        	<!-- main左栏的推荐用户部分 -->
-        	<div id="faceShowWord">他（她）们在这里</div>
-            <div id="faceShow">
-            	<div id="faceShow1">
-                	<table width="180" border="0" cellspacing="0" cellpadding="0">
-                      <tr>
-                        <td width="60" height="60" align="center"><a href="star.html" title="黄海波"><img src="home/images/face/1.jpg" alt="" width="48" height="48" /></a></td>
-                        <td width="60"  align="center"><a href="#" title="商界杂志"><img src="home/images/face/2.jpg" alt="" width="48" height="48" /></a></td>
-                        <td width="60" align="center"><a href="#" title="韦唯"><img src="home/images/face/3.jpg" alt="" width="48" height="48" /></a></td>
-                      </tr>
-                      <tr>
-                        <td height="20"  align="center"><a href="#">黄海波</a></td>
-                        <td  align="center"><a href="#">商界杂志</a></td>
-                        <td  align="center"><a href="#">韦唯</a></td>
-                      </tr>
-                    </table>
-              </div>
-              <div id="faceShow2">
-                	<table width="180" border="0" cellspacing="0" cellpadding="0">
-                      <tr>
-                        <td width="60" height="60"  align="center"><a href="#" title="怪帥姜聲揚"><img src="home/images/face/4.jpg" alt="" width="48" height="48" /></a></td>
-                        <td width="60"  align="center"><a href="#" title="袁博"><img src="home/images/face/5.jpg" alt="" width="48" height="48" /></a></td>
-                        <td width="60" align="center"><a href="#" title="柯云路"><img src="home/images/face/6.jpg" alt="" width="48" height="48" /></a></td>
-                      </tr>
-                      <tr>
-                        <td height="20"  align="center"><a href="#">怪帥姜聲揚</a></td>
-                        <td  align="center"><a href="#">袁博</a></td>
-                        <td  align="center"><a href="#">柯云路</a></td>
-                      </tr>
-                </table>
+                <!--spec end--></div>
+           
+            <div class="WB_main clearfix" id="plc_frame">
+                <div class="WB_frame">
+                    <!-- 左导 -->
+                    <div class="WB_main_l">
+                        <div id="pl_unlogin_home_leftnav"><div class="UG_left_nav" node-type="UG_fixed_nav" style="position: fixed; top: 66px; bottom: auto;">
+
+                                <ul>
+                                    @foreach($res as $v)
+                                    <div field_id="{{$v->field_id}}" >
+                                        <li>
+                                            <a href="/home/index/{{$v->field_id}}" filed_id="{{$v->field_id}}" class="nav_item @if($field_id==$v->field_id ) cur @endif ">{{$v->field_name}}</a>
+                                        </li>
+                                     </div>
+                                    @endforeach
+
+                                </ul>
+
+                            </div></div>
+                    </div>
+                    <!-- ／左导 -->
+                    <div id="plc_main">
+                        <div id="plc_unlogin_home_main"><div class="WB_frame_c">
+                                <div id="pl_unlogin_home_feed">    <!--榜单栏位置-->
+                                    <!--/ card-->
+                                    <div class="UG_slider">
+                                        <ul  id="uls" action-type="header_slider" node-type="header_slider">
+                                            <li>
+                                                <a href="http://www.weibo.com/a/hot/7545822145157121_1.html?type=new" target="_blank" suda-uatrack="key=www_unlogin_home&amp;value=focus01">
+                                                    <img src="{{asset('home/indexsource/90eb2137ly1fkd372dkpej20jr0b4jsm.jpg')}}" class="pic"><div class="pic_intro">秋裤不行了，北方多地已降雪！ 吴磊弟弟带你看雪景</div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="http://www.weibo.com/a/hot/7545818648680449_1.html?type=new" target="_blank" suda-uatrack="key=www_unlogin_home&amp;value=focus02">
+                                                    <img src="{{asset('home/indexsource/90eb2137ly1fkcz4r0iz9j20jr0b4mz7.jpg')}}" class="pic"><div class="pic_intro">告慰南老 中国人第一次用自己的望远镜找到新脉冲星！</div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="http://www.weibo.com/a/hot/7545809959655425_1.html?type=new" target="_blank" suda-uatrack="key=www_unlogin_home&amp;value=focus03">
+                                                    <img src="{{asset('home/indexsource/90eb2137ly1fkcr59jbn5j20p40f3wrd.jpg')}}" class="pic"><div class="pic_intro">加州北湾地区山火滚滚，旧金山遭灰烬烟雾侵袭</div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="http://www.weibo.com/a/hot/7545778770810881_1.html?type=new" target="_blank" suda-uatrack="key=www_unlogin_home&amp;value=focus04">
+                                                    <img src="{{asset('home/indexsource/90eb2137ly1fkbyitxskaj219j0pnu0x.jpg')}}" class="pic"><div class="pic_intro">应采儿预言家！预言薛之谦红两年 让鹿晗想不红谈恋爱</div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="http://www.weibo.com/a/hot/7545500704708609_1.html?type=new" target="_blank" suda-uatrack="key=www_unlogin_home&amp;value=focus05">
+                                                    <img src="{{asset('home/indexsource/90eb2137ly1fk4v5dud1wj20qo0irab4.jpg')}}" class="pic"><div class="pic_intro">原来你是这样的老外</div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div id="ids" class="dot_box" node-type="dot_box" action-type="dot_box">
+                                            <a href="javascript:void(0);" class="dot current" node-type="dot" action-type="dot"></a>
+                                            <a href="javascript:void(0);" class="dot" node-type="dot" action-type="dot"></a>
+                                            <a href="javascript:void(0);" class="dot" node-type="dot" action-type="dot"></a>
+                                            <a href="javascript:void(0);" class="dot" node-type="dot" action-type="dot"></a>
+                                            <a href="javascript:void(0);" class="dot" node-type="dot" action-type="dot"></a>
+                                        </div>
+                                    </div>
+                                    <!-- card -->
+                                    <div class="UG_tips" action-type="unread_feed_tip" style="display: none;">您有未读内容，点击查看<em class="W_ficon ficon_close S_ficon">X</em></div>
+
+                                    <div  class="UG_contents" id="PCD_pictext_i_v5">
+                                        <!--feed内容-->
+                                        <ul id="feedbegin" class="pt_ul clearfix" pagenum="" node-type="feed_list">
+                                            @foreach($messages as $v)
+                                                <div class="UG_list_b"  action-type="feed_list_item" href="#">
+                                                    <div class="pic W_piccut_v">
+                                                        <img src="{{$v->msg_topimg}}" alt="">
+                                                    </div>
+                                                    <div class="list_des">
+                                                        <h3 class="list_title_s">
+                                                            <div>{{$v->msg_title}}<a target="_blank" href="{{url('/home/msg/'.$v->msg_id)}}">展开全文<i class="W_ficon ficon_arrow_down">c</i></a></div>
+                                                        </h3>
+                                                        <div class="subinfo_box clearfix">
+                                                            <a href="{{url('/home/user/'.$v->user->user_id)}}" target="_blank"><span class="subinfo_face "><img src="{{$v->user->user_headpic}}" width="20" height="20" alt=""></span></a>
+                                                            <a href="{{url('/home/user/'.$v->user->user_id)}}" target="_blank"><span class="subinfo S_txt2">{{$v->user->user_name}}</span></a>
+                                                            <span class="subinfo S_txt2">{{date('m月d日 H:i',$v->time)}}</span>
+                                                            <span class="subinfo_rgt S_txt2"><em class="W_ficon ficon_praised S_ficon W_f16">ñ</em><em>{{$v->praise_count}}</em></span>
+                                                            <span class="rgt_line W_fr"></span>
+                                                            <span class="subinfo_rgt S_txt2"><em class="W_ficon ficon_repeat S_ficon W_f16"></em><em>{{$v->reply_count}}</em></span>
+                                                            <span class="rgt_line W_fr"></span>
+                                                            <span class="subinfo_rgt S_txt2"><em class="W_ficon ficon_forward S_ficon W_f16"></em><em>{{$v->tran_count}}</em></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                            <!-- read_pos -->
+                                            <!--/read_pos-->
+                                        </ul>
+                                        <!--/feed内容-->
+                                        <div id="moretips" style="display:block" class="UG_tips"  action-type="unread_feed_tip">查看更多<em class="W_ficon ficon_close S_ficon">X</em></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="WB_main_r" fixed-box="true" >
+                                <div id="pl_unlogin_home_login">
+                                    <div style="visibility: hidden;"></div>
+                                    <div style="z-index: 10; transform: translateZ(0px); position: relative; width: 340px;">
+
+                                        @if(empty(session('homeFlag')))
+                                            <div class="UG_box" fixed-inbox="true" fixed-id="2" style="display:block">
+                                        @else
+                                           <div class="UG_box" fixed-inbox="true" fixed-id="2" style="display:none">
+                                       @endif
+
+                                            <div class="W_unlogin_v4" >
+                                                <div class="login_box" id="pl_login_form" >
+                                                    <div class="login_innerwrap">
+                                                        <div class="info_header">
+                                                            <div class="tab clearfix">
+                                                                <a href="javascript:void(0);" node-type="normal_tab" action-type="switchTab" action-data="type=normal" suda-uatrack="key=tblog_weibologin3&amp;value=ordinary_login" class="cur W_fb"><!-- <span class="W_icon_rec"><span class="W_icon_rec_txt">推荐</span><span class="W_arrow_bor W_arrow_bor_r"><i class="S_spetxt"></i></span></span>-->帐号登录</a>
+                                                                <a href="javascript:void(0);" node-type="qrcode_tab" action-type="switchTab" action-data="type=qrcode" suda-uatrack="key=tblog_weibologin3&amp;value=qrcode_login">扫码登录</a>
+                                                            </div>
+                                                            <!-- qrcode_target  qrcode_phone 点击时相互切换 -->
+                                                            <a href="javascript:void(0);" node-type="message_tab" action-type="switchTab" action-data="type=message" class="qrcode_target qrcode_phone"></a>
+                                                        </div>
+                                                        <!-- 登录框content -->
+                                                        <!-- /result end -->
+
+
+
+                                                        <div class="W_login_form" node-type="normal_form">
+                                                            <form id="login_form" action="{{url('/home/dologin')}}"  method="post">
+                                                            <!--<div class="info_list pre_info clearfix" node-type="prename_box" style="display:none"></div>-->
+                                                            <div class="info_list username" node-type="username_box">
+                                                                <div class="input_wrap">
+                                                                    <input id="loginname" type="text" class="W_input" maxlength="128"  placeholder="邮箱/会员帐号/手机号" action-type="text_copy" name="log_name" node-type="username" tabindex="1">
+                                                                </div>
+                                                            </div>
+                                                            <div class="info_list password" node-type="password_box">
+                                                                <div class="input_wrap">
+                                                                    <input type="password" placeholder="请输入密码"  class="W_input" maxlength="24" autocomplete="off" value="" action-type="text_copy" name="user_password" node-type="password" tabindex="2">
+
+                                                                </div>
+                                                            </div>
+                                                            <!-- 输入验证码 -->
+                                                            <div class="info_list verify clearfix"  node-type="verifycode_box">
+                                                                <div class="input_wrap W_fl">
+                                                                    <input type="text" class="W_input" maxlength="6" autocomplete="off" placeholder="验证码" action-data=" action-type="text_copy" name="homeCode" node-type="verifycode" tabindex="3" >
+                                                                </div>
+                                                                <a class="code W_fl" href="javascript:void(0);"><img width="95" height="34"  onclick="this.src='http://www.cweibo.com/home/captcha/1?'+Math.random()"  src="{{url('/home/captcha/1')}}"></a>
+
+                                                            </div>
+                                                            <!-- /输入验证码 -->
+                                                           {{csrf_field()}}
+
+                                                            <div class="info_list login_btn">
+                                                                <a href="javascript:void(0)" onclick="loginsubmit()" class="W_btn_a btn_32px" action-type="btn_submit" node-type="submitBtn" suda-data="key=tblog_weibologin3&amp;value=click_sign" tabindex="6"><span node-type="submitStates">登录</span></a>
+                                                            </div>
+                                                            <div class="info_list register">
+                                                                <span class="S_txt2">还没有微博？</span><a target="_blank" href="{{url('home/reg')}}">立即注册!</a>
+                                                            </div>
+                                                          </form>
+
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><div style="height:1px;margin-top:-1px;visibility:hidden;"></div></div>
+                                    <div class="bg" node-type="qr_help" style="position: absolute; top: 2px; left: -220px; width: 264px; height: 372px; background-position: -300px -150px; background-repeat: no-repeat; z-index: 999; background-image: url(&quot;//img.t.sinajs.cn/t6/style/images/growth/login/sprite_login.png&quot;); display: none;"></div></div>
+                                <div id="pl_unlogin_home_adcontent"></div>
+                                <div id="pl_unlogin_home_hots"><div class="UG_box_l">
+                                        <h2 class="UG_box_title">微博新鲜事</h2>
+                                        <div class="UG_contents">
+                                            <div class="UG_list_d" action-type="feed_list_item" href="/a/hot/7545646887213057_1.html?type=new" suda-uatrack="key=www_unlogin_home&amp;value=hot01">
+                                                <div class="list_nod clearfix">
+                                                    <div class="pic W_piccut_v">
+                                                        <a href="http://www.weibo.com/a/hot/7545646887213057_1.html?type=new" target="_blank">
+                                                            <img src="{{asset('home/indexsource/90eb2137ly1fk8lbs8pv1j214w0n0wga.jpg')}}" alt="">
+                                                        </a>
+                                                    </div>
+                                                    <div class="list_des">
+                                                        <h3 class="list_title_s"><a href="http://www.weibo.com/a/hot/7545646887213057_1.html?type=new" class="S_txt1" target="_blank">官方通报"越野车追赶藏羚羊"：涉事7人被罚105000元</a></h3>
+                                                        <div class="list_plus">
+                                                            <span class="list_text">10月9日 16:45</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="UG_list_d" action-type="feed_list_item" href="/a/hot/7545603126466561_1.html?type=new" suda-uatrack="key=www_unlogin_home&amp;value=hot02">
+                                                <div class="list_nod clearfix">
+                                                    <div class="pic W_piccut_v">
+                                                        <a href="http://www.weibo.com/a/hot/7545603126466561_1.html?type=new" target="_blank">
+                                                            <img src="{{asset('home/indexsource/90eb2137ly1fk7hc25omij20xc0m7t8u.jpg')}}" alt="">
+                                                        </a>
+                                                    </div>
+                                                    <div class="list_des">
+                                                        <h3 class="list_title_s"><a href="http://www.weibo.com/a/hot/7545603126466561_1.html?type=new" class="S_txt1" target="_blank">中秋陨石：陨石去哪儿了？为何寻找它如大海捞针</a></h3>
+                                                        <div class="list_plus">
+                                                            <span class="list_text">今天 14:45</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="UG_list_d" action-type="feed_list_item" href="/a/hot/7545602650413057_1.html?type=new" suda-uatrack="key=www_unlogin_home&amp;value=hot03">
+                                                <div class="list_nod clearfix">
+                                                    <div class="pic W_piccut_v">
+                                                        <a href="http://www.weibo.com/a/hot/7545602650413057_1.html?type=new" target="_blank">
+                                                            <img src="{{asset('home/indexsource/90eb2137ly1fk8dcbxnusj21ag0q4tb2.jpg')}}" alt="">
+                                                        </a>
+                                                    </div>
+                                                    <div class="list_des">
+                                                        <h3 class="list_title_s"><a href="http://www.weibo.com/a/hot/7545602650413057_1.html?type=new" class="S_txt1" target="_blank">中国失事渔船搜救工作最新进展：12名船员遗体全部找到</a></h3>
+                                                        <div class="list_plus">
+                                                            <span class="list_text">10月7日 22:22</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="UG_list_d" action-type="feed_list_item" href="/a/hot/7545273896146945_1.html?type=new" suda-uatrack="key=www_unlogin_home&amp;value=hot04">
+                                                <div class="list_nod clearfix">
+                                                    <div class="pic W_piccut_v">
+                                                        <a href="http://www.weibo.com/a/hot/7545273896146945_1.html?type=new" target="_blank">
+                                                            <img src="{{asset('home/indexsource/90eb2137ly1fjzaqr80jaj20qo0hotb0.jpg')}}" alt="">
+                                                        </a>
+                                                    </div>
+                                                    <div class="list_des">
+                                                        <h3 class="list_title_s"><a href="http://www.weibo.com/a/hot/7545273896146945_1.html?type=new" class="S_txt1" target="_blank">奋斗在海外，我活的如此精彩</a></h3>
+                                                        <div class="list_plus">
+                                                            <span class="list_text">今天 14:57</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="UG_list_d" action-type="feed_list_item" href="/a/hot/7545236292638721_1.html?type=new" suda-uatrack="key=www_unlogin_home&amp;value=hot05">
+                                                <div class="list_nod clearfix">
+                                                    <div class="pic W_piccut_v">
+                                                        <a href="http://www.weibo.com/a/hot/7545236292638721_1.html?type=new" target="_blank">
+                                                            <img src="{{asset('home/indexsource/90eb2137ly1fk55ru6djyj20jr0b4dge.jpg')}}" alt="">
+                                                        </a>
+                                                    </div>
+                                                    <div class="list_des">
+                                                        <h3 class="list_title_s"><a href="http://www.weibo.com/a/hot/7545236292638721_1.html?type=new" class="S_txt1" target="_blank">诺贝尔经济学奖出炉 美国芝加哥大学理查德-塞勒获奖</a></h3>
+                                                        <div class="list_plus">
+                                                            <span class="list_text">10月9日 18:24</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="UG_box_foot">
+                                            <a href="http://www.weibo.com/?category=novelty" class="S_txt1">查看更多<i class="W_ficon ficon_arrow_right S_ficon">a</i></a>
+                                        </div>
+                                    </div>
+                                    <div class="UG_box_l">
+                                        <!--微博实时热点-->
+                                        <h2 class="UG_box_title">微博实时热点</h2>
+                                        <div class="UG_contents">
+                                            <div class="UG_list_c" action-type="feed_list_item" href="/a/hot/55746cf6a5ec4e43_0.html?type=grab" suda-uatrack="key=www_unlogin_home&amp;value=hot01">
+                                                <div class="pic W_piccut_v">
+                                                    <a href="http://www.weibo.com/a/hot/55746cf6a5ec4e43_0.html?type=grab" target="_blank"><img src="{{asset('home/indexsource/61e7f4aaly1fkcumhrdd2j20d30gojwc.jpg')}}" alt=""></a>
+                                                </div>
+                                                <div class="list_des">
+                                                    <h3 class="list_title_s"><a href="http://www.weibo.com/a/hot/55746cf6a5ec4e43_0.html?type=grab" class="S_txt1" target="_blank">金荷娜目前为怀孕初期</a></h3>
+                                                    <div class="des_main S_txt2">#金荷娜#所属经纪公司10日向媒体公布了她怀孕的消息：“金荷娜目前为怀孕初期，她本人和家人知道后都非常开心。”39岁的准妈妈金荷娜接下来将暂停活动专心养胎。金荷娜于2016年3月结婚，男方是比其小一岁的企业家，外表帅气且多金。 ​​​​</div>
+                                                </div>
+                                            </div>
+                                            <div class="UG_list_c" action-type="feed_list_item" href="/a/hot/5da3df26d615dd0a_0.html?type=grab" suda-uatrack="key=www_unlogin_home&amp;value=hot02">
+                                                <div class="pic W_piccut_v">
+                                                    <a href="http://www.weibo.com/a/hot/5da3df26d615dd0a_0.html?type=grab" target="_blank"><img src="{{asset('home/indexsource/49fa6dc0ly1fkcuh71tx0j21w02iob2e(1).jpg')}}" alt=""></a>
+                                                </div>
+                                                <div class="list_des">
+                                                    <h3 class="list_title_s"><a href="http://www.weibo.com/a/hot/5da3df26d615dd0a_0.html?type=grab" class="S_txt1" target="_blank">张杰 蔓越莓饼干</a></h3>
+                                                    <div class="des_main S_txt2">早餐随便吃一点自己做的蔓越莓饼干[坏笑] ​​​​</div>
+                                                </div>
+                                            </div>
+                                            <div class="UG_list_c" action-type="feed_list_item" href="/a/hot/10dd066fb7aafed3_0.html?type=grab" suda-uatrack="key=www_unlogin_home&amp;value=hot03">
+                                                <div class="pic W_piccut_v">
+                                                    <a href="http://www.weibo.com/a/hot/10dd066fb7aafed3_0.html?type=grab" target="_blank"><img src="{{asset('home/indexsource/b62aa910d5c5bea3b63970750671bb88.jpg')}}" alt=""></a>
+                                                </div>
+                                                <div class="list_des">
+                                                    <h3 class="list_title_s"><a href="http://www.weibo.com/a/hot/10dd066fb7aafed3_0.html?type=grab" class="S_txt1" target="_blank">偶遇赵丽颖</a></h3>
+                                                    <div class="des_main S_txt2">【#赵丽颖#云南拍戏被偶遇 白T黑裤烈日下忙不停】10月9日下午，有网友分享了在云南西双版纳傣族园偶遇赵丽颖拍戏的照片。照片中赵丽颖将短发摆在耳后，露出额头，身穿一件白色短袖T恤和黑色修身长裤，脚穿一双白色运动鞋，整体搭配虽简单但不失自信和漂亮。http://t.cn/ROVC5W4 http://t.cn/ROV0GgO ​​​​</div>
+                                                </div>
+                                            </div>
+                                            <div class="UG_list_c" action-type="feed_list_item" href="/a/hot/31e1ea49cc7fdded_0.html?type=grab" suda-uatrack="key=www_unlogin_home&amp;value=hot04">
+                                                <div class="pic W_piccut_v">
+                                                    <a href="http://www.weibo.com/a/hot/31e1ea49cc7fdded_0.html?type=grab" target="_blank"><img src="{{asset('home/indexsource/b2664ecdly1fkd6fkmzn5j20j60d5whx.jpg')}}" alt=""></a>
+                                                </div>
+                                                <div class="list_des">
+                                                    <h3 class="list_title_s"><a href="http://www.weibo.com/a/hot/31e1ea49cc7fdded_0.html?type=grab" class="S_txt1" target="_blank">苏炳添大婚</a></h3>
+                                                    <div class="des_main S_txt2">中国飞人苏炳添今日大婚，祝福！[心][心][心] ​​​​</div>
+                                                </div>
+                                            </div>
+                                            <div class="UG_list_c" action-type="feed_list_item" href="/a/hot/f3bdf5cfb16c3bf3_0.html?type=grab" suda-uatrack="key=www_unlogin_home&amp;value=hot05">
+                                                <div class="pic W_piccut_v">
+                                                    <a href="http://www.weibo.com/a/hot/f3bdf5cfb16c3bf3_0.html?type=grab" target="_blank"><img src="{{asset('home/indexsource/61e04755ly1fkcyimqnwpj20gl0bbgm9.jpg')}}" alt=""></a>
+                                                </div>
+                                                <div class="list_des">
+                                                    <h3 class="list_title_s"><a href="http://www.weibo.com/a/hot/f3bdf5cfb16c3bf3_0.html?type=grab" class="S_txt1" target="_blank">小学开学一个月没翻开过课本</a></h3>
+                                                    <div class="des_main S_txt2">【杭州一小学开学一个月没翻开过课本：先培养孩子纪律团队意识】杭州钱塘实验小学，今年9月刚投入使用，一年级共有9个班近400名孩子。9月份开学一整月没上“正课”，昨天才开始上语文的“天地人”。开学第一周，孩子们上午军训，下午绘本阅读、游戏、绘画；第二周去了低碳科技馆看球幕电影；第三周去孔 ​​​​</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="UG_box_foot">
+                                            <a href="http://weibo.com/a/hot/realtime" class="S_txt1" target="_blank">查看更多<i class="W_ficon ficon_arrow_right S_ficon">a</i></a>
+                                        </div>
+                                    </div>
+                                    </div>
+                                <div id="pl_unlogin_home_hotsearchkeywords"></div>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              	 <div id="faceShow3">
-                     <table width="180" border="0" cellspacing="0" cellpadding="0">
-                      <tr>
-                        <td width="60" height="60"  align="center"><a href="#" title="李立军"><img src="home/images/face/7.jpg" alt="" width="48" height="48" /></a></td>
-                        <td width="60"  align="center"><a href="#" title="黄海波"><img src="home/images/face/8.jpg" alt="" width="48" height="48" /></a></td>
-                        <td width="60" align="center"><a href="#" title="时事辩论"><img src="home/images/face/9.jpg" alt="" width="48" height="48" /></a></td>
-                      </tr>
-                      <tr>
-                        <td height="20"  align="center"><a href="#">李立君</a></td>
-                        <td  align="center"><a href="#">黄海波</a></td>
-                        <td  align="center"><a href="#">时事辩论</a></td>
-                      </tr>
-                    </table>
+                <div class="WB_footer S_bg2">
+                    <div class="footer_link clearfix">
+                        <dl class="list">
+                            <dt>微博精彩</dt>
+                            <dd><a class="col1 S_txt2" href="http://hot.plaza.weibo.com/?bottomnav=1&amp;wvr=6&amp;type=re&amp;act=day">热门微博</a><a class="col1 S_txt2" href="http://huati.weibo.com/?bottomnav=1&amp;wvr=6">热门话题</a></dd>
+                            <dd><a class="col1 S_txt2" href="http://verified.weibo.com/?bottomnav=1&amp;wvr=6">名人堂</a><a class="col1 S_txt2" href="http://vip.weibo.com/home?bottomnav=1&amp;wvr=6">微博会员</a></dd>
+                            <dd><a class="col1 S_txt2" href="http://photo.weibo.com/?bottomnav=1&amp;wvr=6">微相册</a><a class="col1 S_txt2" href="http://game.weibo.com/?bottomnav=1&amp;wvr=6">微游戏</a></dd>
+                            <dd><a class="col1 S_txt2" href="http://data.weibo.com/index/?bottomnav=1&amp;wvr=6">微指数</a></dd>
+                        </dl>
+                        <dl class="list">
+                            <dt>手机玩微博</dt>
+                            <dd><span class="T_code col2">
+                    <img src="../indexsource/footer_code.jpg" alt="二维码"></span>
+                                <a class="T_txt S_txt2 " href="http://m.weibo.cn/client/guide/show">扫码下载，更多版本<br>戳这里</a>
+                            </dd>
+                        </dl>
+                        <dl class="list">
+                            <dt>认证&amp;合作</dt>
+                            <dd><a class="col3 S_txt2" href="http://verified.weibo.com/verify?bottomnav=1&amp;wvr=6">申请认证</a><a class="col3 S_txt2" href="http://open.weibo.com/connect?bottomnav=1&amp;wvr=6">链接网站</a></dd>
+                            <dd><a class="col3 S_txt2" href="http://e.weibo.com/introduce/introduce?bottomnav=1&amp;wvr=6">企业微博</a><a class="col3 S_txt2" href="http://tui.weibo.com/?bottomnav=1&amp;wvr=6">广告服务</a></dd>
+                            <dd><a class="col3 S_txt2" href="http://weibo.com/static/logo?bottomnav=1&amp;wvr=6">微博标识</a><a class="col3 S_txt2" target="_blank" href="http://tui.weibo.com/intro/agent?bottomnav=1&amp;wvr=6">广告代理商</a></dd>
+                            <dd><a class="col3 S_txt2" href="http://open.weibo.com/?bottomnav=1&amp;wvr=6">开放平台</a></dd>
+                        </dl>
+                        <dl class="list">
+                            <dt>微博帮助</dt>
+                            <dd><a class="col4 S_txt2" target="_blank" href="http://help.weibo.com/faq/q/358?bottomnav=1&amp;wvr=6">常见问题</a></dd>
+                            <dd><a class="col4 S_txt2" target="_blank" href="http://help.weibo.com/selfservice?bottomnav=1&amp;wvr=6">自助服务</a></dd>
+                        </dl>
+                    </div>
+                    <div class="other_link S_bg1 clearfix">
+                        <p class="copy"><a target="_blank" href="http://help.weibo.com/?refer=didao&amp;bottomnav=1&amp;wvr=6" class="S_txt2"><i class="W_icon icon_weibo"></i>微博客服</a><a class="S_txt2" target="_blank" href="http://help.weibo.com/newtopic/suggest?bottomnav=1&amp;wvr=6">意见反馈</a><a class="S_txt2" target="_blank" href="http://weibo.com/aj/static/report.html?_wv=6">舞弊举报</a><a class="S_txt2" target="_blank" href="http://open.weibo.com/?bottomnav=1&amp;wvr=6">开放平台</a><a class="S_txt2" target="_blank" href="http://hr.weibo.com/?bottomnav=1&amp;wvr=6">微博招聘</a><a class="S_txt2" target="_blank" href="http://news.sina.com.cn/guide/?bottomnav=1&amp;wvr=6">新浪网导航</a><a class="S_txt2" target="_blank" href="http://service.account.weibo.com/?bottomnav=1&amp;wvr=6">举报处理大厅</a>
+                           
+                        <p class="copy_v2"><a class="S_txt2" target="_blank" href="http://weibo.com/aj/static/jicp.html?_wv=6">京ICP证100780号</a><a class="S_txt2" href="http://weibo.com/aj/static/medi_license.html?_wv=6" target="__blank">互联网药品服务许可证</a><a class="S_txt2" href="http://weibo.com/aj/static/medi_health_license.html?_wv=6" target="__blank">互联网医疗保健许可证</a><a class="S_txt2" href="http://weibo.com/aj/static/jww.html?_wv=6" target="__blank">京网文[2014]2046-296号</a> <a class="S_txt2" href="http://www.miibeian.gov.cn/" target="__blank">京ICP备12002058号</a> <a class="S_txt2" href="http://weibo.com/aj/static/license.html?_wv=6" target="__blank">增值电信业务经营许可证B2-20140447</a>
+                        </p>
+                        <p class="company"><span class="copy S_txt2">Copyright © 2009-2017 WEIBO 北京微梦创科网络技术有限公司</span><span><a class="S_txt2" target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11000002000019"><i class="icon_netsecurity"></i>京公网安备11000002000019号</a>
+            </span></p>
+                    </div>
                 </div>
-              <div id="faceShow4">
-                	<table width="180" border="0" cellspacing="0" cellpadding="0">
-                      <tr>
-                        <td width="60" height="60"  align="center"><a href="#" title="程鹤麟"><img src="home/images/face/10.jpg" alt="" width="48" height="48" /></a></td>
-                        <td width="60"  align="center"><a href="#" title="冯磊"><img src="home/images/face/11.jpg" alt="" width="48" height="48" /></a></td>
-                        <td width="60" align="center"><a href="#" title="邓浩志"><img src="home/images/face/12.jpg" alt="" width="48" height="48" /></a></td>
-                      </tr>
-                      <tr>
-                        <td height="20"  align="center"><a href="#">程鹤麟</a></td>
-                        <td  align="center"><a href="#">冯磊</a></td>
-                        <td  align="center"><a href="#">邓浩志</a></td>
-                      </tr>
-                  </table>
-                 </div>
-                  <div id="faceShow5">
-                	<table width="180" border="0" cellspacing="0" cellpadding="0">
-                      <tr>
-                        <td width="60" height="60"  align="center"><a href="#" title="程鹤麟"><img src="home/images/face/13.jpg" alt="" width="48" height="48" /></a></td>
-                        <td width="60"  align="center"><a href="#" title="黄海波"><img src="home/images/face/14.jpg" alt="" width="48" height="48" /></a></td>
-                        <td width="60" align="center"><a href="#" title="怪帥姜聲"><img src="home/images/face/15.jpg" alt="" width="48" height="48" /></a></td>
-                      </tr>
-                      <tr>
-                        <td height="20"  align="center"><a href="#">程鹤麟</a></td>
-                        <td  align="center"><a href="#">黄海波</a></td>
-                        <td  align="center"><a href="#">怪帥姜聲</a></td>
-                      </tr>
-                    </table>
-                </div>
-          </div>
-            <!-- main左栏的推荐用户部分结束 -->
+                <a class="W_gotop S_ficon_bg" id="base_scrollToTop" href="javascript:void(0);" style="visibility: hidden; transform: translateZ(0px); position: fixed; bottom: 40px; top: auto;"><em class="W_ficon ficon_backtop S_bg2_c">Ú</em></a>
+                <a class="W_gotop S_ficon_bg  U_reload" id="base_reload" href="javascript:void(0);" style="visibility: visible; position: fixed; bottom: 90px; top: auto; transform: translateZ(0px);"><em class="W_ficon ficon_reload S_bg2_c">ù</em></a>
+            </div>
         </div>
-        <!-- main部分左栏结束 -->
-        <!-- main部分中间部分开始-->
-        <div id="mainBody">
-          <div id="hotword">热门微博</div>
-          <div id="stateShow">
-            <div class="stateShow" id="stateShow1">
-              <div class="stateShowWord">
-                <table width="450" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td width="60" align="center" valign="top"><a href="#"><img src="home/images/face/16.jpg" alt="" width="48" height="48" /></a></td>
-                    <td width="390"><a href="#">乡下妹</a> 1998年8月26日《人民日报》发表文章《百年老站新站长》，赞美汉口火车站站长刘志祥，其中有这样一句“职工们说：刘志祥是用他一身正气为人、两袖清风处事的人格魅力感染我们，激励我们的。”2005年，刘志祥因买凶杀害举报人、贪贿4000万被判死缓。2011年2月，其兄铁道部部长刘志军被双规。 </td>
-                  </tr>
-                </table>
-              </div>
-              <div class="stateShowtime"> 07月31日 08:02 </div>
-            </div>
-            <div class="stateShow" id="stateShow2">
-              <div class="stateShowWord">
-                <table width="450" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td width="60" align="center" valign="top"><a href="#"><img src="home/images/face/17.gif" alt="" width="48" height="48" /></a></td>
-                    <td width="390"><a href="#">经典微博语录</a>分享图片看到睡佛的人，1分钟内转发，霉运尽除，好运相伴~！不转不发者~！呵呵~！看吧~！请关注</td>
-                  </tr>
-                </table>
-              </div>
-              <div class="stateShowtime"> 07月31日 16:14 </div>
-            </div>
-            <div class="stateShow" id="stateShow3">
-              <div class="stateShowWord">
-                <table width="450" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td width="60" align="center" valign="top"><a href="#"><img src="home/images/face/7.jpg" alt="" width="48" height="48" /></a></td>
-                    <td width="390"><a href="#">传说中的老蒋</a> 经济最虚，文化最烂。外交最弱，军事最熊。 房价最高，医药最贵。教育最差，就业最难。 犯罪最凶，假货最多。污染最重，环境最劣。 工人最苦，农民最穷，学生最累，股民最惨。 旗帜最红，理论最好。口号最响，实干最少。 </td>
-                  </tr>
-                </table>
-              </div>
-              <div class="stateShowtime"> 07月29日 12:20 </div>
-            </div>
-            <div class="stateShow" id="stateShow4">
-              <div class="stateShowWord">
-                <table width="450" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td width="60" align="center" valign="top"><a href="#"><img src="home/images/face/18.gif" alt="" width="48" height="48" /></a></td>
-                    <td width="390"><a href="#">天涯海阁</a> 分享图片看到睡佛的人，1分钟内转发，霉运尽除，好运相伴~！不转不发者~！呵呵~！看吧~！请关注</td>
-                  </tr>
-                </table>
-              </div>
-              <div class="stateShowtime"> 07月31日 08:02 </div>
-            </div>
-            <div class="stateShow" id="stateShow5">
-              <div class="stateShowWord">
-                <table width="450" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td width="60" align="center" valign="top"><a href="#"><img src="home/images/face/17.jpg" alt="" width="48" height="48" /></a></td>
-                    <td width="390"><a href="#">烟台是个小鸟</a>烟台大学女生在厕所被杀，因女孩父母是农村人，且穷，校方极力推卸责任，几乎封锁了全国的媒体。 该女生父母二人在学校下跪。求讨一个说法。 此消息现几乎只能在博客等非正规媒体上传播了，有心人请转发此微博，以引起有关部门注意，为女孩讨个说法！！</td>
-                  </tr>
-                </table>
-              </div>
-              <div class="stateShowtime"> 07月31日 17:53 </div>
-            </div>
-          </div>
-  </div>
-        <!-- main部分中间部分结束 -->
-        <!-- main部分右栏 -->
-        <div id="mainRight">
-        	<div id="mainRightRegister">
-            	这里有你认识的朋友吗？<br  />
-                立即加入灵步微博！
-            </div>
-            <div id="registerButton"><a href="register.html"><img src="home/images/ico/register.gif" width="225" height="51"  /></a></div>
-            <div id="mobile">
-            	<div id="mobileTip">用手机将精彩随身携带</div>
-            	<div>
-            	<table width="200" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td width="100" height="71" align="center"><a href="#"><img src="home/images/ico/android.gif" width="64" height="63" alt="" /></a></td>
-                    <td width="100" align="center"><a href="#"><img src="home/images/ico/iphone.gif" width="64" height="63" alt="" /></a></td>
-                  </tr>
-                  <tr>
-                    <td height="71" align="center"><a href="#"><img src="home/images/ico/symbianv3.gif" width="64" height="63" alt="" /></a></td>
-                    <td align="center"><a href="#"><img src="home/images/ico/symbianv5.gif" width="64" height="63" alt="" /></a></td>
-                  </tr>
-                  <tr>
-                    <td height="71" align="center"><a href="#"><img src="home/images/ico/Java.gif" width="64" height="63" alt="" /></a></td>
-                    <td align="center"><a href="#"><img src="home/images/ico/BlackBery.gif" width="64" height="63" alt="" /></a></td>
-                  </tr>
-                </table>
-               </div>
-          </div>
     </div>
-        <!-- main部分右栏结束 -->
-    </div>
-    <!-- main部分结束 -->
-    <!-- footer部分 -->
-    <div id="footer">
-    	<!-- footer网站链接部分 -->
-    	<div id="footerLink">
-        	<ul>
-            	<li><a href="#">灵步网介绍</a></li>
-                <li><a href="#">广告服务</a></li>
-                <li><a href="#">API</a></li>
-                <li><a href="#">诚征英才</a></li>
-                <li><a href="#">保护隐私权</a></li>
-                <li><a href="#">免责条款</a></li>
-                <li><a href="#">法律顾问</a></li>
-                <li><a href="#">意见反馈</a></li>
-            </ul>
-        </div>
-        <!-- footer网站链接部分结束 -->
-        <!-- footer网站版权信息 -->
-        <div id="footerCopy">
-        	Copyright&copy;2011-2012 灵步小组 版权所有
-        </div>
-        <!-- footer网站版权信息结束 -->
-    </div>
-    <!-- footer部分结束 -->
+    <div id="v6_pl_base"></div>
+
+
+</div><div node-type="layer" class="layer_menu_list" style="display:none;">
+
 </div>
-<!-- 总容器DIV结束 -->
-</body>
-</html>
+
+<script type="text/javascript">
+    //轮播图效果
+    var ind = 1;
+    var into = null;
+    function moves(){
+        into = setInterval(function(){
+            shows(ind++);
+            if(ind > 4){
+                ind = 0;
+            }
+        },7000);
+    }
+    moves();
+    function shows(i){
+        var l = i * -660;
+        $('#uls').animate({
+            marginLeft:l+'px'
+        },1000)
+
+        //第四步
+        $('#ids a').eq(i).addClass('current');
+        $('#ids a').eq(i).siblings().removeClass('current');
+    }
+    shows(0)
+    //鼠标以上去和移出来  第五步
+    $('#ids a').hover(function(){
+        //获取图片对应的索引
+        ind = $(this).index();
+
+        shows(ind++);
+
+        //清除定时器
+        clearInterval(into);
+
+    },function(){
+        //第六步
+        moves();
+        if(ind > 4){
+            ind = 0;
+        }
+    })
+</script>
+<script>
+    var len=$(":input[name='take_len']").attr('value');
+            if(len<10){
+                    $('#moretips').css("display","none");
+            }
+    var field_id=$(":input[name='take_field_id']").attr('value');
+    var search=$(":input[name='take_search']").attr('value');
+    var n=1;
+    $('#moretips').click(function(){
+
+        $.get('/home/more',{n:n,id:field_id,f:search},function(data){
+            if(data==''){
+                $('#moretips').css("display","none");
+            }else{
+                $('#feedbegin').append(data);
+            }
+
+        });
+        n++;
+    });
+</script>
+<script>
+    function loginsubmit()
+    {
+        $('#login_form').submit();
+    }
+</script>
+
+
+
+</body></html>
