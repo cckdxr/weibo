@@ -68,9 +68,17 @@ Route::get('/home/more','Home\IndexController@moretips');
 
 //前台登陆后路由
 Route::group(['prefix'=>'home','namespace'=>'Home'],function(){
+    //登录后用户主页
     Route::get('u/index','UserIndexController@index');
+    //退出登录
     Route::get('logout','LoginController@logout');
+    //发微博路由
     Route::post('u/postwb','MsgController@postwb');
+    //收藏路由
+    Route::get('u/docollect','CollectController@addCollect');
+
+    //点赞路由
+    Route::get('u/dolike','CollectController@addLike');
 
 
 });

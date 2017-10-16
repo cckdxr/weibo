@@ -204,8 +204,7 @@
             type: "POST",
             url: "/home/upload",
             data: formData,
-            contentType: false,
-            processData: false,
+
             success: function(data) {
                 $('#abcd').attr('src',data);
                 $('#filename').attr('value',data)

@@ -10,7 +10,7 @@
     <link putoff="style/css/module/combination/extra.css?version=195be0ed22185743" href="{{asset('home/userindexsource/frame.css')}}" type="text/css" rel="stylesheet" charset="utf-8">	<link href="{{asset('home/userindexsource/home_A.css')}}" type="text/css" rel="stylesheet" charset="utf-8">
     <link id="skin_style" href="{{asset('home/userindexsource/skin.css')}}" type="text/css" rel="stylesheet" charset="utf-8">
     <script type="text/javascript" src="{{asset('admin/style/js/jquery.js')}}"></script>
-    <script type="text/javascript" src="{{asset('admin/style/js/biaoqing.js')}}"></script>
+
 	<script>
 		
 		function show_setbox(){
@@ -51,49 +51,49 @@
 
 
         //		单击选择发布频道
-        $(function() {
+        $(function(){
             //点击更改领域名
-            $(".field_selects").each(function (n) {
-                var id = $(this).attr("action_id");
-                var name = $(this).attr("action_name");
-                $(this).click(function () {
-                    $("input[name='field_id']").attr("value", id);
-                    $("#field_select").css('display', 'none');
-                    $("#field_change_but").html(name + "<em class='W_ficon ficon_arrow_down S_ficon'>c</em>");
+            $(".field_selects").each(function(n){
+				var id=$(this).attr("action_id");
+				var name=$(this).attr("action_name");
+                $(this).click(function(){
+						$("input[name='field_id']").attr("value",id);
+						$("#field_select").css('display','none');
+                         $("#field_change_but").html(name+"<em class='W_ficon ficon_arrow_down S_ficon'>c</em>");
                 })
             })
 
             //点击添加表情图标
-            $("#face_list_ul>ul>li").each(function () {
-                var name = '[' + $(this).attr("title") + ']';
-                $(this).click(function () {
-                    var old = $("#textarea").val();
-                    $("#textarea").val(old + name);
-                    $("#biaoqingxianshi").css('display', 'none');
+            $("#face_list_ul>ul>li").each(function(){
+                var name='['+$(this).attr("title")+']';
+               $(this).click(function(){
+                  var old= $("#textarea").val();
+                   $("#textarea").val(old+name);
+                   $("#biaoqingxianshi").css('display','none');
 
-                })
+               })
 
             })
 
 
             //点击显示图片选择框
-            $("#image_but").click(function () {
-                $("#pic_box").css('display', 'block');
+            $("#image_but").click(function( ){
+                $("#pic_box").css('display','block');
             })
             //点击显示表情选择框
-            $("#face_but").click(function () {
-                $("#biaoqingxianshi").css('display', 'block');
+            $("#face_but").click(function( ){
+                $("#biaoqingxianshi").css('display','block');
             })
             //点击显示发布频道
-            $("#field_change_but").click(function () {
+            $("#field_change_but").click(function(){
 
-                $("#field_select").attr("style", "position: absolute; display:block; z-index: 29999; outline: none; left: 376px; top: 35px;");
+                $("#field_select").attr("style","position: absolute; display:block; z-index: 29999; outline: none; left: 376px; top: 35px;");
             })
 
             //无刷新上传文件
-            var upfilenames = '';
-            $("#file_upload").change(function () {
-                upfilenames = uploadImage();
+            var upfilenames='';
+            $("#file_upload").change(function (){
+               upfilenames= uploadImage();
 
             })
 
@@ -110,94 +110,33 @@
                     return;
                 }
                 var formData = new FormData($('#post_new_wb')[0]);
-                var upfilename = '';
+                var upfilename='';
                 $.ajax({
                     type: "POST",
                     url: "/home/uploads",
                     data: formData,
-                    dataType: "json",
+                    dataType:"json",
                     contentType: false,
                     processData: false,
-                    success: function (data) {
+                    success: function(data) {
 
-                        var str = '';
-                        data.forEach(function (value, index, array) {
-                            str += "<li class='pic' ><div style=" + '"' + "background:url('../.." + value + "') center center;width:80px;height:80px;" + '"' + "></div></li>" + "<input type='hidden' value ='" + value + "' name='picname" + index + "'>";
+                        var str='';
+                        data.forEach(function(value,index,array){
+                            str+= "<li class='pic' ><div style="+'"'+"background:url('../.."+value+"') center center;width:80px;height:80px;"+'"'+"></div></li>"+"<input type='hidden' value ='"+value+"' name='picname"+index+"'>";
                         })
 
                         $("#pic_insert").html(str);
 
                     },
-                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
                         alert("上传失败，请检查网络后重试");
                     }
                 });
 
             }
 
-//            载入模板时替换[]表情
-            $(".W_replace").each(function () {
-                var s = replace($(this).text());
-
-                $(this).html(s);
-            })
-            //单击收藏
-            $("a[action_id='collect_but']").each(function () {
-                var msg_id = $(this).attr('msgtitle');
-                var e=$(this);
-                $(this).click(function () {
-                    $(this).find('em:eq(0)').removeClass("S_ficon").addClass('S_spetxt');
-                    $(this).find('em:eq(1)').html("已收藏");
-                    $.ajax({
-                        type: "get",
-                        url: "docollect",
-                        data: "msg_id="+msg_id,
-                        contentType: false,
-                        processData: false,
-                        success: function (data) {
-                            if(data!='已收藏'&& data!='存储失败'){
-                                e.find('em:eq(2)').html(data);
-                            }else{
-                                alert(data);
-                            }
-
-                        },
-                        error: function (XMLHttpRequest, textStatus, errorThrown) {
-                            alert("收藏失败，请检查网络后重试");
-                        }
-                    })
-                })
-            })
-
-            //单击赞
-            $("a[action_id='like_but']").each(function () {
-                var msg_id = $(this).attr('msgtitle');
-                var e=$(this);
-                $(this).click(function () {
-                    $(this).find("span[node-type='like_status']").addClass('UI_ani_praised');
-
-                    $.ajax({
-                        type: "get",
-                        url: "dolike",
-                        data: "msg_id="+msg_id,
-                        contentType: false,
-                        processData: false,
-                        success: function (data) {
-                            if(data!='已赞'&& data!='存储失败'){
-                                e.find('em:eq(1)').html(data);
-                            }else{
-                                alert(data);
-                            }
-
-                        },
-                        error: function (XMLHttpRequest, textStatus, errorThrown) {
-                            alert("收藏失败，请检查网络后重试");
-                        }
-                    })
-                })
-            })
-
         })
+
 
 
 		
@@ -315,7 +254,7 @@
 
 
                                     <div id="pic_box" class="layer_pic_list clearfix" style="position:absolute;left:70px;top:30px;z-index:100; border:1px solid #ccc;   background: white ;display:none; " node-type="box"><div class="W_layer_con_tit"><h1 class="W_f14 W_fb">本地上传</h1></div>
-                              <input id="file_upload" type="file" accept="image/png, image/jpeg, image/gif, image/jpg" name="file_upload[]" multiple="multiple"  >
+                              <input id="file_upload" type="file" name="file_upload[]" multiple="multiple"  >
                                         <ul id="pic_insert" class="drag_pic_list clearfix">
 
 
@@ -338,15 +277,15 @@
                                                         <li class="minitb_item S_line1 current" node-type="tab" title="默认"><a href="javascript:void(0);" class="minitb_lk S_txt1 S_bg2" action-type="tab" action-data="index=0">默认</a><span class="cur_block"></span></li>
                                                         <li class="minitb_item S_line1 " node-type="tab" title="心情"><a href="javascript:void(0);" class="minitb_lk S_txt1" action-type="tab" action-data="index=1">心情</a><span class="cur_block"></span></li>
                                                     </ul></div><div class="faces_list_box"><div class="faces_list UI_scrollView" node-type="scrollView"><div class="UI_scrollContainer">
-                                                            <div class="UI_scrollContent" style="width: 390px;"><div id="face_list_ul" node-type="list"><ul class="faces_list_hot clearfix" ><li action-type="select" action-data="insert=%5B%E5%B9%BF%E5%91%8A%5D" title="guanggao" suda="key=mainpub_default_expr&amp;value=first"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/60/ad_new0902_thumb.gif"></li><li action-type="select" action-data="insert=%5Bdoge%5D" title="doge" suda="key=mainpub_default_expr&amp;value=second"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/b6/doge_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E5%96%B5%E5%96%B5%5D" title="miaomiao" suda="key=mainpub_default_expr&amp;value=third"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/4a/mm_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E4%BA%8C%E5%93%88%5D" title="erha" suda="key=mainpub_default_expr&amp;value=fouth"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/74/moren_hashiqi_thumb.png"></li><li action-type="select" action-data="insert=%5B%E5%B0%8F%E9%BB%84%E4%BA%BA%E5%89%AA%E5%88%80%E6%89%8B%5D" title="xiaohuangrenjiandaoshou" suda="key=mainpub_default_expr&amp;value=fifth"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/ed/xiaohuangren_jiandaoshou_thumb.png"></li><li action-type="select" action-data="insert=%5B%E5%B0%8F%E9%BB%84%E4%BA%BA%E9%AB%98%E5%85%B4%5D" title="xiaohuangren" suda="key=mainpub_default_expr&amp;value=sixth"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/8d/xiaohuangren_gaoxing_thumb.png"></li><li action-type="select" action-data="insert=%5B%E7%AC%91cry%5D" title="xiaocry" suda="key=mainpub_default_expr&amp;value=seventh"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/34/xiaoku_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E6%91%8A%E6%89%8B%5D" title="tanshou" suda="key=mainpub_default_expr&amp;value=eighth"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/09/pcmoren_tanshou_thumb.png"></li><li action-type="select" action-data="insert=%5B%E6%8A%B1%E6%8A%B1%5D" title="baobao" suda="key=mainpub_default_expr&amp;value=ninth"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/70/pcmoren_baobao_thumb.png"></li><li action-type="select" action-data="insert=%5B%E8%B7%AA%E4%BA%86%5D" title="guille" suda="key=mainpub_default_expr&amp;value=tenth"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/6c/pcmoren_guile_thumb.png"></li><li action-type="select" action-data="insert=%5B%E5%90%83%E7%93%9C%5D" title="chigua" suda="key=mainpub_default_expr&amp;value=eleventh"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/8a/moren_chiguaqunzhong_thumb.png"></li><li action-type="select" action-data="insert=%5B%E5%93%86%E5%95%A6A%E6%A2%A6%E5%90%83%E6%83%8A%5D" title="duolachijing" suda="key=mainpub_default_expr&amp;value=twelfth"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/f0/dorachijing_thumb.gif"></li></ul><ul>
-                                                                        <li action-type="select" action-data="insert=%5B%E5%9D%8F%E7%AC%91%5D" title="huaixiao" suda="key=mainpub_default_expr&amp;value=eighteen"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/50/pcmoren_huaixiao_thumb.png"></li>
-                                                                        <li action-type="select" action-data="insert=%5B%E8%88%94%E5%B1%8F%5D" title="tianping" suda="key=mainpub_default_expr&amp;value=nineteen"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/40/pcmoren_tian_thumb.png"></li>
-                                                                        <li action-type="select" action-data="insert=%5B%E6%B1%A1%5D" title="wu" suda="key=mainpub_default_expr&amp;value=twenty"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/3c/pcmoren_wu_thumb.png"></li>
-                                                                        <li action-type="select" action-data="insert=%5B%E5%85%81%E6%82%B2%5D" title="yunbei" suda="key=mainpub_default_expr&amp;value=twenty-one"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/2c/moren_yunbei_thumb.png"></li>
-                                                                        <li action-type="select" action-data="insert=%5B%E7%AC%91%E8%80%8C%E4%B8%8D%E8%AF%AD%5D" title="xiaoerbuyu" suda="key=mainpub_default_expr&amp;value=twenty-two"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/3a/moren_xiaoerbuyu_thumb.png"></li>
-                                                                        <li action-type="select" action-data="insert=%5B%E8%B4%B9%E8%A7%A3%5D" title="feijie" suda="key=mainpub_default_expr&amp;value=twenty-three"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/3c/moren_feijie_thumb.png"></li>
-                                                                        <li action-type="select" action-data="insert=%5B%E6%86%A7%E6%86%AC%5D" title="chongjing" suda="key=mainpub_default_expr&amp;value=twenty-four"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/37/moren_chongjing_thumb.png"></li>
-                                                                        <li action-type="select" action-data="insert=%5B%E5%B9%B6%E4%B8%8D%E7%AE%80%E5%8D%95%5D" title="bingbujiandan" suda="key=mainpub_default_expr&amp;value=twenty-five"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/fc/moren_bbjdnew_thumb.png"></li><li action-type="select" action-data="insert=%5B%E5%BE%AE%E7%AC%91%5D" title="weixiao" suda="key=mainpub_default_expr&amp;value=twenty-six"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/5c/huanglianwx_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E9%85%B7%5D" title="ku" suda="key=mainpub_default_expr&amp;value=twenty-seven"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/8a/pcmoren_cool2017_thumb.png"></li><li action-type="select" action-data="insert=%5B%E5%98%BB%E5%98%BB%5D" title="xixi" suda="key=mainpub_default_expr&amp;value=twenty-eight"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/0b/tootha_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E5%93%88%E5%93%88%5D" title="haha" suda="key=mainpub_default_expr&amp;value=twenty-nine"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/6a/laugh.gif"></li><li action-type="select" action-data="insert=%5B%E5%8F%AF%E7%88%B1%5D" title="keai" suda="key=mainpub_default_expr&amp;value=thirty"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/14/tza_thumb.gif"></li></ul></div></div>
+                                                            <div class="UI_scrollContent" style="width: 390px;"><div id="face_list_ul" node-type="list"><ul class="faces_list_hot clearfix" ><li action-type="select" action-data="insert=%5B%E5%B9%BF%E5%91%8A%5D" title="广告" suda="key=mainpub_default_expr&amp;value=first"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/60/ad_new0902_thumb.gif"></li><li action-type="select" action-data="insert=%5Bdoge%5D" title="doge" suda="key=mainpub_default_expr&amp;value=second"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/b6/doge_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E5%96%B5%E5%96%B5%5D" title="喵喵" suda="key=mainpub_default_expr&amp;value=third"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/4a/mm_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E4%BA%8C%E5%93%88%5D" title="二哈" suda="key=mainpub_default_expr&amp;value=fouth"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/74/moren_hashiqi_thumb.png"></li><li action-type="select" action-data="insert=%5B%E5%B0%8F%E9%BB%84%E4%BA%BA%E5%89%AA%E5%88%80%E6%89%8B%5D" title="小黄人剪刀手" suda="key=mainpub_default_expr&amp;value=fifth"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/ed/xiaohuangren_jiandaoshou_thumb.png"></li><li action-type="select" action-data="insert=%5B%E5%B0%8F%E9%BB%84%E4%BA%BA%E9%AB%98%E5%85%B4%5D" title="小黄人高兴" suda="key=mainpub_default_expr&amp;value=sixth"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/8d/xiaohuangren_gaoxing_thumb.png"></li><li action-type="select" action-data="insert=%5B%E7%AC%91cry%5D" title="笑cry" suda="key=mainpub_default_expr&amp;value=seventh"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/34/xiaoku_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E6%91%8A%E6%89%8B%5D" title="摊手" suda="key=mainpub_default_expr&amp;value=eighth"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/09/pcmoren_tanshou_thumb.png"></li><li action-type="select" action-data="insert=%5B%E6%8A%B1%E6%8A%B1%5D" title="抱抱" suda="key=mainpub_default_expr&amp;value=ninth"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/70/pcmoren_baobao_thumb.png"></li><li action-type="select" action-data="insert=%5B%E8%B7%AA%E4%BA%86%5D" title="跪了" suda="key=mainpub_default_expr&amp;value=tenth"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/6c/pcmoren_guile_thumb.png"></li><li action-type="select" action-data="insert=%5B%E5%90%83%E7%93%9C%5D" title="吃瓜" suda="key=mainpub_default_expr&amp;value=eleventh"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/8a/moren_chiguaqunzhong_thumb.png"></li><li action-type="select" action-data="insert=%5B%E5%93%86%E5%95%A6A%E6%A2%A6%E5%90%83%E6%83%8A%5D" title="哆啦A梦吃惊" suda="key=mainpub_default_expr&amp;value=twelfth"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/f0/dorachijing_thumb.gif"></li></ul><ul>
+                                                                        <li action-type="select" action-data="insert=%5B%E5%9D%8F%E7%AC%91%5D" title="坏笑" suda="key=mainpub_default_expr&amp;value=eighteen"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/50/pcmoren_huaixiao_thumb.png"></li>
+                                                                        <li action-type="select" action-data="insert=%5B%E8%88%94%E5%B1%8F%5D" title="舔屏" suda="key=mainpub_default_expr&amp;value=nineteen"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/40/pcmoren_tian_thumb.png"></li>
+                                                                        <li action-type="select" action-data="insert=%5B%E6%B1%A1%5D" title="污" suda="key=mainpub_default_expr&amp;value=twenty"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/3c/pcmoren_wu_thumb.png"></li>
+                                                                        <li action-type="select" action-data="insert=%5B%E5%85%81%E6%82%B2%5D" title="允悲" suda="key=mainpub_default_expr&amp;value=twenty-one"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/2c/moren_yunbei_thumb.png"></li>
+                                                                        <li action-type="select" action-data="insert=%5B%E7%AC%91%E8%80%8C%E4%B8%8D%E8%AF%AD%5D" title="笑而不语" suda="key=mainpub_default_expr&amp;value=twenty-two"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/3a/moren_xiaoerbuyu_thumb.png"></li>
+                                                                        <li action-type="select" action-data="insert=%5B%E8%B4%B9%E8%A7%A3%5D" title="费解" suda="key=mainpub_default_expr&amp;value=twenty-three"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/3c/moren_feijie_thumb.png"></li>
+                                                                        <li action-type="select" action-data="insert=%5B%E6%86%A7%E6%86%AC%5D" title="憧憬" suda="key=mainpub_default_expr&amp;value=twenty-four"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/37/moren_chongjing_thumb.png"></li>
+                                                                        <li action-type="select" action-data="insert=%5B%E5%B9%B6%E4%B8%8D%E7%AE%80%E5%8D%95%5D" title="并不简单" suda="key=mainpub_default_expr&amp;value=twenty-five"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/fc/moren_bbjdnew_thumb.png"></li><li action-type="select" action-data="insert=%5B%E5%BE%AE%E7%AC%91%5D" title="微笑" suda="key=mainpub_default_expr&amp;value=twenty-six"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/5c/huanglianwx_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E9%85%B7%5D" title="酷" suda="key=mainpub_default_expr&amp;value=twenty-seven"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/8a/pcmoren_cool2017_thumb.png"></li><li action-type="select" action-data="insert=%5B%E5%98%BB%E5%98%BB%5D" title="嘻嘻" suda="key=mainpub_default_expr&amp;value=twenty-eight"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/0b/tootha_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E5%93%88%E5%93%88%5D" title="哈哈" suda="key=mainpub_default_expr&amp;value=twenty-nine"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/6a/laugh.gif"></li><li action-type="select" action-data="insert=%5B%E5%8F%AF%E7%88%B1%5D" title="可爱" suda="key=mainpub_default_expr&amp;value=thirty"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/14/tza_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E5%8F%AF%E6%80%9C%5D" title="可怜" suda="key=mainpub_default_expr&amp;value=thirty-one"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/af/kl_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E6%8C%96%E9%BC%BB%5D" title="挖鼻" suda="key=mainpub_default_expr&amp;value=thirty-two"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/0b/wabi_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E5%90%83%E6%83%8A%5D" title="吃惊" suda="key=mainpub_default_expr&amp;value=thirty-three"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/f4/cj_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E5%AE%B3%E7%BE%9E%5D" title="害羞" suda="key=mainpub_default_expr&amp;value=thirty-four"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/6e/shamea_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E6%8C%A4%E7%9C%BC%5D" title="挤眼" suda="key=mainpub_default_expr&amp;value=thirty-five"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/c3/zy_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E9%97%AD%E5%98%B4%5D" title="闭嘴" suda="key=mainpub_default_expr&amp;value=thirty-six"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/29/bz_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E9%84%99%E8%A7%86%5D" title="鄙视" suda="key=mainpub_default_expr&amp;value=thirty-seven"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/71/bs2_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E7%88%B1%E4%BD%A0%5D" title="爱你" suda="key=mainpub_default_expr&amp;value=thirty-eight"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/6d/lovea_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E6%B3%AA%5D" title="泪" suda="key=mainpub_default_expr&amp;value=thirty-nine"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/9d/sada_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E5%81%B7%E7%AC%91%5D" title="偷笑" suda="key=mainpub_default_expr&amp;value=forty"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/19/heia_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E4%BA%B2%E4%BA%B2%5D" title="亲亲" suda="key=mainpub_default_expr&amp;value=forty-one"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/8f/qq_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E7%94%9F%E7%97%85%5D" title="生病" suda="key=mainpub_default_expr&amp;value=forty-two"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/b6/sb_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E5%A4%AA%E5%BC%80%E5%BF%83%5D" title="太开心" suda="key=mainpub_default_expr&amp;value=forty-three"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/58/mb_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E7%99%BD%E7%9C%BC%5D" title="白眼" suda="key=mainpub_default_expr&amp;value=forty-four"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/d9/landeln_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E5%8F%B3%E5%93%BC%E5%93%BC%5D" title="右哼哼" suda="key=mainpub_default_expr&amp;value=forty-five"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/98/yhh_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E5%B7%A6%E5%93%BC%E5%93%BC%5D" title="左哼哼" suda="key=mainpub_default_expr&amp;value=forty-six"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/6d/zhh_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E5%98%98%5D" title="嘘" suda="key=mainpub_default_expr&amp;value=forty-seven"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/a6/x_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E8%A1%B0%5D" title="衰" suda="key=mainpub_default_expr&amp;value=forty-eight"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/af/cry.gif"></li><li action-type="select" action-data="insert=%5B%E5%A7%94%E5%B1%88%5D" title="委屈" suda="key=mainpub_default_expr&amp;value=forty-nine"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/73/wq_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E5%90%90%5D" title="吐" suda="key=mainpub_default_expr&amp;value=fifty"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/9e/t_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E5%93%88%E6%AC%A0%5D" title="哈欠" suda="key=mainpub_default_expr&amp;value=fifty-one"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/cc/haqianv2_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E6%8A%B1%E6%8A%B1_%E6%97%A7%5D" title="抱抱_旧" suda="key=mainpub_default_expr&amp;value=fifty-two"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/27/bba_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E6%80%92%5D" title="怒" suda="key=mainpub_default_expr&amp;value=fifty-three"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/7c/angrya_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E7%96%91%E9%97%AE%5D" title="疑问" suda="key=mainpub_default_expr&amp;value=fifty-four"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/5c/yw_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E9%A6%8B%E5%98%B4%5D" title="馋嘴" suda="key=mainpub_default_expr&amp;value=fifty-five"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/a5/cza_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E6%8B%9C%E6%8B%9C%5D" title="拜拜" suda="key=mainpub_default_expr&amp;value=fifty-six"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/70/88_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E6%80%9D%E8%80%83%5D" title="思考" suda="key=mainpub_default_expr&amp;value=fifty-seven"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/e9/sk_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E6%B1%97%5D" title="汗" suda="key=mainpub_default_expr&amp;value=fifty-eight"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/24/sweata_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E5%9B%B0%5D" title="困" suda="key=mainpub_default_expr&amp;value=fifty-nine"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/40/kunv2_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E7%9D%A1%5D" title="睡" suda="key=mainpub_default_expr&amp;value=sixty"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/96/huangliansj_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E9%92%B1%5D" title="钱" suda="key=mainpub_default_expr&amp;value=sixty-one"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/90/money_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E5%A4%B1%E6%9C%9B%5D" title="失望" suda="key=mainpub_default_expr&amp;value=sixty-two"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/0c/sw_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E8%89%B2%5D" title="色" suda="key=mainpub_default_expr&amp;value=sixty-three"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/20/huanglianse_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E5%93%BC%5D" title="哼" suda="key=mainpub_default_expr&amp;value=sixty-four"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/49/hatea_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E9%BC%93%E6%8E%8C%5D" title="鼓掌" suda="key=mainpub_default_expr&amp;value=sixty-five"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/36/gza_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E6%99%95%5D" title="晕" suda="key=mainpub_default_expr&amp;value=sixty-six"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/d9/dizzya_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E6%82%B2%E4%BC%A4%5D" title="悲伤" suda="key=mainpub_default_expr&amp;value=sixty-seven"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/1a/bs_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E6%8A%93%E7%8B%82%5D" title="抓狂" suda="key=mainpub_default_expr&amp;value=sixty-eight"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/62/crazya_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E9%BB%91%E7%BA%BF%5D" title="黑线" suda="key=mainpub_default_expr&amp;value=sixty-nine"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/91/h_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E9%98%B4%E9%99%A9%5D" title="阴险" suda="key=mainpub_default_expr&amp;value=seventy"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/6d/yx_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E6%80%92%E9%AA%82%5D" title="怒骂" suda="key=mainpub_default_expr&amp;value=seventy-one"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/60/numav2_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E4%BA%92%E7%B2%89%5D" title="互粉" suda="key=mainpub_default_expr&amp;value=seventy-two"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/89/hufen_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E5%BF%83%5D" title="心" suda="key=mainpub_default_expr&amp;value=seventy-three"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/40/hearta_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E4%BC%A4%E5%BF%83%5D" title="伤心" suda="key=mainpub_default_expr&amp;value=seventy-four"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/ea/unheart.gif"></li><li action-type="select" action-data="insert=%5B%E7%8C%AA%E5%A4%B4%5D" title="猪头" suda="key=mainpub_default_expr&amp;value=seventy-five"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/58/pig.gif"></li><li action-type="select" action-data="insert=%5B%E7%86%8A%E7%8C%AB%5D" title="熊猫" suda="key=mainpub_default_expr&amp;value=seventy-six"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/6e/panda_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E5%85%94%E5%AD%90%5D" title="兔子" suda="key=mainpub_default_expr&amp;value=seventy-seven"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/81/rabbit_thumb.gif"></li><li action-type="select" action-data="insert=%5Bok%5D" title="ok" suda="key=mainpub_default_expr&amp;value=seventy-eight"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/d6/ok_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E8%80%B6%5D" title="耶" suda="key=mainpub_default_expr&amp;value=seventy-nine"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/d9/ye_thumb.gif"></li><li action-type="select" action-data="insert=%5Bgood%5D" title="good" suda="key=mainpub_default_expr&amp;value=eighty"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/d8/good_thumb.gif"></li><li action-type="select" action-data="insert=%5BNO%5D" title="NO" suda="key=mainpub_default_expr&amp;value=eighty-one"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/ae/buyao_org.gif"></li><li action-type="select" action-data="insert=%5B%E8%B5%9E%5D" title="赞" suda="key=mainpub_default_expr&amp;value=eighty-two"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/d0/z2_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E6%9D%A5%5D" title="来" suda="key=mainpub_default_expr&amp;value=eighty-three"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/40/come_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E5%BC%B1%5D" title="弱" suda="key=mainpub_default_expr&amp;value=eighty-four"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/d8/sad_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E8%8D%89%E6%B3%A5%E9%A9%AC%5D" title="草泥马" suda="key=mainpub_default_expr&amp;value=thirteen"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/7a/shenshou_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E7%A5%9E%E9%A9%AC%5D" title="神马" suda="key=mainpub_default_expr&amp;value=fourteen"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/60/horse2_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E5%9B%A7%5D" title="囧" suda="key=mainpub_default_expr&amp;value=fifteen"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/15/j_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E6%B5%AE%E4%BA%91%5D" title="浮云" suda="key=mainpub_default_expr&amp;value=sixteen"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/bc/fuyun_thumb.gif"></li><li action-type="select" action-data="insert=%5B%E7%BB%99%E5%8A%9B%5D" title="给力" suda="key=mainpub_default_expr&amp;value=seventeen"><img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/1e/geiliv2_thumb.gif"></li></ul></div></div>
                                                         </div><div class="UI_scrollBar W_scroll_y S_bg1" style=""><div class="bar S_txt2_bg" style="top: 0%; height: 87.5502%;"></div></div></div></div></div><div class="W_layer_arrow"><span class="W_arrow_bor W_arrow_bor_t" node-type="arrow" style="left: 16px;"><i class="S_line3"></i><em class="S_bg2_br"></em></span></div></div></div>
 
                                 </div>
@@ -447,192 +386,187 @@
                                 <!--feed list-->
                                <div class="WB_feed WB_feed_v3 WB_feed_v4" pagenum="1" node-type="feed_list" unread_mode="1">
 
-                @foreach($messages as $v)
-                {{--第一个内容标签开始--}}
 
+       {{--第一个内容标签开始--}}
+        <div class="WB_cardwrap WB_feed_type S_bg2 WB_feed_like" >
+            <div class="WB_feed_detail clearfix" node-type="feed_content">
+                {{--操作标签开始--}}
+                <div class="WB_screen W_fr">
+
+                    <div class="screen_box" >
+                        <a href="javascript:void(0);" ><i class="W_ficon ficon_arrow_down S_ficon">c</i></a>
+                        {{--屏蔽框--}}
+                        <div class="layer_menu_list"  style="display:none; position: absolute; z-index: 999;">
+                            <ul>
+                                <li><a href="javascript:void(0)" >取消关注交通北京</a></li>
+                                <li><a href="javascript:void(0);" id="jubao">举报</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {{--头像--}}
+                <div class="WB_face W_fl">
+                    <div class="face"><a target="_blank" class="W_face_radius"  href="http://weibo.com/bjsjtw?refer_flag=0000015010" ><img  alt="" width="50" height="50" src="../userindexsource/9012a0c7jw1e8qgp5bmzyj2050050aa8.jpg" class="W_face_radius"></a></div>
+                </div>
+                {{--名字--}}
+                <div class="WB_detail">
+                    <div class="WB_info">
+                        <a nick-name="交通北京" class="W_f14 W_fb S_txt1" target="_blank" href="http://weibo.com/bjsjtw?refer_flag=0000015010">交通北京</a>   </div>
+                    {{--时间--}}
+                    <div class="WB_from S_txt2">
+                        <!-- minzheng add part 2 -->
+                        今天 19:34  来自 360安全浏览器                                                   <!-- minzheng add part 2 -->
+                    </div>
+                    <div class="WB_text W_f14" >
+                        明天白天阴，大部地区有小雨转多云，北风二三级，最高气温13℃。                            </div>
+                    {{--转发框开始--}}
+                    <div class="WB_feed_expand">
+                        <div class="W_arrow_bor W_arrow_bor_t"><i class="S_bg1_br"></i></div>
+                        <div class="WB_expand S_bg1" node-type="feed_list_forwardContent">
+                            <div class="WB_info">
+                                <a target="_blank" class="W_fb S_txt1" href="http://weibo.com/qixiangbj?refer_flag=0000015010"">@气象北京</a> </div>
+                            <div class="WB_text" node-type="feed_list_reason">
+                                【明日出行防雨需添衣】今天夜间多云转阴，西部山区有小雨，北风一二级，最低气温6℃；明天白天阴，大部地区有小雨转多云，北风二三级，最高气温13℃。早晚气温较低，外出需注意添衣保暖。明天白天本市大部地区将受小雨天气影响，出行请注意防雨。市气象台11日17时发布 ​​​​                                                            </div>
+
+                            <!-- 微博心情，独立于标准的ul节点 -->
+
+                            <div class="WB_media_wrap clearfix" node-type="feed_list_media_prev">
+                                <div class="media_box">
+                                    <!--图片个数等于1，只显示图片-->
+                                    <!--picture_count == 1-->
+                                    <ul class="WB_media_a  WB_media_a_m1 clearfix" action-data="isPrivate=0&amp;relation=0&amp;clear_picSrc=%2F%2Fwx1.sinaimg.cn%2Fmw690%2F9bab7467ly1fkef44n2kig20dw0abwra.gif">
+                                        <li class="WB_pic li_1 S_bg1 S_line2 bigcursor " >
+                                            <img src="../userindexsource/9bab7467ly1fkef44n2kig20dw0abwra.gif">
+
+                                            <i class="W_icon_tag_v2">大图/动图/长图</i>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- super topic card -->
+                            <div class="WB_func clearfix">
+                                <div class="WB_handle W_fr" mid="4161711856015303">
+                                    <ul class="clearfix">
+                                        <li><span class="line S_line1">
+                <span><em class="W_ficon ficon_forward S_ficon"></em><em>25</em></span></span></li>
+                                        <li><span class="line S_line1">
+                <span><em class="W_ficon ficon_repeat S_ficon"></em><em>14</em></span>
+            </span></li>
+                                        <li><span class="line S_line1"> <span node-type="like_status" class=""><em class="W_ficon ficon_praised S_txt2">ñ</em><em>7</em></span></span></li>
+                                    </ul>
+                                </div>
+                                <div class="WB_from S_txt2">
+                                    今天 17:08 来自 微博 weibo.com </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- feed区 大数据tag -->
+                    <!-- /feed区 大数据tag -->                    </div>
+
+            </div>
+            <!-- minzheng add part 3 -->
+            <div class="WB_feed_handle">
+                <div class="WB_handle">
+                    <ul class="WB_row_line WB_row_r4 clearfix S_line2">
+                        <li>
+                            <a class="S_txt2" href="javascript:void(0);" ><span class="pos"><span class="line S_line1" node-type="favorite_btn_text"><span><em class="W_ficon ficon_favorite S_ficon">û</em><em>收藏</em></span></span></span></a>
+                        </li>
+                        <li>
+                            <a class="S_txt2"  href="javascript:void(0);" ><span class="pos"><span class="line S_line1" node-type="forward_btn_text"><span><em class="W_ficon ficon_forward S_ficon"></em><em>1</em></span></span></span></a>
+                        </li>
+                        <li>
+                            <a class="S_txt2"  href="javascript:void(0);" ><span class="pos"><span class="line S_line1"><span><em class="W_ficon ficon_repeat S_ficon"></em><em>11</em></span></span></span></a>
+
+                        </li>
+                        <li>
+                            <!--cuslike用于前端判断是否显示个性赞，1:显示-->
+                            <a href="javascript:void(0);" class="S_txt2" ><span class="pos"><span class="line S_line1">
+                                                                                                                                                                <span node-type="like_status" class=""><em class="W_ficon ficon_praised S_txt2">ñ</em><em>1</em></span>                    </span></span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div node-type="feed_list_repeat" class="WB_feed_repeat S_bg1" style="display:none;"></div>
+        </div>
+                            {{--第一个内容标签结束--}}
                    <div  class="WB_cardwrap WB_feed_type S_bg2 WB_feed_like" >
                        <div class="WB_feed_detail clearfix" >
                            <div class="WB_screen W_fr" >
                                <div class="screen_box" >
-                                  @if(session('homeUser')['user_id']!=$v->author_id)
                                    <a href="javascript:void(0);" ><i class="W_ficon ficon_arrow_down S_ficon">c</i></a>
                                    {{--屏蔽框--}}
                                    <div class="layer_menu_list"  style="display:none; position: absolute; z-index: 999;">
                                        <ul>
-                                           <li><a href="javascript:void(0)" action_data="{{$v->author_id}}" >取消关注{{$v->user_name}}</a></li>
-                                           <li><a href="javascript:void(0);" action_data="{{$v->msg_id}}"  id="jubao">举报</a></li>
+                                           <li><a href="javascript:void(0)" >取消关注交通北京</a></li>
+                                           <li><a href="javascript:void(0);" id="jubao">举报</a></li>
                                        </ul>
                                    </div>
-                                   @endif
                                </div>
                            </div>
 						   {{--头像--}}
                            <div class="WB_face W_fl">
-                               <div class="face"><a target="_blank" class="W_face_radius"  href=""><img alt="" width="50" height="50" src="{{$v->user_headpic}}" class="W_face_radius"></a></div>
+                               <div class="face"><a target="_blank" class="W_face_radius"  href=""><img alt="" width="50" height="50" src="../userindexsource/9012a0c7jw1e8qgp5bmzyj2050050aa8.jpg" class="W_face_radius"></a></div>
                            </div>
                            <div class="WB_detail">
                                <div class="WB_info">
-                                   <a target="_blank" class="W_f14 W_fb S_txt1" href="http://weibo.com/booknsong?refer_flag=0000015010_&amp;from=feed&amp;loc=nickname" >{{$v->user_name}}</a>         </div>
+                                   <a target="_blank" class="W_f14 W_fb S_txt1" href="http://weibo.com/booknsong?refer_flag=0000015010_&amp;from=feed&amp;loc=nickname" >屌絲打分蜻蜓隊長</a>         </div>
                                <div class="WB_from S_txt2">
                                    <!-- minzheng add part 2 -->
-                                   {{date('m月d日 H:i',$v->time)}}                                                    <!-- minzheng add part 2 -->
+                                  9分钟前 来自  iPhone 6s Plus                                                   <!-- minzheng add part 2 -->
                                </div>
-                               <div class="WB_text W_f14 W_replace"  node-type="feed_list_content">
-                                   {{$v->msg_title}}
-                               </div>
-                               @if($v->msg_content !='')
                                <div class="WB_text W_f14" node-type="feed_list_content">
-                                   {!! $v->msg_content !!}
-                                   <img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/fc/moren_bbjdnew_thumb.png">
+                                   换季诗分享 每条都有理有据 ​​​​
                                </div>
-
-                               @endif
                               {{--正常框开始--}}
                                <div class="WB_media_wrap clearfix" node-type="feed_list_media_prev">
                                    <div class="media_box">&gt;
                                        <!--图片个数等于1，只显示图片-->
-                                       <!--picture_count ==  WB_media_a_m2是大图 WB_media_a_mn是多图  1-->
-                                       {{--如图片有一张--}}
-                                       @if(count($v->pics)==1)
-                                       <ul class="WB_media_a WB_media_a_m1 clearfix" >
+                                       <!--picture_count == 1-->
+                                       <ul class="WB_media_a  WB_media_a_m1 clearfix" >
                                            <li class="WB_pic li_1 S_bg1 S_line2 bigcursor li_n_mix_w" >
-                                               <img src="{{$v->msg_topimg}}">
+                                               <img src="../userindexsource/9bab7467ly1fkef44n2kig20dw0abwra.gif">
                                                <i class="W_loading" style="display:none;"></i>
                                            </li>
                                        </ul>
-                                           {{--如图片有多张--}}
-                                       @elseif(count($v->pics)>1)
-                                           <ul class="WB_media_a WB_media_a_mn WB_media_a_m9 clearfix" >
-                                           @foreach($v->pics as $vv)
-
-                                                   <li class="WB_pic li_1 S_bg1 S_line2 bigcursor li_n_mix_w" >
-                                                       <img src="{{$vv['pic_add']}}">
-                                                       <i class="W_loading" style="display:none;"></i>
-                                                   </li>
-
-                                           @endforeach
-                                           </ul>
-                                       @endif
                                    </div>
                                </div>
+
                                <!-- super topic card -->
                                <!-- feed区 大数据tag -->
                                <!-- /feed区 大数据tag -->
                            </div>
 
                        </div>
-                       <!-- 评论收藏回复转发框 -->
+                       <!-- minzheng add part 3 -->
                        <div class="WB_feed_handle">
                            <div class="WB_handle">
                                <ul class="WB_row_line WB_row_r4 clearfix S_line2">
-                                   {{--如果是本人微博不能收藏和转发--}}
-                                   @if(session('homeUser')['user_id']!=$v->author_id)
                                    <li>
-                                       <a class="S_txt2" href="javascript:void(0);" msgtitle="{{$v->msg_id}}" action_id="collect_but" ><span class="pos"><span class="line S_line1" node-type="collect_status"><span>
-                                                       @if($v->msg_index()->where(['user_id'=>session('homeUser')['user_id'],'msg_type'=>4])->first())
-                                                           <em class="W_ficon ficon_favorite S_spetxt">û</em><em class="a">已收藏</em><em>{{$v->collect_count}}</em>
-                                                        @else
-                                                           <em class="W_ficon ficon_favorite S_ficon">û</em><em class="a">收藏</em><em>{{$v->collect_count}}</em>
-
-                                                        @endif
-                                                   </span></span></span></a>
+                                       <a class="S_txt2" href="javascript:void(0);" ><span class="pos"><span class="line S_line1" node-type="favorite_btn_text"><span><em class="W_ficon ficon_favorite S_ficon">û</em><em>收藏</em></span></span></span></a>
                                    </li>
                                    <li>
-                                       <a class="S_txt2"  href="javascript:void(0);" msgtitle="{{$v->msg_id}}  action_id="tran_but" ><span class="pos"><span class="line S_line1" node-type="forward_btn_text"><span><em class="W_ficon ficon_forward S_ficon"></em><em>{{$v->tran_count}}</em></span></span></span></a>
+                                       <a class="S_txt2"  href="javascript:void(0);" ><span class="pos"><span class="line S_line1" node-type="forward_btn_text"><span><em class="W_ficon ficon_forward S_ficon"></em><em>1</em></span></span></span></a>
                                    </li>
-                                   @endif
                                    <li>
-                                       <a class="S_txt2"  href="javascript:void(0);"   msgtitle="{{$v->msg_id}} action_id="reply_but"><span class="pos"><span class="line S_line1"><span><em class="W_ficon ficon_repeat S_ficon"></em><em>{{$v->reply_count}}</em></span></span></span></a>
+                                       <a class="S_txt2"  href="javascript:void(0);" ><span class="pos"><span class="line S_line1"><span><em class="W_ficon ficon_repeat S_ficon"></em><em>11</em></span></span></span></a>
 
                                    </li>
                                    <li>
-                                       <a href="javascript:void(0);" msgtitle="{{$v->msg_id}}"  action_id="like_but" class="S_txt2" ><span class="pos"><span class="line S_line1">
-                                                   @if($v->msg_index()->where(['user_id'=>session('homeUser')['user_id'],'msg_type'=>3])->first())
-                                                       <span node-type="like_status" class="UI_ani_praised">
-                                                   @else
-                                                      <span node-type="like_status" class="">
-                                                   @endif
-
-                                                           <em class="W_ficon ficon_praised S_txt2">ñ</em><em>{{$v->praise_count}}</em></span>                    </span></span>
-										</a>
+                                       <!--cuslike用于前端判断是否显示个性赞，1:显示-->
+                                       <a href="javascript:void(0);" class="S_txt2" ><span class="pos"><span class="line S_line1">
+                                                                                                                                                                <span node-type="like_status" class=""><em class="W_ficon ficon_praised S_txt2">ñ</em><em>1</em></span>                    </span></span></a>
                                    </li>
                                </ul>
                            </div>
                        </div>
-                    {{--回复隐藏框位置--}}
-                       <div node-type="feed_list_repeat" class="WB_feed_repeat S_bg1" style=""><!-- 评论盖楼 -->
-                           <div class="WB_feed_repeat S_bg1 WB_feed_repeat_v3" node-type="need_approval_comment">
-                               <div class="WB_repeat S_line1">
-                                   <!-- 评论-发表 -->
 
-                                   <div class="WB_feed_publish clearfix">
-                                       {{--当前用户头像--}}
-                                       <div class="WB_face W_fl"><img src="{{$v->user_headpic}}" alt="{{$v->user_name}}"></div>
-                                       <div class="WB_publish">
-                                           <div class="p_input">
-                                               <textarea class="W_input" action-type="check" cols="" rows="" name="" node-type="textEl" range="3&amp;0" style="margin: 0px; padding: 5px 2px 0px 6px; border-style: solid; border-width: 1px; font-size: 12px; word-wrap: break-word; line-height: 18px; overflow: hidden; outline: none; height: 40px;"></textarea>
-                                           </div>
-                                           <div class="p_opt clearfix" node-type="widget">
-                                               <div class="btn W_fr"><a class="W_btn_a btn_noloading" action-type="post" diss-data="module=scommlist&amp;group_source=group_all" href="javascript:void(0);" onclick="return false" node-type="btnText">评论</a></div>
-                                               <div class="opt clearfix">
-                    <span class="ico"><a href="javascript:;" node-type="smileyBtn" title="表情" alt="表情"><i class="W_ficon ficon_face">o</i></a>
-
-                                            </span>
-
-                                               </div>
-                                           </div>
-
-                                       </div>
-                                   </div>
-                                   <!-- 评论-列表 -->
-                                   <div class="repeat_list">
-                                       <!-- 列表-内容 -->
-                                       <div class="list_box">
-                                           <div class="list_ul" node-type="feed_list_commentList">
-                                               {{--评论内容 循环--}}
-                                               <div comment_id="4163570499207422" class="list_li S_line1 clearfix" node-type="root_comment">
-                                                   <div class="WB_face W_fl">
-                                                       <a target="_blank" href=""><img width="30" height="30" alt="" src="//tvax2.sinaimg.cn/default/images/default_avatar_male_50.gif" ></a>
-                                                   </div>
-                                                   <div class="list_con" node-type="replywrap">
-                                                       <div class="WB_text">
-                                                           <a target="_blank" href="" >ifree的马甲</a>：真好看//@我和渣男的狗血经历:今晚夜宵就是它了！ </div>
-                                                       <div class="WB_expand_media_box" style="display: none;" node-type="comment_media_disp"></div>
-                                                       <div class="WB_func clearfix">
-                                                           <div class="WB_handle W_fr">
-                                                               <ul class="clearfix">
-                                                                   <li class="hover"><span class="line S_line1"><a class="S_txt1" href="javascript:void(0);" onclick="return false" action-type="delete" action-data="rid=4163570499207422&amp;cid=4163570499207422&amp;oid=">删除</a></span></li>
-                                                                   <li>
-                                                                       <span class="line S_line1"><a href="javascript:void(0);" class="S_txt1 " onclick="return false" action-type="reply" action-data="ouid=5462231537&amp;cid=4163570499207422&amp;nick=ifree的马甲&amp;ispower=1&amp;status_owner_user=&amp;area=2&amp;canUploadImage=0" title="">回复</a></span>
-                                                                       <span class="arrow"><span class="W_arrow_bor W_arrow_bor_t"><i class="S_bg2_br"></i></span></span>
-                                                                   </li>
-                                                                   <li><span class="line S_line1">
-                                                                                                                                                                                            <a href="javascript:void(0)" class="S_txt1" action-type="fl_like" action-data="object_id=4163570499207422&amp;object_type=comment" title="赞"><span node-type="like_status" class=""><em class="W_ficon ficon_praised S_txt2">ñ</em><em>赞</em></span></a>                    </span></li>
-                                                               </ul>
-                                                           </div>
-                                                           <div class="WB_from S_txt2">10秒前 </div>
-                                                       </div>
-                                                       <div class="list_box_in S_bg3" style="display:none">
-                                                           <div class="list_ul" node-type="child_comment">
-                                                               <div class="between_line S_bg1"></div>
-                                                           </div>
-                                                       </div>
-                                                   </div>
-                                               </div>
-
-                                           </div>
-                                       </div>
-                                       <!-- 列表-内容 -->
-                                   </div>
-                                   <!-- 评论-列表 -->
-                               </div>
-                           </div></div>
                    </div>
-                                   {{--第一个内容标签结束--}}
 
-                @endforeach
 
-                                   {{--加载更多页--}}
+
+
+
                                     <div class="WB_cardwrap S_bg2" id="userindex_getmore">
                                         <div class="WB_empty WB_empty_narrow" action-data="page_id=v6_content_home">
                                             <div class="WB_innerwrap">
