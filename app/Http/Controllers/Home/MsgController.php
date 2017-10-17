@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use App\Model\Home\Msg;
 use App\Model\Home\T_pic;
+use App\Model\Home\Userinfo;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -43,6 +44,7 @@ class MsgController extends Controller
 
        }
        $res[]=Msg::create($msg);
+       Userinfo::where("user_id",session('homeUser')['user_id'])->increment('msg_count');
         foreach ($res as $v){
             if(!$v){
                 return '微博存储异常,请重试';

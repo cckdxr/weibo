@@ -79,7 +79,12 @@ Route::group(['prefix'=>'home','namespace'=>'Home'],function(){
 
     //点赞路由
     Route::get('u/dolike','CollectController@addLike');
-
+    //评论路由
+    Route::get('u/dodis','CollectController@adddis');
+    //删除评论路由
+    Route::get('u/deldis','CollectController@deldis');
+    //转发路由
+    Route::get('u/dotran','CollectController@dotran');
 
 });
 

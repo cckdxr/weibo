@@ -10,6 +10,7 @@
     <link putoff="style/css/module/combination/extra.css?version=195be0ed22185743" href="{{asset('home/userindexsource/frame.css')}}" type="text/css" rel="stylesheet" charset="utf-8">	<link href="{{asset('home/userindexsource/home_A.css')}}" type="text/css" rel="stylesheet" charset="utf-8">
     <link id="skin_style" href="{{asset('home/userindexsource/skin.css')}}" type="text/css" rel="stylesheet" charset="utf-8">
     <script type="text/javascript" src="{{asset('admin/style/js/jquery.js')}}"></script>
+    <script type="text/javascript" src="{{asset('layer/layer.js')}}"></script>
     <script type="text/javascript" src="{{asset('admin/style/js/biaoqing.js')}}"></script>
 	<script>
 		
@@ -20,7 +21,7 @@
 			$("#user_set_box").css("display","none");
 		})
 
-        //单击发布
+        //单击发布微博
         function fabu(){
             var formData = new FormData($('#post_new_wb')[0]);
 
@@ -197,6 +198,160 @@
                 })
             })
 
+            //单击评论
+            $("a[action_id='reply_but']").each(function () {
+                    $(this).click(function(){
+
+                        $(this).parents(".WB_feed_like").children(".feed_list_repeat").css("display",'block');
+                        $(this).parents(".WB_feed_like").children(".feed_list_repeat")
+                    })
+
+            })
+
+            //单击发布微博评论
+            $("a[action-id='post_dismsg']").each(function(){
+                $(this).click(function(){
+                    var e=$(this);
+                   var discontent= $(this).parents(".WB_Publish").find(".W_Input").val();
+                   var msg_id=$(this).attr('dis-data');
+
+                    if( discontent !='' ){
+
+                        $.ajax({
+                            type: "get",
+                            url: "dodis",
+                            data: {'msg_id':msg_id,'discontent':discontent},
+                            contentType: false,
+                            success: function (data) {
+                                if(data!='评论失败'){
+                                    e.parents(".WB_feed_repeat_v3").find("div[node-type='feed_list_commentList']").prepend(data);
+                                    e.parents(".WB_Publish").find(".W_Input").val('');
+                                }else{
+                                    alert(data);
+                                }
+
+                            },
+                            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                alert("评论失败，请检查网络后重试");
+                            }
+                        })
+                    }
+
+                })
+            })
+
+
+            //单击回复微博
+            $("a[action-id='post_redismsg']").each(function(){
+                $(this).click(function(){
+                    var con=$(this).attr('action-con');
+                    var username=$(this).attr('action-username');
+                    console.log(username);
+                    var dis_id=$(this).attr('action-disid');
+                    var old= $(this).parents(".WB_Repeat").find(".W_Input").val();
+                    var new1=old+'回复@'+username+':'+con+':';
+                    console.log(new1);
+                    $(this).parents(".WB_Repeat").find(".W_Input").val(new1);
+
+                })
+            })
+
+            //单击删除微博评论
+            $("a[action-id='post_deldismsg']").each(function(){
+                $(this).click(function(){
+                    var e=$(this);
+                    var msg_id=$(this).attr('action-msgid');
+                    var dis_id=$(this).attr('action-disid');
+                    var dis_userid=$(this).attr('action-userid');
+                    $.ajax({
+                        type: "get",
+                        url: "deldis",
+                        data:{'msg_id':msg_id,'dis_id':dis_id,'dis_userid':dis_userid},
+                        contentType: false,
+
+                        success: function (data) {
+                            if(data!='删除失败'){
+                                e.parents("div[comment_id]").remove();
+                            }else{
+                                alert(data);
+                            }
+
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert("删除评论失败，请检查网络后重试");
+                        }
+                    })
+
+                })
+            })
+
+
+            //单击转发
+            $("a[action-id='tran_but']").each(function(){
+                $(this).click(function(){
+
+                    $('#layer_150779').css('display','block');
+                    //父msgid
+                    var msgpid=$(this).attr('msgtitle');
+
+
+                    var username=$(this).attr('magname');
+                    var content=$(this).attr('msgcontent');
+                    //记录转发过程
+                    var msgtran=$(this).attr('msgtran');
+                     //组装
+                    var str ='转发自<a href="" class="S_txt1">@'+username+'</a>:'+content+msgtran;
+                    //组装字符串放入转发框
+                    $('#layer_150779').find('.content_text').html(str);
+
+                    //记录转发原图片
+                    var msgpic=$(this).attr('msgpic');
+
+                    layer.open({
+                        type: 1,
+                        title: false ,
+                        closeBtn: true,
+                        shadeClose: true,
+                        area: ['580','270'],
+                        shade: 0.8,
+                        id: 'LAY_layuipro' ,
+                        btnAlign: 'c',
+                        moveType: 1,
+                        content:$('#layer_150779'),
+                        success: function (layero) {
+
+                        }
+                    })
+
+                    $('#layer_150779').find(".W_btn_a").click(function(){
+                       var msgtitle= $('#layer_150779').find("textarea").val();
+
+                       $.ajax({
+                            type: "get",
+                            url: "dotran",
+                            data: {'msgpid':msgpid,'msg_title':str,'msgtitle':msgtitle,'msg_topimg':msgpic,'msg_digest':str},
+                            contentType: false,
+                            success: function (data) {
+                                if(data!='转发失败'){
+                                    $('#layer_150779').find('.send_succpic').css('display','block');
+                                    window.location.reload();
+                                }else{
+                                    alert(data);
+                                }
+
+                            },
+                            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                alert("评论失败，请检查网络后重试");
+                            }
+                        })
+
+                    })
+                })
+
+
+            })
+
+
         })
 
 
@@ -225,7 +380,7 @@
                             <ul class="gn_nav_list">
                                 <li><a href="{{url('home/index')}}"><em class="W_ficon ficon_home S_ficon">E</em><em class="S_txt1">首页</em></a></li>
 
-                                <li><a dot="pos55b9e0848171d" bpfilter="page_frame" href="javascript:;"><em class="W_ficon ficon_user S_ficon">H</em><em class="S_txt1">{{session('homeUser')['user_name']}}</em></a></li>
+                                <li><a dot="pos55b9e0848171d" bpfilter="page_frame" href="javascript:;"><em class="W_ficon ficon_user S_ficon">H</em><em class="S_txt1">{{session('homeUser')['nick_name']}}</em></a></li>
                                 <li><a node-type="loginBtn" href="{{url('home/logout')}}" class="S_txt1" target="_top">退出登录</a></li>
                             </ul>
                         </div>
@@ -262,6 +417,9 @@
                                 </div>
                                 <div class="lev_Box lev_Box_noborder">
                                     <h3 class="lev"><a href="" class="S_txt1" node-type="item"><span class="levtxt">评论过的</span><i class="W_new" style="display:none;"></i></a></h3>
+                                </div>
+                                <div class="lev_Box lev_Box_noborder">
+                                    <h3 class="lev"><a href="" class="S_txt1" node-type="item"><span class="levtxt">我的微博</span><i class="W_new" style="display:none;"></i></a></h3>
                                 </div>
 
 
@@ -361,8 +519,8 @@
                                     <div class="tab_box tab_box_a tab_box_a_r6 clearfix">
                                         <ul class="tab W_fl clearfix">
                                             <li class="li_first S_bg2"></li>
-                                            <li class="curr">
-                                                <a suda-data="key=tblog_home_tab&amp;value=all" href="http://weibo.com/u/5462231537/home" class="S_txt1" action-data="type=0" action-type="search_type">
+                             @if($type=='')  <li class="curr" > @else  <li class="S_bg2" > @endif
+                                            <a suda-data="" href="{{url('home/u/index')}}" class="S_txt1" action-data="type=0" action-type="search_type">
                                                     <span class="t S_bg2">全部</span>
                                                     <span class="b">
                 <span class="b1">
@@ -373,8 +531,8 @@
             </span>
                                                 </a>
                                             </li>
-                                            <li class="S_bg2">
-                                                <a suda-data="key=tblog_home_tab&amp;value=org" href="http://weibo.com/u/5462231537/home?is_ori=1" class="S_txt1" action-data="type=1" action-type="search_type">
+                             @if($type=='ori')  <li class="curr" > @else  <li class="S_bg2" > @endif
+                                                <a suda-data="" href="{{url('home/u/index?isori=1')}}" class="S_txt1"  action-type="search_type">
                                                     <span class="t S_bg2">原创</span>
                                                     <span class="b">
                 <span class="b1">
@@ -385,8 +543,8 @@
             </span>
                                                 </a>
                                             </li>
-                                            <li class="S_bg2">
-                                                <a suda-data="key=tblog_home_tab&amp;value=pic" href="http://weibo.com/u/5462231537/home?is_pic=1" class="S_txt1" action-type="search_type">
+              @if($type=='pic')  <li class="curr" > @else  <li class="S_bg2" > @endif
+                                                <a suda-data="" href="{{url('home/u/index?ispic=1')}}" class="S_txt1" action-type="search_type">
                                                     <span class="t S_bg2">图片</span>
                                                     <span class="b">
                 <span class="b1">
@@ -397,32 +555,8 @@
             </span>
                                                 </a>
                                             </li>
-                                            <li class="S_bg2">
-                                                <a suda-data="key=tblog_home_tab&amp;value=video" href="http://weibo.com/u/5462231537/home?is_video=1" class="S_txt1" action-type="search_type">
-                                                    <span class="t S_bg2">视频</span>
-                                                    <span class="b">
-                <span class="b1">
-                    <em class="l"><i class="S_bg2"></i></em>
-                    <em class="r"><i class="S_bg2"></i></em>
-                </span>
-                <span class="W_arrow_bor W_arrow_bor_tno"><i class="S_bg2_br"></i></span>
-            </span>
-                                                </a>
-                                            </li>
-                                            <li class="S_bg2">
-                                                <a suda-data="key=tblog_home_tab&amp;value=music" href="http://weibo.com/u/5462231537/home?is_music=1" class="S_txt1" action-type="search_type">
-                                                    <span class="t S_bg2">音乐</span>
-                                                    <span class="b">
-                <span class="b1">
-                    <em class="l"><i class="S_bg2"></i></em>
-                    <em class="r"><i class="S_bg2"></i></em>
-                </span>
-                <span class="W_arrow_bor W_arrow_bor_tno"><i class="S_bg2_br"></i></span>
-            </span>
-                                                </a>
-                                            </li>
-                                            <li class="S_bg2">
-                                                <a suda-data="key=tblog_home_tab&amp;value=article" href="http://weibo.com/u/5462231537/home?is_article=1" class="S_txt1" action-type="search_type">
+                  @if($type=='article')  <li class="curr" > @else  <li class="S_bg2" > @endif
+                                                <a suda-data="" href="{{url('home/u/index?isarticle=1')}}" class="S_txt1" action-type="search_type">
                                                     <span class="t S_bg2">文章</span>
                                                     <span class="b">
                 <span class="b1">
@@ -432,6 +566,30 @@
                 <span class="W_arrow_bor W_arrow_bor_tno"><i class="S_bg2_br"></i></span>
             </span>
                                                 </a>
+                                            </li>
+                                            <li class="S_bg2">
+
+                                                    <span class="t S_bg2"></span>
+                                                    <span class="b">
+                <span class="b1">
+                    <em class="l"><i class="S_bg2"></i></em>
+                    <em class="r"><i class="S_bg2"></i></em>
+                </span>
+                <span class="W_arrow_bor W_arrow_bor_tno"><i class="S_bg2_br"></i></span>
+            </span>
+
+                                            </li>
+                                            <li class="S_bg2">
+
+                                                    <span class="t S_bg2"></span>
+                                                    <span class="b">
+                <span class="b1">
+                    <em class="l"><i class="S_bg2"></i></em>
+                    <em class="r"><i class="S_bg2"></i></em>
+                </span>
+                <span class="W_arrow_bor W_arrow_bor_tno"><i class="S_bg2_br"></i></span>
+            </span>
+
                                             </li>
                                             <li class="li_last S_bg2"></li>
                                         </ul>
@@ -453,13 +611,13 @@
                    <div  class="WB_cardwrap WB_feed_type S_bg2 WB_feed_like" >
                        <div class="WB_feed_detail clearfix" >
                            <div class="WB_screen W_fr" >
-                               <div class="screen_box" >
+                               <div class="screen_box" style="display: none" >
                                   @if(session('homeUser')['user_id']!=$v->author_id)
                                    <a href="javascript:void(0);" ><i class="W_ficon ficon_arrow_down S_ficon">c</i></a>
                                    {{--屏蔽框--}}
                                    <div class="layer_menu_list"  style="display:none; position: absolute; z-index: 999;">
                                        <ul>
-                                           <li><a href="javascript:void(0)" action_data="{{$v->author_id}}" >取消关注{{$v->user_name}}</a></li>
+                                           <li><a href="javascript:void(0)" action_data="{{$v->author_id}}" >取消关注{{$v['nick_name']}}</a></li>
                                            <li><a href="javascript:void(0);" action_data="{{$v->msg_id}}"  id="jubao">举报</a></li>
                                        </ul>
                                    </div>
@@ -472,7 +630,7 @@
                            </div>
                            <div class="WB_detail">
                                <div class="WB_info">
-                                   <a target="_blank" class="W_f14 W_fb S_txt1" href="http://weibo.com/booknsong?refer_flag=0000015010_&amp;from=feed&amp;loc=nickname" >{{$v->user_name}}</a>         </div>
+                                   <a target="_blank" class="W_f14 W_fb S_txt1" href="javascript:;" >{{$v['nick_name']}}</a>         </div>
                                <div class="WB_from S_txt2">
                                    <!-- minzheng add part 2 -->
                                    {{date('m月d日 H:i',$v->time)}}                                                    <!-- minzheng add part 2 -->
@@ -480,20 +638,22 @@
                                <div class="WB_text W_f14 W_replace"  node-type="feed_list_content">
                                    {{$v->msg_title}}
                                </div>
-                               @if($v->msg_content !='')
-                               <div class="WB_text W_f14" node-type="feed_list_content">
-                                   {!! $v->msg_content !!}
-                                   <img src="//img.t.sinajs.cn/t4/appstyle/expression/ext/normal/fc/moren_bbjdnew_thumb.png">
-                               </div>
 
+                               @if($v->msg_digest !='')
+                               <div class="WB_text W_f14 W_replace WB_expand S_bg1" node-type="feed_list_content">
+                                   {!! $v->msg_digest !!}
+
+                               </div>
+                                <div class="WB_media_wrap clearfix WB_expand S_bg1" node-type="feed_list_media_prev" style="margin-top: 0px">
+                               @else
+                                 <div class="WB_media_wrap clearfix " node-type="feed_list_media_prev">
                                @endif
                               {{--正常框开始--}}
-                               <div class="WB_media_wrap clearfix" node-type="feed_list_media_prev">
                                    <div class="media_box">&gt;
                                        <!--图片个数等于1，只显示图片-->
                                        <!--picture_count ==  WB_media_a_m2是大图 WB_media_a_mn是多图  1-->
                                        {{--如图片有一张--}}
-                                       @if(count($v->pics)==1)
+                                       @if(count($v->pics)==1 or isset($v->msg_topimg))
                                        <ul class="WB_media_a WB_media_a_m1 clearfix" >
                                            <li class="WB_pic li_1 S_bg1 S_line2 bigcursor li_n_mix_w" >
                                                <img src="{{$v->msg_topimg}}">
@@ -538,11 +698,11 @@
                                                    </span></span></span></a>
                                    </li>
                                    <li>
-                                       <a class="S_txt2"  href="javascript:void(0);" msgtitle="{{$v->msg_id}}  action_id="tran_but" ><span class="pos"><span class="line S_line1" node-type="forward_btn_text"><span><em class="W_ficon ficon_forward S_ficon"></em><em>{{$v->tran_count}}</em></span></span></span></a>
+                                       <a class="S_txt2"  href="javascript:void(0);" msgtitle="{{$v['msg_id']}}" magname="{{$v['nick_name']}}" msgcontent="{{$v['msg_title']}}" msgtran="{{$v['msg_digest']}}" msgpic="{{$v->msg_topimg}}" action-id="tran_but" ><span class="pos"><span class="line S_line1" node-type="forward_btn_text"><span><em class="W_ficon ficon_forward S_ficon"></em><em>{{$v->tran_count}}</em></span></span></span></a>
                                    </li>
                                    @endif
                                    <li>
-                                       <a class="S_txt2"  href="javascript:void(0);"   msgtitle="{{$v->msg_id}} action_id="reply_but"><span class="pos"><span class="line S_line1"><span><em class="W_ficon ficon_repeat S_ficon"></em><em>{{$v->reply_count}}</em></span></span></span></a>
+                                       <a class="S_txt2"  href="javascript:void(0);"   msgtitle="{{$v->msg_id}}"     action_id="reply_but"><span class="pos"><span class="line S_line1"><span><em class="W_ficon ficon_repeat S_ficon"></em><em>{{$v->reply_count}}</em></span></span></span></a>
 
                                    </li>
                                    <li>
@@ -560,66 +720,70 @@
                            </div>
                        </div>
                     {{--回复隐藏框位置--}}
-                       <div node-type="feed_list_repeat" class="WB_feed_repeat S_bg1" style=""><!-- 评论盖楼 -->
+                       <div node-type="feed_list_repeat" class="WB_feed_repeat S_bg1 feed_list_repeat" style="display:none"><!-- 评论盖楼 -->
                            <div class="WB_feed_repeat S_bg1 WB_feed_repeat_v3" node-type="need_approval_comment">
-                               <div class="WB_repeat S_line1">
+                               <div class="WB_repeat S_line1 WB_Repeat">
                                    <!-- 评论-发表 -->
 
                                    <div class="WB_feed_publish clearfix">
                                        {{--当前用户头像--}}
-                                       <div class="WB_face W_fl"><img src="{{$v->user_headpic}}" alt="{{$v->user_name}}"></div>
-                                       <div class="WB_publish">
+                                       <div class="WB_face W_fl"><img src="{{session('homeUser')['user_headpic']}}" alt="{{$v['nick_name']}}"></div>
+                                       <div class="WB_publish WB_Publish">
                                            <div class="p_input">
-                                               <textarea class="W_input" action-type="check" cols="" rows="" name="" node-type="textEl" range="3&amp;0" style="margin: 0px; padding: 5px 2px 0px 6px; border-style: solid; border-width: 1px; font-size: 12px; word-wrap: break-word; line-height: 18px; overflow: hidden; outline: none; height: 40px;"></textarea>
+                                               <textarea class="W_input W_Input" action-type="check" cols="" rows="" name="dis_textarea" node-type="textEl" range="3&amp;0" style="margin: 0px; padding: 5px 2px 0px 6px; border-style: solid; border-width: 1px; font-size: 12px; word-wrap: break-word; line-height: 18px; overflow: hidden; outline: none; height: 40px;"></textarea>
                                            </div>
                                            <div class="p_opt clearfix" node-type="widget">
-                                               <div class="btn W_fr"><a class="W_btn_a btn_noloading" action-type="post" diss-data="module=scommlist&amp;group_source=group_all" href="javascript:void(0);" onclick="return false" node-type="btnText">评论</a></div>
-                                               <div class="opt clearfix">
-                    <span class="ico"><a href="javascript:;" node-type="smileyBtn" title="表情" alt="表情"><i class="W_ficon ficon_face">o</i></a>
+                                               <div class="btn W_fr"><a class="W_btn_a btn_noloading" action-id="post_dismsg" dis-data="{{$v->msg_id}}" href="javascript:void(0);" onclick="return false" node-type="btnText">评论</a></div>
+                                               {{--暂不支持评论表情--}}
+                                               {{--<div class="opt clearfix">--}}
+                    {{--<span class="ico"><a href="javascript:;" node-type="smileyBtn" title="表情" alt="表情"><i class="W_ficon ficon_face">o</i></a>--}}
 
-                                            </span>
+                                            {{--</span>--}}
+                                               {{--</div>--}}
 
-                                               </div>
                                            </div>
 
                                        </div>
                                    </div>
                                    <!-- 评论-列表 -->
-                                   <div class="repeat_list">
+                                   <div class="repeat_list" >
                                        <!-- 列表-内容 -->
                                        <div class="list_box">
                                            <div class="list_ul" node-type="feed_list_commentList">
                                                {{--评论内容 循环--}}
-                                               <div comment_id="4163570499207422" class="list_li S_line1 clearfix" node-type="root_comment">
+
+                                               @foreach($v->discinfo()->orderBy('dis_time','desc')->get() as $dis)
+
+                                               <div comment_id="{{$dis['dis_id']}}}" class="list_li S_line1 clearfix" node-type="root_comment">
                                                    <div class="WB_face W_fl">
-                                                       <a target="_blank" href=""><img width="30" height="30" alt="" src="//tvax2.sinaimg.cn/default/images/default_avatar_male_50.gif" ></a>
+                                                       <a target="_blank" href=""><img width="30" height="30" alt="" src="{{  \App\Model\Home\V_user::where('user_id',$dis['author_id'] )->first()['user_headpic'] }}" ></a>
                                                    </div>
                                                    <div class="list_con" node-type="replywrap">
                                                        <div class="WB_text">
-                                                           <a target="_blank" href="" >ifree的马甲</a>：真好看//@我和渣男的狗血经历:今晚夜宵就是它了！ </div>
-                                                       <div class="WB_expand_media_box" style="display: none;" node-type="comment_media_disp"></div>
+                                                           <a target="_blank" href="" >{{ \App\Model\Home\V_user::where('user_id',$dis['author_id'] )->first()['nick_name'] }}</a>：{{$dis['dis_content']}} </div>
+
                                                        <div class="WB_func clearfix">
                                                            <div class="WB_handle W_fr">
                                                                <ul class="clearfix">
-                                                                   <li class="hover"><span class="line S_line1"><a class="S_txt1" href="javascript:void(0);" onclick="return false" action-type="delete" action-data="rid=4163570499207422&amp;cid=4163570499207422&amp;oid=">删除</a></span></li>
+                                                                  {{--是用户发送的则显示删除链接--}}
+                                                                   @if($dis['author_id']== session('homeUser')['user_id'])
+                                                                   <li class="hover"><span class="line S_line1"><a class="S_txt1" href="javascript:void(0);" onclick="return false" action-id="post_deldismsg" action-type="delete" action-disid="{{$dis['dis_id']}}" action-userid="{{$dis['author_id']}}" action-msgid="{{$v->msg_id}}" >删除</a></span></li>
                                                                    <li>
-                                                                       <span class="line S_line1"><a href="javascript:void(0);" class="S_txt1 " onclick="return false" action-type="reply" action-data="ouid=5462231537&amp;cid=4163570499207422&amp;nick=ifree的马甲&amp;ispower=1&amp;status_owner_user=&amp;area=2&amp;canUploadImage=0" title="">回复</a></span>
+                                                                   @endif
+
+                                                                       <span class="line S_line1"><a href="javascript:void(0);" class="S_txt1 " onclick="return false" action-id="post_redismsg" action-disid="{{$dis['dis_id']}}" action-con="{{$dis['dis_content']}}" action-username="{{  \App\Model\Home\V_user::where('user_id',$dis['author_id'] )->first()['nick_name'] }}" title="">回复</a></span>
                                                                        <span class="arrow"><span class="W_arrow_bor W_arrow_bor_t"><i class="S_bg2_br"></i></span></span>
                                                                    </li>
-                                                                   <li><span class="line S_line1">
-                                                                                                                                                                                            <a href="javascript:void(0)" class="S_txt1" action-type="fl_like" action-data="object_id=4163570499207422&amp;object_type=comment" title="赞"><span node-type="like_status" class=""><em class="W_ficon ficon_praised S_txt2">ñ</em><em>赞</em></span></a>                    </span></li>
+
                                                                </ul>
                                                            </div>
-                                                           <div class="WB_from S_txt2">10秒前 </div>
+                                                           <div class="WB_from S_txt2">{{date('m-d H:i',$dis['dis_time'])}} </div>
                                                        </div>
-                                                       <div class="list_box_in S_bg3" style="display:none">
-                                                           <div class="list_ul" node-type="child_comment">
-                                                               <div class="between_line S_bg1"></div>
-                                                           </div>
-                                                       </div>
+                                                       
                                                    </div>
                                                </div>
 
+                                      @endforeach
                                            </div>
                                        </div>
                                        <!-- 列表-内容 -->
@@ -633,7 +797,7 @@
                 @endforeach
 
                                    {{--加载更多页--}}
-                                    <div class="WB_cardwrap S_bg2" id="userindex_getmore">
+                                    <div class="WB_cardwrap S_bg2" id="userindex_getmore" @if($len<10) style="display: none" @endif >
                                         <div class="WB_empty WB_empty_narrow" action-data="page_id=v6_content_home">
                                             <div class="WB_innerwrap">
                                                 <div class="empty_con clearfix">
@@ -654,10 +818,10 @@
                         <div id="v6_pl_rightmod_myinfo"><div class="WB_cardwrap S_bg2">
                                 <div class="W_person_info">
                                     <div class="cover" id="skin_cover_s" style="background-image:url(//img.t.sinajs.cn/t6/skin/skin048/images/profile_cover_s.jpg?version=195be0ed22185743)">
-                                        <div class="headpic"> <a bpfilter="page_frame" href="http://weibo.com/5462231537/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="ifree的马甲"><img src="{{url(session('homeUser')['user_headpic'])}}" width="60" height="60" alt="ifree的马甲"></a></div>
+                                        <div class="headpic"> <a bpfilter="page_frame" href="http://weibo.com/5462231537/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="ifree的马甲"><img src="{{url(session('homeUser')['user_headpic'])}}" width="60" height="60" alt="{{session('homeUser')['nick_name']}}"></a></div>
                                     </div>
                                     <div class="WB_innerwrap">
-                                        <div class="nameBox"><a >{{session('homeUser')['user_name']}}</a><a action-type="ignore_list" title="微博会员" target="_blank" href="http://vip.weibo.com/"><i class="W_icon icon_member_dis"></i></a><a action-type="" suda-data="key=tblog_grade_float&amp;value=grade_icon_click" target="_blank" href="http://level.account.weibo.com/level/mylevel?from=front"><span node-type="levelBox" levelup="0" action-data="level=6" class="W_icon_level icon_level_c2"><span class="txt_out"><span class="txt_in"><span node-type="levelNum" >Lv.{{session('homeUser')['user_level']}}</span></span></span></span></a></div>
+                                        <div class="nameBox"><a >{{session('homeUser')['nick_name']}}</a><a action-type="ignore_list" title="微博会员" target="_blank" href="http://vip.weibo.com/"><i class="W_icon icon_member_dis"></i></a><a action-type="" suda-data="key=tblog_grade_float&amp;value=grade_icon_click" target="_blank" href="http://level.account.weibo.com/level/mylevel?from=front"><span node-type="levelBox" levelup="0" action-data="level=6" class="W_icon_level icon_level_c2"><span class="txt_out"><span class="txt_in"><span node-type="levelNum" >Lv.{{session('homeUser')['user_level']}}</span></span></span></span></a></div>
                                         <ul class="user_atten clearfix W_f18">
                                             <li class="S_line1"><a bpfilter="page_frame" href="http://weibo.com/5462231537/follow?rightmod=1&amp;wvr=6" class="S_txt1"><strong node-type="follow">{{session('homeUser')['follow_count']}}</strong><span class="S_txt2">关注</span></a></li>
                                             <li class="S_line1"><a bpfilter="page_frame" href="http://weibo.com/5462231537/fans?rightmod=1&amp;wvr=6" class="S_txt1"><strong node-type="fans">{{session('homeUser')['fans_count']}}</strong><span class="S_txt2">粉丝</span></a></li>
@@ -733,16 +897,15 @@
             <!--/footer-->
         </div>
     </div>
-    {{--转发框--}}
-    <div class="W_layer " style="position:absolute; display: none;" id="layer_15077982665411" style="top: 60px; left: 376.5px;" stk-mask-key="150779826654133"><div tabindex="0"></div>
-        <div node-type="autoHeight" class="content">
-            <div class="W_layer_title" node-type="title" style="cursor: move;">转发微博</div>
-            <div class="W_layer_close"><a class="W_ficon ficon_close S_ficon" href="javascript:void(0);" node-type="close">X</a></div>
-            <div node-type="inner" class="layer_forward"><!--userlist start--><div class="froward_wrap"><div class="WB_minitab clearfix" node-type="forward_tab"><span class="txt">转发到：</span><span class="txt">我的微博</span></div><div node-type="forward_client"><!--userlist start--><div node-type="toMicroblog_client"><div node-type="content" class="WB_text S_bg1"><a class="W_ficon ficon_arrow_down_lite S_ficon" action-type="origin_all" href="javascript:void(0);">g</a><span class="con S_txt2"><a target="_blank" href="//weibo.com/beijingguanzhong" class="S_txt1">@聚焦北京城</a>:#北京身边事# 【北大第六医院成功启动“阳光心晴...</span></div><div class="WB_feed_repeat forward_rpt1"><div class="WB_repeat"><div class="WB_feed_publish clearfix"><div class="WB_publish"><div class="p_input p_textarea"><textarea pubtype="forward" node-type="textEl" title="转发微博内容" cols="" rows="" name="" class="W_input" style="margin: 0px; padding: 5px 6px 25px; border-style: solid; border-width: 1px; font-size: 12px; word-wrap: break-word; line-height: 18px; overflow: hidden; outline: medium none; height: 48px;" range="0&amp;0"></textarea><span node-type="num" class="tips S_txt2"><span>140</span></span>
-                                                <div style="display:display" node-type="success_tip" class="send_succpic"><span class="W_icon icon_succB"></span><span class="txt">发布成功</span></div>
-                                            </div><div class="p_opt clearfix"><div class="btn W_fr"><div layout-shell="true" style="position:relative;" class="limits"></div><a class="W_btn_a" node-type="submit" href="javascript:void(0)">转发</a></div><div node-type="widget" test="1" class="opt clearfix"><span class="ico"><a node-type="smileyBtn" title="表情" href="javascript:void(0)"><i class="W_ficon ficon_face">o</i></a></span><ul node-type="cmtopts" class="ipt"><li class="W_autocut" node-type="originLi"></li></ul></div></div></div></div></div></div><!--userlist end--></div></div></div></div>
-        </div>
-    </div>
-
 </div>
+
+        {{--转发框--}}
+        <div class="W_layer " style="position:relative; top: 0px; left: 0px;display: none" id="layer_150779" stk-mask-key="150779826654133"><div tabindex="0"></div>
+            <div node-type="autoHeight" class="content">
+                <div class="W_layer_title" node-type="title" style="cursor: move;">转发微博</div>
+                <div node-type="inner" class="layer_forward"><!--userlist start--><div class="froward_wrap"><div class="WB_minitab clearfix" node-type="forward_tab"><span class="txt">转发到：</span><span class="txt">我的微博</span></div><div node-type="forward_client"><!--userlist start--><div node-type="toMicroblog_client"><div node-type="content" class="WB_text S_bg1"><span class="con S_txt2 content_text"><a href="" class="S_txt1">@name</a>:content</span></div><div class="WB_feed_repeat forward_rpt1"><div class="WB_repeat"><div class="WB_feed_publish clearfix"><div class="WB_publish"><div class="p_input p_textarea"><textarea pubtype="forward" node-type="textEl" title="转发微博内容" cols="" rows="" name="" class="W_input" style="margin: 0px; padding: 5px 6px 25px; border-style: solid; border-width: 1px; font-size: 12px; word-wrap: break-word; line-height: 18px; overflow: hidden; outline: medium none; height: 48px;" range="0&amp;0"></textarea><span node-type="num" class="tips S_txt2"><span>140</span></span>
+                                                    <div style="display:none" class="send_succpic"><span class="W_icon icon_succB"></span><span class="txt">发布成功</span></div>
+                                                </div><div class="p_opt clearfix"><div class="btn W_fr"><div layout-shell="true" style="position:relative;" class="limits"></div><a class="W_btn_a" node-type="submit" href="javascript:void(0)">转发</a></div></div></div></div></div></div><!--userlist end--></div></div></div></div>
+            </div>
+        </div>
 </body></html>

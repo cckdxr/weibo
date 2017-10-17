@@ -143,7 +143,7 @@ class LoginController extends Controller
         ];
         $validator = Validator::make($input,$rule,$msg);
         if ($validator->fails()) {
-            return redirect('home/register')->withErrors($validator)->withInput();
+            return redirect('home/reg')->withErrors($validator)->withInput();
         }
 
         $user=array(
@@ -172,7 +172,7 @@ class LoginController extends Controller
         if($res1 && $res2){
             return redirect('/');
         }else{
-            return redirect('home/register')->with('errors','添加失败')->withInput();
+            return redirect('home/reg')->with('errors','添加失败')->withInput();
         }
     }
 
