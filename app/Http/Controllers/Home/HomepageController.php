@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Home;
 
 use App\Model\Home\Msg_user;
+use App\Model\Home\Userinfo;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -71,16 +72,23 @@ class HomepageController extends Controller
     $a = session('userinfo')['user_id'];
 
     //删除两条记录
-      user_relation::where('user_id',$a)
+      $res1=user_relation::where('user_id',$a)
       ->where('follow_id',$id)
       ->where('type',2)
       ->delete();
+
+      if($res1){
+        Userinfo::where('user_id',$a)->decrement('follow_count');
+      }
 //这一条数据库中不一定有,有的话必须删
-      user_relation::where('user_id',$id)
+      $res2=user_relation::where('user_id',$id)
       ->where('follow_id',$a)
       ->where('type',1)
       ->delete();
 
+      if($res2){
+          Userinfo::where('user_id',$id)->decrement('fans_count');
+      }
     $data = V_user::where('user_id',$id)->first();
      return '1';
 
@@ -102,6 +110,8 @@ class HomepageController extends Controller
 
         $attener->type = 2;
 
+        //关注人加1
+        Userinfo::where('user_id',$a)->increment('follow_count');
        $res = $attener->save();
        //数据库添加  id用户的一条记录 他被关注所以用户是他的粉丝
 
@@ -114,6 +124,9 @@ class HomepageController extends Controller
         $attener->type = 1;
 
        $res = $attener->save();
+
+       //粉丝加1
+        Userinfo::where('user_id',$id)->increment('fans_count');
 
         $data = V_user::where('user_id',$id)->first();
        if($res){

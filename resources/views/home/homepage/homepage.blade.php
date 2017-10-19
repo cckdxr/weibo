@@ -477,7 +477,7 @@
 			<tbody><tr>
 							<td class="current">
 					<a otherhref="http://weibo.com/u/5462231537?refer_flag=1005050005_" bpfilter="page" href="http://weibo.com/p/1005055462231537/home?from=page_100505&amp;mod=TAB#place" node-type="nav_link" suda-uatrack="key=tblog_profile_new&amp;value=tab_profile" class="tab_link">
-						<span class="S_txt1 t_link">他的主页</span>
+						<span class="S_txt1 t_link">TA的主页</span>
 						<span class="ani_border"></span>
 					</a>
 				</td>
@@ -525,7 +525,7 @@
 					<ul class="ul_detail">
 											<li class="item S_line2 clearfix">
 									<span class="item_ico W_fl"><em class="W_ficon ficon_starmark S_ficon">Û</em></span>
-									<span class="item_text W_fl"><a class="W_icon_level icon_level_c2" title="微博等级6" href="javascript:;" target="_black"><span>{{$data['user_level']}}</span></a></span>
+									<span class="item_text W_fl"><a class="W_icon_level icon_level_c2" title="微博等级{{$data['user_level']}}" href="javascript:;" target="_black"><span>{{$data['user_level']}}</span></a></span>
 						</li>
 										    					    						<li class="item S_line2 clearfix">
 						        						<span class="item_ico W_fl"><em class="W_ficon ficon_cd_place S_ficon">2</em></span>
@@ -548,9 +548,7 @@
 				</div>
 						</div>
 		</div>
-		<a class="WB_cardmore S_txt1 S_line1 clearfix" href="http://weibo.com/p/1005055462231537/info?mod=pedit_more" bpfilter="page_frame">
-	<span class="more_txt">查看更多&nbsp;<em class="W_ficon ficon_arrow_right S_ficon">a</em></span>
-</a>
+
 
 	</div>
 </div>
@@ -587,7 +585,7 @@
             <ul class="tab W_fl">
 
                 <li class="tab_li curr S_bg2" node-type="tab_hot" action-type="search_type" action-data="profile_ftype=1&amp;is_hot=1">
-                    <a suda-uatrack="key=tblog_profile_v6&amp;value=topnav" class="S_txt1 S_line1"><em class="W_ficon ficon_hot S_ficon">ì</em>他的微博</a>
+                    <a suda-uatrack="key=tblog_profile_v6&amp;value=topnav" class="S_txt1 S_line1"><em class="W_ficon ficon_hot S_ficon">ì</em>TA的微博</a>
                     <span class="ani_border"></span>
                 </li>
 

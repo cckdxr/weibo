@@ -200,4 +200,9 @@ class indexController extends Controller
         echo '正在退出,请稍等......';
         header('refresh:2,url=/home/index');
     }
+
+    public function test()
+    {
+        return 111;
+    }
 }

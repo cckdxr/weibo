@@ -36,6 +36,7 @@ class InfoController extends Controller
             ->take(10)
             ->get();
         $arrlen=count($messages,0);
+
         return view('home.center.myhomepage',['len'=>$arrlen,'messages'=>$messages]);
     }
 

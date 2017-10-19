@@ -1,4 +1,4 @@
-    @extends('layouts.head')
+    @extends('layout.head')
     @section('title','修改密码')
         @section('content')
        

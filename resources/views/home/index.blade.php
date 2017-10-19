@@ -210,7 +210,7 @@
                                                             <!-- 输入验证码 -->
                                                             <div class="info_list verify clearfix"  node-type="verifycode_box">
                                                                 <div class="input_wrap W_fl">
-                                                                    <input type="text" class="W_input" maxlength="6" autocomplete="off" placeholder="验证码" action-data=" action-type="text_copy" name="homeCode" node-type="verifycode" tabindex="3" >
+                                                                    <input type="text" class="W_input" maxlength="12" id="homeCode" autocomplete="off" placeholder="验证码" action-data=" action-type="text_copy" name="homeCode" node-type="verifycode" tabindex="3" >
                                                                 </div>
                                                                 <a class="code W_fl" href="javascript:void(0);"><img width="95" height="34"  onclick="this.src='http://www.cweibo.com/home/captcha/1?'+Math.random()"  src="{{url('/home/captcha/1')}}"></a>
 
@@ -315,7 +315,7 @@
                                             </div>
                                         </div>
                                         <div class="UG_box_foot">
-                                            <a href="http://www.weibo.com/?category=novelty" class="S_txt1">查看更多<i class="W_ficon ficon_arrow_right S_ficon">a</i></a>
+
                                         </div>
                                     </div>
                                     <div class="UG_box_l">
@@ -369,7 +369,7 @@
                                             </div>
                                         </div>
                                         <div class="UG_box_foot">
-                                            <a href="http://weibo.com/a/hot/realtime" class="S_txt1" target="_blank">查看更多<i class="W_ficon ficon_arrow_right S_ficon">a</i></a>
+
                                         </div>
                                     </div>
                                     </div>
@@ -500,6 +500,7 @@
         //获取用户输入的用户名和密码
         var name = $('#loginname').val();
         var passwd = $('#loginpasswd').val();
+        var homeCode=$('#homeCode').val();
         if(name == '' || passwd =='')
         {
             // layer.tips('用户密码不能为空', {
@@ -508,10 +509,10 @@
             // 		});
             layer.msg('用户名密码不能为空');
         }else{
-            $.post("/home/dologin", {"_token":"{{csrf_token()}}",name: name, passwd:passwd },function(data){
+            $.post("/home/dologin", {"_token":"{{csrf_token()}}",name: name,homeCode:homeCode,passwd:passwd },function(data){
 
 
-                if(data == '用户名不存在'|| data=='密码不正确' )
+                if(data == '用户名不存在'|| data=='密码不正确' || data=='验证码输入错误' )
                 {
                     layer.msg(data);
                 }else{

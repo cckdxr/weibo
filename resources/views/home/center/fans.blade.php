@@ -35,7 +35,7 @@
 </style><link rel="stylesheet" type="text/css" href="/home/css/attention/extra.css"><link href="/home/css/attention/PCD_mplayer.css" charset="utf-8" type="text/css" rel="Stylesheet"><link id="FM_150769325942424" href="/home/css/attention/PCD_ut_a.css" type="text/css" rel="stylesheet"><link id="skin_style" href="/home/css/attention/skin_001.css" charset="utf-8" type="text/css" rel="stylesheet"><style media="screen" type="text/css">
 /* Code tidied up by ScrapBook */
 </style><link id="FM_150769325942460" href="/home/css/attention/PCD_connectlist.css" type="text/css" rel="stylesheet"><link id="FM_150769325942464" href="/home/css/attention/PCD_text_e.css" type="text/css" rel="stylesheet"><link id="FM_150769325942469" href="/home/css/attention/PCD_text_c.css" type="text/css" rel="stylesheet"><link id="FM_150769325942475" href="/home/css/attention/PCD_left_nav.css" type="text/css" rel="stylesheet"></head>
-<body class="FRAME_page B_page S_page" style="background-image: url('{{session('user')['bg']}}'">
+<body class="FRAME_page B_page S_page" style="background-repeat: repeat;background-image: url('{{session('user')['bg']}}'">
   <div class="WB_miniblog">
     <div class="WB_miniblog_fb">
         <div id="plc_top"><!--简易顶部导航拼页面用-->
@@ -64,6 +64,7 @@
                                 <div class="gn_topmenulist gn_topmenulist_set" id="user_set_box" node-type="accountLayer" style="display:none"><!--data start-->
                                     <ul>
                                         <li><a href="{{url('/home/homepage')}}" suda-data="key=account_setup&amp;value=account_setup">会员中心</a></li>
+                                        <li><a href="{{url('/home/myinfo')}}" suda-data="key=account_setup&amp;value=account_setup">个人信息</a></li>
                                         <li><a href="{{url('/home/fans')}}" suda-data="key=account_setup&amp;value=account_setup">我的粉丝</a></li>
                                         <li><a href="{{url('/home/myatt')}}" suda-data="key=account_setup&amp;value=account_setup">我的关注</a></li>
                                         <li class="line S_line1"></li>

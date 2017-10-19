@@ -1,4 +1,4 @@
-    @extends('layouts.head')
+    @extends('layout.head')
     @section('title','新增用户')
         @section('content')
        

@@ -477,11 +477,11 @@
 									<tbody>
 										<tr>
                                         <td class="S_line1">
-                                            <a bpfilter="page_frame" class="t_link S_txt1" href="/home/myatt"><strong class="W_f18">45</strong><span class="S_txt2">关注</span></a></td>
+                                            <a bpfilter="page_frame" class="t_link S_txt1" href="/home/myatt"><strong class="W_f18">{{session('homeUser')['follow_count']}}</strong><span class="S_txt2">关注</span></a></td>
                                                                                     <td class="S_line1">
-                                            <a bpfilter="page_frame" class="t_link S_txt1" href='/home/fans'><strong class="W_f18" >90</strong><span class="S_txt2">粉丝</span></a></td>
+                                            <a bpfilter="page_frame" class="t_link S_txt1" href='/home/fans'><strong class="W_f18" >{{session('homeUser')['fans_count']}}</strong><span class="S_txt2">粉丝</span></a></td>
                                                                                     <td class="S_line1">
-                                            <a bpfilter="page_frame" class="t_link S_txt1" href="/home/homepage"><strong class="W_f18">1</strong><span class="S_txt2">微博</span></a></td>
+                                            <a bpfilter="page_frame" class="t_link S_txt1" href="/home/homepage"><strong class="W_f18">{{session('homeUser')['msg_count']}}</strong><span class="S_txt2">微博</span></a></td>
                                                                                 </tr>
 									</tbody>
 								</table>

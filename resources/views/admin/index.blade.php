@@ -1,4 +1,4 @@
-    @extends('layouts.head')
+    @extends('layout.head')
     @section('title','微博后台')
         @section('content')
         <!-- Main Container Start -->

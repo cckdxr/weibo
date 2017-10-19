@@ -35,7 +35,7 @@
 </style><link rel="stylesheet" type="text/css" href="/home/css/info/extra.css"><link href="/home/css/info/PCD_mplayer.css" charset="utf-8" type="text/css" rel="Stylesheet"><link id="skin_style" href="/home/css/info/skin_001.css" charset="utf-8" type="text/css" rel="stylesheet"><style media="screen" type="text/css">
 /* Code tidied up by ScrapBook */
 </style><link id="FM_150769325942488" href="/home/css/info/PCD_counter.css" type="text/css" rel="stylesheet"><link id="FM_1507693259424103" href="/home/css/info/PCD_pictext_a.css" type="text/css" rel="stylesheet"><link id="FM_1507693259424127" href="/home/css/info/PCD_person_detail.css" type="text/css" rel="stylesheet"><link id="FM_1507693259424129" href="/home/css/info/PCD_text_b.css" type="text/css" rel="stylesheet"><link id="FM_1507693259424132" href="/home/css/info/credit.css" type="text/css" rel="stylesheet"></head>
-<body style="background-image: url('{{session('user')['bg']}}');width:100%;height:100%" class="FRAME_page B_page S_page">
+<body style="background-image: url('{{session('user')['bg']}}');background-repeat: repeat;" class="FRAME_page B_page S_page">
   <div class="WB_miniblog">
     <div class="WB_miniblog_fb">
         <div id="plc_top"><!--简易顶部导航拼页面用-->
@@ -158,14 +158,14 @@
 							<div class="WB_innerwrap">
 								<table class="tb_counter" cellpadding="0" cellspacing="0">
 									<tbody>
-										<tr>
-																					<td class="S_line1">
-																						<a bpfilter="page_frame" class="t_link S_txt1" href="https://weibo.com/5322078304/follow?from=page_100505&amp;wvr=6&amp;mod=headfollow#place"><strong class="W_f18">45</strong><span class="S_txt2">关注</span></a></td>
-																																<td class="S_line1">
-																						<a bpfilter="page_frame" class="t_link S_txt1" href="https://weibo.com/5322078304/fans?from=100505&amp;wvr=6&amp;mod=headfans&amp;current=fans#place"><strong class="W_f18">91</strong><span class="S_txt2">粉丝</span></a></td>
-																																<td class="S_line1">
-																						<a bpfilter="page_frame" class="t_link S_txt1" href="https://weibo.com/p/1005055322078304/home?from=page_100505_profile&amp;wvr=6&amp;mod=data#place"><strong class="W_f18">1</strong><span class="S_txt2">微博</span></a></td>
-																															</tr>
+									<tr>
+										<td class="S_line1">
+											<a bpfilter="page_frame" class="t_link S_txt1" href="/home/myatt"><strong class="W_f18">{{session('homeUser')['follow_count']}}</strong><span class="S_txt2">关注</span></a></td>
+										<td class="S_line1">
+											<a bpfilter="page_frame" class="t_link S_txt1" href='/home/fans'><strong class="W_f18" >{{session('homeUser')['fans_count']}}</strong><span class="S_txt2">粉丝</span></a></td>
+										<td class="S_line1">
+											<a bpfilter="page_frame" class="t_link S_txt1" href="/home/homepage"><strong class="W_f18">{{session('homeUser')['msg_count']}}</strong><span class="S_txt2">微博</span></a></td>
+									</tr>
 									</tbody>
 								</table>
 							</div>

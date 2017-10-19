@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layout.admin')
 @section('content')
 <body>
     <!--面包屑导航 开始-->

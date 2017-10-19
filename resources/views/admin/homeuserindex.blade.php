@@ -1,4 +1,4 @@
-    @extends('layouts.head')
+    @extends('layout.head')
     @section('title','后台用户列表')
         @section('content')
         <!-- Main Container Start -->

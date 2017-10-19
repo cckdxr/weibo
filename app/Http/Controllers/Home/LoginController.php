@@ -37,9 +37,9 @@ class LoginController extends Controller
             }
         }
         //验证码判断,开发阶段不启用
-//         if($input['homeCode']!=session('homeCode')){
-//             return redirect('home/index/0')->with('errors','验证码输入错误')->withInput();
-//         }
+         if($input['homeCode']!=session('homeCode')){
+             return '验证码输入错误';
+         }
 
         if(!$user){
             return '用户名不存在';
@@ -63,6 +63,7 @@ class LoginController extends Controller
     public function logout()
     {
         session(['homeUser'=>'','homeFlag'=>'']);
+        session()->flush();
         return redirect('home/index');
     }
 

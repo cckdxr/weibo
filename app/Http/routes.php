@@ -14,6 +14,11 @@
 Route::get('/', "Home\IndexController@index");
 Route::get('/login', "Home\IndexController@index");
 
+//测试中间件
+//Route::group(['prefix'=>'home','namespace'=>'home','middleware'=>'homelog'],function(){
+//    Route::get('/test','IndexController@test');
+//});
+
 ////原灵步首页
 //Route::get('/test1', function () {
 //    return view('home.index2');
@@ -71,28 +76,70 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'islogin'],fu
 //网站配置修改
     Route::post('doconf/{id}','ConfController@doconf');
 });
+Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
+//登录及其验证码
+    Route::get('login','LoginController@login');
+    Route::get('yzm','LoginController@yzm');
+    Route::post('dologin','LoginController@dologin');
+//退出登录
+    Route::get('outlogin','LoginController@outlogin');
 
-//前台登录前
-//验证码路由
-Route::get('/home/captcha/{tmp}', 'Home\LoginController@captcha');
-Route::post('/home/doregister','Home\LoginController@doregister');
-//登录路由
-Route::post('/home/dologin','Home\LoginController@dologin');
-//头像上传
-Route::post('/home/upload','Home\LoginController@upload');
-//多图片上传
-Route::post('/home/uploads','Home\LoginController@uploads');
-//前台登录前路由
-Route::get('/home/index',function(){
-   return redirect('/home/index/0');
 });
-Route::get('/home/index/{field_id}','Home\IndexController@index');
-//获取更多tips
-Route::get('/home/more','Home\IndexController@moretips');
 
 
 //前台登陆后路由
-Route::group(['prefix'=>'home','namespace'=>'Home'],function(){
+Route::group(['prefix'=>'home','namespace'=>'Home',],function() {
+//前台登录前
+//验证码路由
+    Route::get('captcha/{tmp}', 'LoginController@captcha');
+    Route::post('doregister', 'LoginController@doregister');
+//登录路由
+    Route::post('dologin', 'LoginController@dologin');
+//头像上传
+//Route::post('/home/upload','Home\LoginController@upload');
+//多图片上传
+    Route::post('uploads', 'LoginController@uploads');
+//前台登录前路由
+    Route::get('index', function () {
+        return redirect('/home/index/0');
+    });
+    Route::get('index/{field_id}', 'IndexController@index');
+//获取更多tips
+    Route::get('more', 'IndexController@moretips');
+
+
+    //黄路由
+
+//前台首页
+//    Route::get('index','IndexController@index');
+//分类微博
+//    Route::get('headline/{id}','IndexController@headline');
+//验证成功后显示页面
+//    Route::get('loginafter','IndexController@loginafter');
+
+//	注册完善资料!!!
+    Route::post('fullinfo','FullinfoController@fullinfo');
+//验证用户
+    Route::post('dofullinfo','FullinfoController@dofullinfo');
+//用户信息存数据库
+    Route::post('insertinfo','FullinfoController@insertinfo');
+//用户详情页的无刷新修改
+    Route::post('reinfo','InfoController@reinfo');
+//用户基本信息修改
+    Route::post('dobaseinfo','InfoController@dobaseinfo');
+//详情页中取消关注
+    Route::post('doattention','homepageController@doattention');
+//详情页中关注
+    Route::post('att','homepageController@att');
+//注册页兴趣
+    Route::post('dointerest','FullinfoController@dointerest');
+//修改兴趣页
+    Route::get('changefield','FullinfoController@changefield');
+
+
+});
+//前台登陆后路由
+Route::group(['prefix'=>'home','namespace'=>'Home','middleware'=>'homelog'],function(){
     //登录后用户主页
     Route::get('u/index','UserIndexController@index');
     //退出登录
@@ -101,7 +148,6 @@ Route::group(['prefix'=>'home','namespace'=>'Home'],function(){
     Route::post('u/postwb','MsgController@postwb');
     //收藏路由
     Route::get('u/docollect','CollectController@addCollect');
-
     //点赞路由
     Route::get('u/dolike','CollectController@addLike');
     //评论路由
@@ -129,14 +175,6 @@ Route::group(['prefix'=>'home','namespace'=>'Home'],function(){
 
 
     //huang路由
-    //前台首页
-    Route::get('index','IndexController@index');
-//分类微博
-    Route::get('headline/{id}','IndexController@headline');
-
-
-//验证成功后显示页面
-    Route::get('loginafter','IndexController@loginafter');
 //注册页面
     Route::get('reg','IndexController@register');
 //手机号
@@ -153,16 +191,6 @@ Route::group(['prefix'=>'home','namespace'=>'Home'],function(){
     Route::get('myatt','InfoController@myatt');
 //个人详情页面
     Route::get('info','InfoController@info');
-//	注册完善资料!!!
-    Route::post('fullinfo','FullinfoController@fullinfo');
-//验证用户
-    Route::post('dofullinfo','FullinfoController@dofullinfo');
-//用户信息存数据库
-    Route::post('insertinfo','FullinfoController@insertinfo');
-//用户详情页的无刷新修改
-    Route::post('reinfo','InfoController@reinfo');
-//用户基本信息修改
-    Route::post('dobaseinfo','InfoController@dobaseinfo');
 //修改密码
     Route::get('repwd','InfoController@repwd');
 //处理密码
@@ -189,14 +217,8 @@ Route::group(['prefix'=>'home','namespace'=>'Home'],function(){
     Route::post('dopic','PicController@dopic');
 //详情页
     Route::get('homepages/666666{id}','homepageController@homepages');
-//详情页中取消关注
-    Route::post('doattention','homepageController@doattention');
-//详情页中关注
-    Route::post('att','homepageController@att');
-//注册页兴趣
-    Route::post('dointerest','FullinfoController@dointerest');
-    //修改兴趣页
-    Route::get('changefield','FullinfoController@changefield');
+
+
 });
 
 

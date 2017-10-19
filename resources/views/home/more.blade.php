@@ -6,11 +6,13 @@
             </div>
         @endif
         <div class="list_des" >
-            @if(!empty($v->msg_digest))
-                <div class="W_replace">{{$v->msg_digest}}</div>
-            @else
-                <div class="W_replace">{{$v->msg_title}}</div>
-            @endif
+            <h3 class="list_title_s" style="  overflow: auto ;">
+                @if(!empty($v->msg_digest))
+                    <div class="W_replace">{{$v->msg_digest}}</div>
+                @else
+                    <div class="W_replace">{{$v->msg_title}}</div>
+                @endif
+            </h3>
             <div class="subinfo_box clearfix">
                 <a href="{{url('/home/user/'.$v->user->user_id)}}" target="_blank"><span class="subinfo_face "><img src="{{$v->user->user_headpic}}" width="20" height="20" alt=""></span></a>
                 <a href="{{url('/home/user/'.$v->user->user_id)}}" target="_blank"><span class="subinfo S_txt2">{{$v->user->user_name}}</span></a>
