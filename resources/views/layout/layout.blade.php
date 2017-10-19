@@ -11,35 +11,35 @@
 
 <!-- Required Stylesheets -->
 
-<link rel="stylesheet" type="text/css" href="/admin/bootstrap/css/bootstrap.min.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/admin/css/fonts/ptsans/stylesheet.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/admin/css/fonts/icomoon/style.css" media="screen">
+<link rel="stylesheet" type="text/css" href="\admin\bootstrap/css/bootstrap.min.css" media="screen">
+<link rel="stylesheet" type="text/css" href="\admin\css/fonts/ptsans/stylesheet.css" media="screen">
+<link rel="stylesheet" type="text/css" href="\admin\css/fonts/icomoon/style.css" media="screen">
 
-<link rel="stylesheet" type="text/css" href="/admin/css/login.css" media="screen">
+<link rel="stylesheet" type="text/css" href="\admin\css/login.css" media="screen">
 
-<link rel="stylesheet" type="text/css" href="/admin/css/mws-theme.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/admin/plugins/colorpicker/colorpicker.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/admin/custom-plugins/wizard/wizard.css" media="screen">
+<link rel="stylesheet" type="text/css" href="\admin\css/mws-theme.css" media="screen">
+<link rel="stylesheet" type="text/css" href="\admin\plugins/colorpicker/colorpicker.css" media="screen">
+<link rel="stylesheet" type="text/css" href="\admin\custom-plugins/wizard/wizard.css" media="screen">
 
 <!-- Required Stylesheets -->
-<link rel="stylesheet" type="text/css" href="/admin/bootstrap/css/bootstrap.min.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/admin/css/fonts/ptsans/stylesheet.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/admin/css/fonts/icomoon/style.css" media="screen">
+<link rel="stylesheet" type="text/css" href="\admin\bootstrap/css/bootstrap.min.css" media="screen">
+<link rel="stylesheet" type="text/css" href="\admin\css/fonts/ptsans/stylesheet.css" media="screen">
+<link rel="stylesheet" type="text/css" href="\admin\css/fonts/icomoon/style.css" media="screen">
 
-<link rel="stylesheet" type="text/css" href="/admin/css/mws-style.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/admin/css/icons/icol16.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/admin/css/icons/icol32.css" media="screen">
+<link rel="stylesheet" type="text/css" href="\admin\css/mws-style.css" media="screen">
+<link rel="stylesheet" type="text/css" href="\admin\css/icons/icol16.css" media="screen">
+<link rel="stylesheet" type="text/css" href="\admin\css/icons/icol32.css" media="screen">
 
 <!-- Demo Stylesheet -->
-<link rel="stylesheet" type="text/css" href="/admin/css/demo.css" media="screen">
+<link rel="stylesheet" type="text/css" href="\admin\css/demo.css" media="screen">
 
 <!-- jQuery-UI Stylesheet -->
-<link rel="stylesheet" type="text/css" href="/admin/jui/css/jquery.ui.all.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/admin/jui/jquery-ui.custom.css" media="screen">
+<link rel="stylesheet" type="text/css" href="\admin\jui/css/jquery.ui.all.css" media="screen">
+<link rel="stylesheet" type="text/css" href="\admin\jui/jquery-ui.custom.css" media="screen">
 
 <!-- Theme Stylesheet -->
-<link rel="stylesheet" type="text/css" href="/admin/css/mws-theme.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/admin/css/themer.css" media="screen">
+<link rel="stylesheet" type="text/css" href="\admin\css/mws-theme.css" media="screen">
+<link rel="stylesheet" type="text/css" href="\admin\css/themer.css" media="screen">
 
 <title>@yield('title')</title>
 </head>

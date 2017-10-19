@@ -158,7 +158,6 @@
                         您好,{{session('user')['user_name']}}
                     </div>
                     <ul>
-                    	<li><a href="#">Profile</a></li>
                         <li><a href="/admin/repwd">修改密码</a></li>
                         <li><a href="/admin/outlogin">退出登录</a></li>
                     </ul>
@@ -195,44 +194,44 @@
             <!-- Main Navigation -->
             <div id="mws-navigation">
                 <ul>
-                    <li class="active"><a href="dashboard.html"><i class="icon-home"></i>后台首页</a></li>
                     <li>
                         <a href="#"><i class="icon-users"></i>前台用户</a>
                         <ul>
                             <li><a href="/admin/userlist">用户列表</a></li>
-                            <li><a href="">用户信息</a></li>
-                            <li><a href="form_wizard.html">Wizard</a></li>
+                         
                         </ul>
                     </li>
                       <li>
                         <a href="#"><i class="icon-list"></i>后台用户</a>
                         <ul>
                             <li><a href="/admin/users">用户列表</a></li>
-                            <li><a href="/admin/userinfo">用户信息</a></li>
                             <li><a href="/admin/useradd">用户添加</a></li>
                         </ul>
                     </li>
-                    <li><a href="files.html"><i class="icon-folder-closed"></i> File Manager</a></li>
-                    <li><a href="table.html"><i class="icon-table"></i> Table</a></li>
-                    <li>
-                        <a href="#"><i class="icon-list"></i> Forms</a>
+                      <li>
+                        <a href="#"><i class="icon-list"></i>敏感词</a>
                         <ul>
-                            <li><a href="form_layouts.html">Layouts</a></li>
-                            <li><a href="form_elements.html">Elements</a></li>
-                            <li><a href="form_wizard.html">Wizard</a></li>
+                            <li><a href="/admin/stv">敏感词列表</a></li>
+                            <li><a href="/admin/addstv">敏感词添加</a></li>
+                           
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon-list"></i>前台分类</a>
+                        <ul>
+                            <li><a href="/admin/hometype">分类列表</a></li>
+                            <li><a href="/admin/addtype">分类添加</a></li>
+                        </ul>
+                    </li>
+                     <li>
+                        <a href="#"><i class="icon-list"></i>前台轮播</a>
+                        <ul>
+                            <li><a href="/admin/lunlist">轮播列表</a></li>
+                            <li><a href="/admin/addlun">轮播添加</a></li>
                         </ul>
                     </li>
                     <li><a href="/admin/conf"><i class="icon-cogs"></i> 网站配置</a></li>
-                    <li><a href="typography.html"><i class="icon-font"></i> Typography</a></li>
-                    <li><a href="grids.html"><i class="icon-th"></i> Grids &amp; Panels</a></li>
-                    <li><a href="gallery.html"><i class="icon-pictures"></i> Gallery</a></li>
-                    <li><a href="error.html"><i class="icon-warning-sign"></i> Error Page</a></li>
-                    <li>
-                        <a href="icons.html">
-                            <i class="icon-pacman"></i> 
-                            Icons <span class="mws-nav-tooltip">2000+</span>
-                        </a>
-                    </li>
+                   
                 </ul>
             </div>         
         </div>

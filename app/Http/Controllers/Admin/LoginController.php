@@ -21,6 +21,10 @@ use Illuminate\Support\Facades\Validator;
 require(app_path().'\Http\Org\Code\code.php');
 use App\Http\Org\Code\code;
 
+//验证码
+use Gregwar\Captcha\CaptchaBuilder;
+use Gregwar\Captcha\PhraseBuilder;
+
 //引入Session
 use Illuminate\Support\Facades\Session;
 class LoginController extends Controller
@@ -35,6 +39,31 @@ class LoginController extends Controller
         // return Hash::make('admin');
 
     }
+
+    public function captcha($tmp='')
+    {
+        $phrase = new PhraseBuilder;
+        // 设置验证码位数
+        $code = $phrase->build(4);
+        // 生成验证码图片的Builder对象，配置相应属性
+        $builder = new CaptchaBuilder($code, $phrase);
+        // 设置背景颜色
+        $builder->setBackgroundColor(220, 210, 230);
+        $builder->setMaxAngle(25);
+        $builder->setMaxBehindLines(0);
+        $builder->setMaxFrontLines(0);
+        // 可以设置图片宽高及字体
+        $builder->build($width = 100, $height = 40, $font = null);
+        // 获取验证码的内容
+        $phrase = $builder->getPhrase();
+        // 把内容存入session
+        Session::flash('adminCode', $phrase);
+        // 生成图片
+        header("Cache-Control: no-cache, must-revalidate");
+        header("Content-Type:image/jpeg");
+        $builder->output();
+    }
+
 
     function yzm()
     {
@@ -88,7 +117,7 @@ class LoginController extends Controller
         }
         
         //验证码验证
-        if(strtolower($input['yzm'])!=strtolower(session('code')))
+        if(strtolower($input['yzm'])!=strtolower(session('adminCode')))
         {
             return view('admin.login.login')->with('errors','验证码错误');
         }
@@ -110,7 +139,7 @@ class LoginController extends Controller
 //验证通过后显示后台首页
 //       header('refresh:1,url=/admin/index');
 //        echo '正在登陆中......';
-         return view('admin.login.index');
+         return redirect('/admin/userlist');
       
     }
 

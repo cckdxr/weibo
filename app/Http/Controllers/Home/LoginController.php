@@ -51,12 +51,12 @@ class LoginController extends Controller
 
         //登录成功,维护最后登录ip和时间,设置后台登录session
         $ip = $request->getClientIp();
-        $time=date("Y-m-d",time());
+
         $user=$user->toArray();
 
         session(['homeUser'=>$user,'homeFlag'=>'true']);
         session(['user'=>$user,'userinfo'=>$user]);
-        User::where('user_id','=',$user['user_id'])->update(['last_login_ip'=>$ip,'last_login_time'=>$time]);
+        User::where('user_id','=',$user['user_id'])->update(['last_login_ip'=>$ip,'last_login_time'=>time()]);
         return '/home/u/index';
     }
     //退出登录

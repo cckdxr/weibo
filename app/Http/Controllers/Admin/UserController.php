@@ -32,7 +32,7 @@ class UserController extends Controller
     function userlist()
     {
         //显示分页
-        $res = user::paginate(1);
+        $res = user::paginate(10);
         // dd($res);
         // echo count($res); 数组元素个数
         return view('admin.user.userlist',['res'=>$res]);
@@ -93,7 +93,7 @@ class UserController extends Controller
         $res = $data->save();
         if($res)
         {
-            return view('admin.user.login');
+            return view('admin.login.login');
         }else{
             return view('admin.user.repwd')->with('errors','修改失败');
         }

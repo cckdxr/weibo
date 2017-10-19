@@ -71,15 +71,47 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'islogin'],fu
     Route::get('useradd','UserController@useradd');
     //添加用户至数据库
     Route::post('douseradd','UserController@douseradd');
-//网站配置
+    //网站配置
     Route::get('conf','ConfController@conf');
 //网站配置修改
     Route::post('doconf/{id}','ConfController@doconf');
+//敏感词管理
+    Route::get('stv','SensitiveController@stv');
+//敏感词添加
+    Route::get('addstv','SensitiveController@addstv');
+    Route::get('delstv/{id}','SensitiveController@delstv');
+    Route::post('doaddstv','SensitiveController@doaddstv');
+
+//后台的前台分类管理
+    Route::get('hometype','HometypeController@hometype');
+
+    //删除分类
+
+    Route::post('deltype','HometypeController@deltype');
+
+    //添加分类
+
+    Route::get('addtype','HometypeController@addtype');
+    //修改分类
+    Route::post('edittype','HometypeController@edittype');
+    //分类图片上传到指定目录
+    Route::post('field_upload','HometypeController@upload');
+
+    //把用户添加的分类提交到数据库
+    Route::post('doupload','HometypeController@doupload');
+
+//轮播图管理
+    Route::get('lunlist','LunController@lunlist');
+    Route::get('addlun','LunController@addlun');
+    Route::post('editlun','LunController@editlun');
+    Route::post('dellun','LunController@dellun');
+    Route::post('dolun','LunController@dolun');
+
 });
 Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
 //登录及其验证码
     Route::get('login','LoginController@login');
-    Route::get('yzm','LoginController@yzm');
+    Route::get('/captcha/{tmp}','LoginController@captcha');
     Route::post('dologin','LoginController@dologin');
 //退出登录
     Route::get('outlogin','LoginController@outlogin');
@@ -136,6 +168,13 @@ Route::group(['prefix'=>'home','namespace'=>'Home',],function() {
 //修改兴趣页
     Route::get('changefield','FullinfoController@changefield');
 
+    //huang路由
+//注册页面
+    Route::get('reg','IndexController@register');
+//手机号
+    Route::get('donumber','IndexController@donumber');
+//短信验证
+    Route::post('doreg','IndexController@doreg');
 
 });
 //前台登陆后路由
@@ -174,13 +213,7 @@ Route::group(['prefix'=>'home','namespace'=>'Home','middleware'=>'homelog'],func
     Route::post('delete','CollectController@delete');
 
 
-    //huang路由
-//注册页面
-    Route::get('reg','IndexController@register');
-//手机号
-    Route::get('donumber','IndexController@donumber');
-//短信验证
-    Route::post('doreg','IndexController@doreg');
+
 //个人首页
     Route::get('homepage','InfoController@homepage');
 //用户资料

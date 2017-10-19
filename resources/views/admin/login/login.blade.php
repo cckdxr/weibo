@@ -35,7 +35,7 @@
                       <div class="mws-form-row">
                         <div class="mws-form-item">
                             <input type="text" name="yzm" placeholder="验证码" style='width:130px'>
-                            <img src="{{url('admin/yzm')}}" onclick="this.src='{{url('admin/yzm')}}?'+Math.random()" alt="">
+                            <img src="{{url('admin/captcha/1')}}" onclick="this.src='{{url('admin/captcha/1')}}?'+Math.random()" alt="">
                         </div>
                     </div>
                     <div class="mws-form-row">
