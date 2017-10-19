@@ -1,0 +1,49 @@
+/* Code tidied up by ScrapBook */
+@-moz-document url-prefix("") {
+  .bubble_l .bubble_cont .bubble_arrow .W_arrow_bor em { margin: 1px 0px 0px -3px; }
+}
+@-moz-document url-prefix("") {
+  .bubble_r .bubble_cont .bubble_arrow { right: -5px; }
+}
+@-moz-document url-prefix("") {
+  .bubble_r .bubble_cont .bubble_arrow .W_arrow_bor i { margin-right: 3px; }
+}
+@-moz-document url-prefix("") {
+  .bubble_r .bubble_cont .bubble_arrow .W_arrow_bor em { margin: 1px 0px 0px -13px; }
+}
+@media �screen,screen	 {
+}
+@media �screen,screen	 {
+}
+@media �screen,screen	 {
+}
+@media not all, not all {
+}
+@keyframes bubble_user {
+0% { transform: scale(0.8); opacity: 0.4; }
+20% { transform: scale(0.85); opacity: 0.6; }
+50% { transform: scale(0.9); opacity: 0.8; }
+80% { opacity: 0.9; }
+100% { transform: scale(1); opacity: 1; }
+}
+@keyframes bubble_box {
+0% { opacity: 0; }
+40% { opacity: 0.4; }
+60% { opacity: 0.6; }
+80% { opacity: 1; }
+100% { transform: translateX(0px); }
+}
+.webim_fold, .webim_fold .fold_bg, .webim_fold .fold_cont { width: 270px; height: 40px; }
+.webim_fold { position: absolute; box-shadow: -3px -2px 8px -1px rgba(0, 0, 0, 0.2); cursor: pointer; }
+.webim_fold .fold_bg { background: none repeat scroll 0% 0% rgb(240, 241, 244); opacity: 0.95; border-radius: 2px 0px 0px 2px; }
+.webim_fold .fold_cont { position: absolute; top: 0px; left: 0px; }
+.webim_fold .fold_icon { width: 18px; height: 16px; margin: 11px 16px 0px 20px; background: url("cssStyle/webim_icon.png") no-repeat scroll 0px -20px transparent; }
+.webim_fold .fold_font { line-height: 40px; color: rgb(51, 51, 51); }
+.webim_fold_v2, .webim_fold_v2 .fold_bg, .webim_fold_v2 .fold_cont { width: 288px; height: 40px; }
+.webim_fold_v2 .wchat_btn { width: 38px; height: 36px; line-height: 36px; background: none repeat scroll 0% 0% rgb(255, 129, 64); border-radius: 2px; margin: 2px; text-align: center; cursor: pointer; }
+.webim_fold_v2 .wchat_icon { display: inline-block; width: 22px; height: 22px; margin-top: 8px; background: url("cssStyle/webchat_icon.png") no-repeat scroll 0px -30px transparent; }
+.webim_fold_v2 .wchat_btn:hover { background: none repeat scroll 0% 0% rgb(247, 103, 29); }
+.webim_hb { position: absolute; z-index: 99; width: 43px; height: 51px; background: url("cssStyle/webim_hb_small.gif") no-repeat scroll 0px 0px transparent; cursor: pointer; }
+@media not all, not all {
+  .webim_hb { background: url("cssStyle/webim_hb_big.gif") no-repeat scroll 0px 0px / 43px 51px transparent; }
+}

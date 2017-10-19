@@ -1,0 +1,11 @@
+/* Code tidied up by ScrapBook */
+.S_func1:hover { text-decoration: none; }
+body, .S_profile { background-color: rgb(190, 225, 245); background-image: url("cssStyle/body_repeat_001.png"); background-repeat: repeat-x; }
+body, legend, .S_txt1, .S_func1, .SW_fun .S_func1, .SW_fun2 .S_func3, .current .S_func1:hover { color: rgb(51, 51, 51); text-decoration: none; }
+.S_txt2, .SW_fun2:hover .S_txt3 { color: rgb(128, 128, 128); }
+a, .S_link1, .S_func1:hover, .SW_fun:hover .S_func1, .SW_fun2:hover .S_func3, .SW_fun2:hover .S_func4 { color: rgb(10, 140, 210); }
+.S_bg5 { background-color: rgb(255, 255, 255); }
+.S_line2 { border-color: rgb(230, 230, 230); }
+.W_btn_b, .W_btn_c, .W_btn_e, .W_btn_f, .W_btn_round, .W_btn_round_ico, .W_btn_round2, .W_btn_a_disable, .W_btn_a_disable:hover, .W_btn_b_disable, .W_btn_b_disable:hover, .W_btn_c_disable, .W_btn_c_disable:hover, .W_btn_d_disable, .W_btn_d_disable:hover, .W_btn_v_disable, .W_btn_v_disable:hover, .W_btn_e_disable, .W_btn_e_disable:hover, .W_btn_f_disable, .W_btn_f_disable:hover, .W_btn_g_disable, .W_btn_g_disable:hover, .W_btn_a_disable span, .W_btn_a_disable:hover span, .W_btn_b_disable span, .W_btn_b_disable:hover span, .W_btn_c_disable span, .W_btn_c_disable:hover span, .W_btn_d_disable span, .W_btn_d_disable:hover span, .W_btn_v_disable span, .W_btn_v_disable:hover span, .W_btn_e_disable span, .W_btn_e_disable:hover span, .W_btn_f_disable span, .W_btn_f_disable:hover span, .W_btn_g_disable span, .W_btn_g_disable:hover span { border-color: rgb(217, 217, 217); background-color: rgb(242, 242, 242); }
+.W_btn_c:hover, .W_btn_round:hover, .W_btn_round_ico:hover, .W_btn_round2:hover { background-color: rgb(250, 250, 250); }
+.W_btn_b span, .W_btn_c span, .W_btn_e span, .W_btn_f span, .W_btn_round span, .W_btn_round2 span, .W_btn_round_ico span, .W_btn_a_disable span, .W_btn_a_disable:hover span, .W_btn_b_disable span, .W_btn_b_disable:hover span, .W_btn_c_disable span, .W_btn_c_disable:hover span, .W_btn_d_disable span, .W_btn_d_disable:hover span, .W_btn_v_disable span, .W_btn_v_disable:hover span, .W_btn_e_disable span, .W_btn_e_disable:hover span, .W_btn_f_disable span, .W_btn_f_disable:hover span, .W_btn_g_disable span, .W_btn_g_disable:hover span { border-color: rgb(255, 255, 255); color: rgb(51, 51, 51); }

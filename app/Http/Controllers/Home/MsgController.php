@@ -17,7 +17,7 @@ class MsgController extends Controller
    {
 
        if($request['msg_title']=='' && empty($request['file_upload'])){
-           return redirect('home/u/index');
+           return '不能发布空微博';
            die;
        }
 

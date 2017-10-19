@@ -14,13 +14,26 @@
     <link href="{{asset('home/indexsource/login_v5.css')}}" type="text/css" rel="stylesheet" charset="utf-8">
     <link href="{{asset('home/indexsource/skin.css')}}" type="text/css" rel="stylesheet" id="skin_style">
     <script type="text/javascript" src="{{asset('admin/style/js/jquery.js')}}"></script>
+    <script type="text/javascript" src="{{asset('admin/style/js/biaoqing.js')}}"></script>
+    <script type="text/javascript" src="{{asset('layer/layer.js')}}"></script>
     <style>
         #js_style_css_module_global_WB_outframe{height:42px;}
         .UG_slider ul li {
             float:left;
         }
-
     </style>
+    <script>
+        $(function(){
+
+            //载入模板时替换[]表情
+            $(".W_replace").each(function () {
+                var s = replace($(this).text());
+                $(this).html(s);
+            })
+        })
+
+
+    </script>
     <style></style><div style="position: absolute; top: -9999px;"><div id="js_style_css_module_global_WB_outframe"></div></div><style></style></head>
 
 <body class="FRAME_login">
@@ -95,38 +108,19 @@
                                     <!--/ card-->
                                     <div class="UG_slider">
                                         <ul  id="uls" action-type="header_slider" node-type="header_slider">
+                                            @foreach($lunbo_pic  as $lv)
                                             <li>
-                                                <a href="http://www.weibo.com/a/hot/7545822145157121_1.html?type=new" target="_blank" suda-uatrack="key=www_unlogin_home&amp;value=focus01">
-                                                    <img src="{{asset('home/indexsource/90eb2137ly1fkd372dkpej20jr0b4jsm.jpg')}}" class="pic"><div class="pic_intro">秋裤不行了，北方多地已降雪！ 吴磊弟弟带你看雪景</div>
+                                                <a href="javascript:;" >
+                                                    <img src="{{$lv['pic_add']}}" class="pic"><div class="pic_intro">{{$lv['pic_name']}}</div>
                                                 </a>
                                             </li>
-                                            <li>
-                                                <a href="http://www.weibo.com/a/hot/7545818648680449_1.html?type=new" target="_blank" suda-uatrack="key=www_unlogin_home&amp;value=focus02">
-                                                    <img src="{{asset('home/indexsource/90eb2137ly1fkcz4r0iz9j20jr0b4mz7.jpg')}}" class="pic"><div class="pic_intro">告慰南老 中国人第一次用自己的望远镜找到新脉冲星！</div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="http://www.weibo.com/a/hot/7545809959655425_1.html?type=new" target="_blank" suda-uatrack="key=www_unlogin_home&amp;value=focus03">
-                                                    <img src="{{asset('home/indexsource/90eb2137ly1fkcr59jbn5j20p40f3wrd.jpg')}}" class="pic"><div class="pic_intro">加州北湾地区山火滚滚，旧金山遭灰烬烟雾侵袭</div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="http://www.weibo.com/a/hot/7545778770810881_1.html?type=new" target="_blank" suda-uatrack="key=www_unlogin_home&amp;value=focus04">
-                                                    <img src="{{asset('home/indexsource/90eb2137ly1fkbyitxskaj219j0pnu0x.jpg')}}" class="pic"><div class="pic_intro">应采儿预言家！预言薛之谦红两年 让鹿晗想不红谈恋爱</div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="http://www.weibo.com/a/hot/7545500704708609_1.html?type=new" target="_blank" suda-uatrack="key=www_unlogin_home&amp;value=focus05">
-                                                    <img src="{{asset('home/indexsource/90eb2137ly1fk4v5dud1wj20qo0irab4.jpg')}}" class="pic"><div class="pic_intro">原来你是这样的老外</div>
-                                                </a>
-                                            </li>
+                                            @endforeach
                                         </ul>
                                         <div id="ids" class="dot_box" node-type="dot_box" action-type="dot_box">
                                             <a href="javascript:void(0);" class="dot current" node-type="dot" action-type="dot"></a>
+                                            @for($i=0;$i<count($lunbo_pic)-1;$i++)
                                             <a href="javascript:void(0);" class="dot" node-type="dot" action-type="dot"></a>
-                                            <a href="javascript:void(0);" class="dot" node-type="dot" action-type="dot"></a>
-                                            <a href="javascript:void(0);" class="dot" node-type="dot" action-type="dot"></a>
-                                            <a href="javascript:void(0);" class="dot" node-type="dot" action-type="dot"></a>
+                                            @endfor
                                         </div>
                                     </div>
                                     <!-- card -->
@@ -136,13 +130,19 @@
                                         <!--feed内容-->
                                         <ul id="feedbegin" class="pt_ul clearfix" pagenum="" node-type="feed_list">
                                             @foreach($messages as $v)
-                                                <div class="UG_list_b"  action-type="feed_list_item" href="#">
-                                                    <div class="pic W_piccut_v">
+                                                <div class="UG_list_b"  action-type="feed_list_item" href="#" >
+                                                    @if(!empty($v->msg_topimg))
+                                                    <div class="pic W_piccut_v" >
                                                         <img src="{{$v->msg_topimg}}" alt="">
                                                     </div>
-                                                    <div class="list_des">
-                                                        <h3 class="list_title_s">
-                                                            <div>{{$v->msg_title}}<a target="_blank" href="{{url('/home/msg/'.$v->msg_id)}}">展开全文<i class="W_ficon ficon_arrow_down">c</i></a></div>
+                                                    @endif
+                                                    <div class="list_des" >
+                                                        <h3 class="list_title_s" style="  overflow: auto ;">
+                                                            @if(!empty($v->msg_digest))
+                                                            <div class="W_replace">{{$v->msg_digest}}</div>
+                                                            @else
+                                                                <div class="W_replace">{{$v->msg_title}}</div>
+                                                            @endif
                                                         </h3>
                                                         <div class="subinfo_box clearfix">
                                                             <a href="{{url('/home/user/'.$v->user->user_id)}}" target="_blank"><span class="subinfo_face "><img src="{{$v->user->user_headpic}}" width="20" height="20" alt=""></span></a>
@@ -203,7 +203,7 @@
                                                             </div>
                                                             <div class="info_list password" node-type="password_box">
                                                                 <div class="input_wrap">
-                                                                    <input type="password" placeholder="请输入密码"  class="W_input" maxlength="24" autocomplete="off" value="" action-type="text_copy" name="user_password" node-type="password" tabindex="2">
+                                                                    <input type="password" placeholder="请输入密码" id="loginpasswd" class="W_input" maxlength="24" autocomplete="off" value="" action-type="text_copy" name="user_password" node-type="password" tabindex="2">
 
                                                                 </div>
                                                             </div>
@@ -219,7 +219,7 @@
                                                            {{csrf_field()}}
 
                                                             <div class="info_list login_btn">
-                                                                <a href="javascript:void(0)" onclick="loginsubmit()" class="W_btn_a btn_32px" action-type="btn_submit" node-type="submitBtn" suda-data="key=tblog_weibologin3&amp;value=click_sign" tabindex="6"><span node-type="submitStates">登录</span></a>
+                                                                <a href="javascript:void(0)" id="button" class="W_btn_a btn_32px" action-type="btn_submit" node-type="submitBtn" suda-data="key=tblog_weibologin3&amp;value=click_sign" tabindex="6"><span node-type="submitStates">登录</span></a>
                                                             </div>
                                                             <div class="info_list register">
                                                                 <span class="S_txt2">还没有微博？</span><a target="_blank" href="{{url('home/reg')}}">立即注册!</a>
@@ -472,6 +472,7 @@
     })
 </script>
 <script>
+    //获取更多
     var len=$(":input[name='take_len']").attr('value');
             if(len<10){
                     $('#moretips').css("display","none");
@@ -493,10 +494,35 @@
     });
 </script>
 <script>
-    function loginsubmit()
-    {
-        $('#login_form').submit();
-    }
+    //登录框提交
+    $('#button').click(function(){
+
+        //获取用户输入的用户名和密码
+        var name = $('#loginname').val();
+        var passwd = $('#loginpasswd').val();
+        if(name == '' || passwd =='')
+        {
+            // layer.tips('用户密码不能为空', {
+            // 		  tips: [1, '#3595CC'],
+            // 		  time: 4000
+            // 		});
+            layer.msg('用户名密码不能为空');
+        }else{
+            $.post("/home/dologin", {"_token":"{{csrf_token()}}",name: name, passwd:passwd },function(data){
+
+
+                if(data == '用户名不存在'|| data=='密码不正确' )
+                {
+                    layer.msg(data);
+                }else{
+
+                    location.href=data;  //跳转页面
+                }
+
+            });
+        }
+
+    })
 </script>
 
 

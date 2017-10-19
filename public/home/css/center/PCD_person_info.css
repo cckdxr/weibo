@@ -1,0 +1,15 @@
+/* Code tidied up by ScrapBook */
+.PCD_person_info .verify_area { padding: 16px 16px 10px; border-bottom-style: solid; border-bottom-width: 1px; }
+.PCD_person_info .verify_area .verify { margin-bottom: 7px; }
+.PCD_person_info .verify_area .info { line-height: 18px; }
+.PCD_person_info .m_wrap {  }
+.PCD_person_info .verify_area .icon_group { height: 28px; padding-left: 10px; line-height: 28px; border-left-style: solid; border-left-width: 1px; }
+.PCD_person_info .verify_area .verify .icon_bed { margin: 0px 10px 0px 0px; }
+.PCD_person_info .verify_area .verify .apply_link { height: 28px; line-height: 28px; margin-right: 10px; }
+.PCD_person_info .ul_detail .item_text .W_icon_level, .PCD_person_info .ul_detail .item_text .W_icon, .PCD_person_info .ul_detail .item_text .W_icon_yy, .PCD_person_info .verify_area .icon_group .W_icon_level, .PCD_person_info .verify_area .icon_group .W_icon, .PCD_person_info .verify_area .icon_group .W_icon_yy { margin: 0px 10px 0px 0px; vertical-align: middle; }
+.PCD_person_info .bars_box { margin-top: -5px; }
+.PCD_person_info .bars_box .num { margin-left: 5px; font-size: 18px; font-style: italic; font-weight: bold; }
+.PCD_person_info .bars_box .bar_box { height: 4px; margin-top: 4px; border-radius: 2px; overflow: hidden; }
+.PCD_person_info .bars_box .bar_box .bar { height: 4px; background: none repeat scroll 0% 0% rgb(250, 125, 60); }
+@media not all, not all {
+}

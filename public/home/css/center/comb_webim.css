@@ -1,0 +1,219 @@
+/* Code tidied up by ScrapBook */
+.private_dialogue_box { padding-bottom: 2px; }
+.private_dialogue_box .private_dialogue_body .private_dialogue_more { padding-top: 10px; text-align: center; }
+.private_dialogue_box .private_dialogue_body { position: relative; width: 600px; }
+.private_dialogue_box .private_dialogue_body .bubble_box { max-width: 413px; }
+.private_dialogue_box .private_dialogue_body .bubble_user { position: relative; }
+.private_dialogue_box .private_dialogue_body .page { line-height: 20px; color: rgb(51, 51, 51); word-wrap: break-word; }
+.private_dialogue_box .private_dialogue_body .private_dialogue_prompt { position: relative; margin: 25px 82px 14px; border-style: dashed; }
+.private_dialogue_box .private_dialogue_body .private_dialogue_prompt .prompt_font { position: absolute; top: -9px; left: 50%; width: 108px; margin-left: -54px; text-align: center; font-weight: normal; }
+.private_dialogue_box .private_dialogue_body .private_tips { padding: 20px 15px 0px; }
+.private_dialogue_box .private_send_box { z-index: 999; border: medium none; }
+.private_dialogue_box .sendbox_mod { border-top-width: 1px; border-top-style: solid; }
+.private_dialogue_box .private_dialogue_body .msg_bubble_list .S_line2 { border-color: rgb(242, 242, 245); }
+.private_dialogue_box .private_information { width: 100%; height: 38px; border-top-width: 1px; border-top-style: solid; }
+.private_dialogue_box .private_information .main_txt { width: 120px; }
+.private_dialogue_box .private_information .layer_mini_info { padding: 0px 6px 6px; }
+.private_dialogue_box .private_information .layer_mini_info .W_arrow_bor_b { left: 50%; margin-left: -7px; }
+.private_dialogue_box .PRF_media_card { width: 316px; padding: 0px 0px 4px; border: medium none; }
+.private_dialogue_box .PRF_media_card .PRF_card_item { height: 50px; padding: 10px 0px 0px; margin: 10px 0px 0px; border-right: medium none; border-width: 1px medium medium; border-style: solid none none; border-color: -moz-use-text-color; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; }
+.private_dialogue_box .PRF_media_card .PRF_card_item_first { height: 136px; padding: 0px; margin-top: 5px; border: medium none; }
+.private_dialogue_box .PRF_media_card .PRF_card_item_first .PRF_card_img img { width: 316px; height: 181px; }
+.private_dialogue_box .PRF_media_card .PRF_card_item .PRF_card_img { width: 50px; height: 50px; }
+.private_dialogue_box .PRF_media_card .PRF_card_item_first .PRF_card_img { width: 316px; height: 136px; }
+.private_dialogue_box .PRF_media_card .PRF_card_item .PRF_card_txt { margin-left: 58px; }
+.private_dialogue_box .PRF_media_card .PRF_card_item_first .PRF_card_txt { margin: 0px; }
+.private_dialogue_box .PRF_media_card .PRF_card_item .PRF_card_txt .PRF_t { max-height: 35px; margin-top: 7px; line-height: 18px; font-weight: normal; }
+.private_dialogue_box .PRF_media_card .PRF_card_item .PRF_card_txt .PRF_t a { color: rgb(51, 51, 51); }
+.private_dialogue_box .PRF_media_card .PRF_card_item_first .PRF_card_txt .PRF_t { max-height: 40px; height: 40px; margin: 0px; line-height: 40px; }
+.private_dialogue_box .PRF_media_card .PRF_card_item_first .PRF_card_txt .PRF_t a { color: rgb(255, 255, 255); }
+.page .W_btn_c { margin: 0px 2px; vertical-align: middle; }
+.page .W_btn_c .W_autocut { display: inline-block; max-width: 110px; vertical-align: top; }
+.page .W_btn_c .W_btn_icon .W_vline { margin: 4px 4px 0px 2px; text-indent: -9999px; display: inline-block; height: 12px; border-color: rgb(217, 217, 217) ! important; vertical-align: top; }
+.page .W_btn_c .W_btn_icon .W_ico12, .page .W_btn_c .W_ico20 { width: 14px; margin: 4px 0px 0px; display: inline-block; height: 12px; background-image: url("cssStyle/icon_001.png"); background-repeat: no-repeat; vertical-align: top; }
+.page .W_btn_c .icon_cd_link { width: 11px; background-position: -200px -425px; }
+.page .W_btn_c { display: inline-block; height: 20px; line-height: 20px; min-width: 28px; font-size: 12px; cursor: pointer; text-align: left; padding: 0px 5px ! important; }
+.page .W_btn_c { border-width: 1px; border-style: solid; color: rgb(51, 51, 51); text-decoration: none; border-color: rgb(217, 217, 217); background: none repeat scroll 0% 0% rgb(242, 242, 245); width: auto; box-shadow: none; }
+.page .W_btn_c:hover { border-color: rgb(204, 204, 204); background: none repeat scroll 0% 0% rgb(242, 242, 245); }
+.page .W_btn_c {  }
+.page .W_btn_c span { display: inline-block; }
+.page .W_btn_c em.W_autocut {  }
+.msg_bubble_list { padding: 10px 16px 0px; }
+.msg_bubble_list .bubble_user { width: 50px; height: 50px; }
+.msg_bubble_list .bubble_cont { position: relative; max-width: 378px; padding: 11px 10px 11px 16px; margin-top: 3px; border-radius: 5px; box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.05); }
+.msg_bubble_list .bubble_cont .bubble_arrow { position: absolute; top: 5px; }
+.msg_bubble_list .bubble_cont .bubble_arrow .W_arrow_bor i { border-width: 3px; }
+.msg_bubble_list .bubble_cont .bubble_arrow .W_arrow_bor em { border-width: 4px; }
+.msg_bubble_list .bubble_box .space { width: 3px; height: 3px; visibility: hidden; }
+.bubble_l .bubble_user, .bubble_l .bubble_box, .bubble_l .bubble_repeat_icon { float: left; }
+.bubble_l .bubble_name { margin-left: 16px; }
+.bubble_l .bubble_cont { margin-left: 13px; background: none repeat scroll 0% 0% rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); }
+.bubble_l .bubble_cont .bubble_arrow { left: -11px; }
+.bubble_l .bubble_cont .bubble_arrow .W_arrow_bor i { border-top-color: rgb(204, 204, 204); color: rgb(204, 204, 204); margin-left: 4px; }
+.bubble_l .bubble_cont .bubble_arrow .W_arrow_bor em { border-top-color: rgb(255, 255, 255); margin: 1px 0px 0px -4px; color: rgb(255, 255, 255); }
+@-moz-document url-prefix("") {
+  .bubble_l .bubble_cont .bubble_arrow .W_arrow_bor em { margin: 1px 0px 0px -3px; }
+}
+@-moz-document url-prefix("") {
+  .bubble_r .bubble_cont .bubble_arrow { right: -5px; }
+}
+@-moz-document url-prefix("") {
+  .bubble_r .bubble_cont .bubble_arrow .W_arrow_bor i { margin-right: 3px; }
+}
+@-moz-document url-prefix("") {
+  .bubble_r .bubble_cont .bubble_arrow .W_arrow_bor em { margin: 1px 0px 0px -13px; }
+}
+.private_send_box { width: 100%; border-top-style: solid; border-top-width: 1px; }
+.sendbox_mod { padding: 16px; }
+.sendbox_mod .sendbox_area { padding-right: 26px; }
+.sendbox_mod .sendbox_area .W_input { width: 100%; height: 22px; padding: 5px 12px 0px; border-bottom: medium none; box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1) inset; }
+@media �screen,screen	 {
+}
+@media �screen,screen	 {
+}
+@media �screen,screen	 {
+}
+@media not all, not all {
+}
+.PRF_media_card { padding: 10px 0px; border-top-style: dotted; border-top-width: 1px; }
+.PRF_media_card .PRF_card_item { height: 80px; margin: 0px 5px; padding: 5px 0px; border-bottom-style: solid; border-bottom-width: 1px; }
+.PRF_media_card .PRF_card_item:last-child, .PRF_media_card .PRF_card_item_last { border-bottom: medium none; }
+.PRF_media_card .PRF_card_item .PRF_card_img { float: left; width: 80px; height: 80px; overflow: hidden; }
+.PRF_media_card .PRF_card_item .PRF_card_img img { width: 100%; height: 100%; }
+.PRF_media_card .PRF_card_item .PRF_card_txt { margin-left: 90px; margin-right: 5px; }
+.PRF_media_card .PRF_card_item .PRF_card_txt .PRF_tbg { visibility: hidden; position: absolute; left: 0px; top: 0px; width: 100%; height: 100px; background-color: rgb(0, 0, 0); opacity: 0.7; }
+.PRF_media_card .PRF_card_item .PRF_card_txt .PRF_t { overflow: hidden; line-height: 20px; font-weight: 700; width: 100%; margin: -2px 0px 0px; max-height: 40px; text-align: justify; }
+.PRF_media_card .PRF_card_item_first { overflow: hidden; position: relative; height: auto; border-bottom: medium none; padding: 0px; margin: 0px; }
+.PRF_media_card .PRF_card_item_first .PRF_card_txt { position: absolute; bottom: 0px; left: 0px; width: 100%; margin: 0px; }
+.PRF_media_card .PRF_card_item_first .PRF_card_txt .PRF_tbg { visibility: visible; }
+.PRF_media_card .PRF_card_item_first .PRF_card_txt .PRF_t { position: relative; margin: 0px; height: 35px; line-height: 36px; text-overflow: ellipsis; white-space: nowrap; color: rgb(255, 255, 255); }
+.PRF_media_card .PRF_card_item_first .PRF_card_txt .PRF_t a { padding-left: 10px; color: rgb(255, 255, 255); }
+.PRF_media_card .PRF_card_item_first .PRF_card_img { float: none; width: 100%; height: 247px; overflow: hidden; }
+.PRF_media_card .PRF_card_item_first .PRF_card_img img { width: 100%; }
+@keyframes bubble_user {
+0% { transform: scale(0.8); opacity: 0.4; }
+20% { transform: scale(0.85); opacity: 0.6; }
+50% { transform: scale(0.9); opacity: 0.8; }
+80% { opacity: 0.9; }
+100% { transform: scale(1); opacity: 1; }
+}
+@keyframes bubble_box {
+0% { opacity: 0; }
+40% { opacity: 0.4; }
+60% { opacity: 0.6; }
+80% { opacity: 1; }
+100% { transform: translateX(0px); }
+}
+.WB_webim_page .webim_contacts_mod { position: fixed; width: 230px; padding-bottom: 10px; border-radius: 2px; box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15); }
+.WB_webim_page .webim_contacts_bd { position: relative; }
+.WB_webim_page .webim_contacts_mod .webim_contacts_list .contacts { padding: 5px 16px; cursor: pointer; }
+.WB_webim_page .webim_contacts_mod .webim_contacts_list .head, .WB_webim_page .webim_contacts_mod .webim_contacts_list .name { display: inline; }
+.WB_webim_page .webim_contacts_mod .webim_contacts_list .head { position: relative; }
+.WB_webim_page .webim_contacts_mod .webim_contacts_list .head img { display: block; }
+.WB_webim_page .webim_contacts_mod .webim_contacts_list .head .icon_black, .WB_webim_page .webim_contacts_mod .webim_contacts_list .head .icon_shield, .WB_webim_page .webim_contacts_mod .webim_contacts_list .head .icon_shield_group { position: absolute; bottom: -4px; right: -4px; height: 15px; background: url("cssStyle/msg_icon.png") no-repeat scroll 0px -114px transparent; }
+.WB_webim_page .webim_contacts_mod .webim_contacts_list .head .icon_shield { width: 15px; background-position: 0px -134px; }
+.WB_webim_page .webim_contacts_mod .webim_contacts_list .name { max-width: 114px; height: 30px; margin-left: 10px; line-height: 30px; overflow: hidden; }
+.WB_webim_page .webim_contacts_mod .webim_contacts_list .close { display: none; padding: 7px 4px 0px 0px; }
+.WB_webim_page .webim_contacts_mod .webim_contacts_list .number { padding-top: 8px; }
+.WB_webim_page .webim_contacts_mod .webim_contacts_list .contacts:hover .close { display: block; }
+.WB_webim_page .webim_contacts_mod .head { width: 30px; height: 30px; }
+.webim_chat_window { position: absolute; height: 402px; background: none repeat scroll 0% 0% rgb(255, 255, 255); box-shadow: -3px -2px 8px -1px rgba(0, 0, 0, 0.2); border-radius: 2px 0px 0px 2px; }
+.webim_chat_window .WB_webim_page { width: 159px; border-right: 1px solid rgb(217, 217, 217); }
+.webim_chat_window .private_dialogue_box { height: 400px; background: none repeat scroll 0% 0% rgb(242, 242, 245); }
+.webim_chat_window .private_dialogue_box, .webim_chat_window .private_dialogue_body { width: 400px; overflow: hidden; }
+.webim_chat_window .private_dialogue_cont { position: absolute; width: 100%; }
+.webim_chat_window { color: rgb(51, 51, 51); }
+.webim_chat_window .S_ficon { color: rgb(105, 110, 120); }
+.webim_chat_window .S_ficon:hover, .webim_chat_window .S_txt1:hover, .webim_chat_window .S_link1 { color: rgb(235, 115, 80); }
+.webim_chat_window .W_layer .S_txt1:hover { color: rgb(51, 51, 51); }
+.webim_chat_window .S_line1 { border-color: rgb(217, 217, 217); }
+.webim_chat_window .S_txt2_bg { background: none repeat scroll 0% 0% rgb(128, 128, 128); }
+.webim_chat_window .S_bg1 { background: none repeat scroll 0% 0% rgb(242, 242, 245); color: rgb(128, 128, 128); }
+.webim_chat_window .S_bg2, .webim_chat_window .S_bg5, .webim_chat_window .SW_fun_bg { background: none repeat scroll 0% 0% rgb(255, 255, 255); }
+.webim_chat_window .S_txt1, .webim_chat_window .SW_fun_bg .S_txt1 { color: rgb(51, 51, 51); }
+.webim_chat_window .S_txt2 { color: rgb(128, 128, 128); }
+.webim_chat_window .S_line2 { border-color: rgb(204, 204, 204); }
+.webim_chat_window .SW_fun_bg:hover { background: none repeat scroll 0% 0% rgb(242, 242, 245); }
+.webim_chat_window .W_input { background: none repeat scroll 0% 0% rgb(255, 255, 255); color: rgb(128, 128, 128); }
+.webim_chat_window .W_input:focus { border-color: rgb(250, 125, 60) ! important; color: rgb(128, 128, 128); }
+.webim_chat_window .WB_webim_page .webim_serch { padding: 6px 5px; border-bottom: 1px solid rgb(217, 217, 217); }
+.webim_chat_window .WB_webim_page .webim_serch .W_input { width: 107px; padding-right: 30px; border: 1px solid rgb(204, 204, 204); }
+.webim_chat_window .WB_webim_page .webim_serch .ficon_search { cursor: default; color: rgb(105, 110, 120); opacity: 0.5; }
+.webim_chat_window .WB_webim_page .webim_contacts_mod { position: static; width: 159px; padding: 0px; border-radius: 0px; box-shadow: 0px 0px 0px transparent; }
+.webim_chat_window .webim_contacts_bd { position: relative; height: 318px; overflow: hidden; }
+.webim_chat_window .WB_webim_page .webim_contacts_bd .webim_contacts_list .contacts { padding: 4px 7px 4px 5px; }
+.webim_chat_window .WB_webim_page .webim_contacts_bd .webim_contacts_list .name { max-width: 82px; }
+.webim_chat_window .webim_contacts_bd .webim_contacts_list .name:hover { color: rgb(51, 51, 51); }
+.webim_chat_window .webim_contacts_bd .webim_contacts_list .close { display: none; padding: 7px 4px 0px 0px; }
+.webim_chat_window .webim_contacts_bd .webim_contacts_list .contacts:hover .close { display: block; }
+.webim_chat_window .webim_serch_mod .webim_contacts_bd { height: 363px; }
+.webim_chat_window .contacts_bottom { position: relative; height: 44px; line-height: 43px; padding: 0px 10px 0px 30px; border-top: 1px solid rgb(217, 217, 217); }
+.webim_chat_window .contacts_bottom .W_new { position: relative; top: -6px; left: -2px; }
+.webim_chat_window .contacts_bottom .ficon_setup { margin-left: 22px; color: rgb(105, 110, 120); }
+.webim_chat_window .contacts_bottom a { color: rgb(51, 51, 51); }
+.webim_chat_window .contacts_bottom a:hover { color: rgb(235, 115, 80); }
+.webim_chat_window .chat_head { height: 38px; padding: 0px 10px; line-height: 38px; border-bottom: 1px solid rgb(217, 217, 217); background: none repeat scroll 0% 0% rgb(255, 255, 255); }
+.webim_chat_window .chat_title { max-width: 170px; }
+.webim_chat_window .chat_title a { color: rgb(51, 51, 51); font-weight: bold; }
+.webim_chat_window .chat_title a:hover { color: rgb(235, 115, 80); }
+.webim_chat_window .chat_icon .ficon_p_invite, .webim_chat_window .chat_icon .ficon_arrow_up, .webim_chat_window .chat_icon .ficon_close, .webim_chat_window .chat_icon .ficon_fans { margin-left: 8px; font-size: 18px; }
+.webim_chat_window .layer_menu_list { position: absolute; z-index: 100; line-height: 14px; }
+.webim_chat_window .msg_bubble_list { padding: 10px 10px 0px; }
+.webim_chat_window .msg_bubble_list .bubble_user, .webim_chat_window .msg_bubble_list .bubble_user .face { display: block; width: 30px; height: 30px; }
+.webim_chat_window .msg_bubble_list .bubble_user .default_face { background: url("cssStyle/male_30.jpg") no-repeat scroll 0px 0px transparent; }
+.webim_chat_window .msg_bubble_list .bubble_box { max-width: 253px; }
+.webim_chat_window .msg_bubble_list .bubble_cont, .webim_chat_window .msg_bubble_list .bubble_cont .cont, .webim_chat_window .msg_bubble_list .bubble_cont .bubble_main { max-width: 220px; }
+.webim_chat_window .msg_bubble_list .bubble_cont { padding: 5px 9px; margin-top: 0px; }
+.webim_chat_window .msg_bubble_list .bubble_name, .webim_chat_window .msg_bubble_list .bubble_prompt { margin: 0px 0px 3px 45px; }
+.webim_chat_window .msg_bubble_list .bubble_prompt { line-height: 16px; }
+.webim_chat_window .private_dialogue_body .private_dialogue_prompt { margin: 22px 55px 14px; }
+.webim_chat_window .bubble_l .bubble_card_box .bubble_cont { margin-left: 15px; }
+.webim_chat_window .msg_bubble_list .bubble_card_box { max-width: 305px; }
+.webim_chat_window .msg_bubble_list .bubble_card_box .bubble_cont, .webim_chat_window .msg_bubble_list .bubble_card_box .bubble_cont .cont, .webim_chat_window .msg_bubble_list .bubble_card_box .bubble_cont .bubble_main { max-width: 278px; }
+.webim_chat_window .msg_bubble_list .bubble_card_box .bubble_cont { padding: 8px 8px 4px; }
+.webim_chat_window .bubble_card_box .page .W_btn_c { margin: 0px 0px 5px; }
+.webim_chat_window .private_dialogue_body .W_scroll_y { background: none repeat scroll 0% 0% rgb(230, 230, 230); }
+.webim_chat_window .PRF_media_card, .webim_chat_window .PRF_media_card .PRF_card_item_first .PRF_card_img img, .webim_chat_window .PRF_media_card .PRF_card_item_first .PRF_card_img { width: 271px; }
+.webim_chat_window .private_dialogue_box .private_dialogue_body .private_tips { width: 380px; padding: 19px 0px 0px; margin: 0px auto; }
+.webim_chat_window .private_tips_top { position: absolute; top: 39px; right: 0px; z-index: 99; width: 400px; }
+.webim_chat_window .private_dialogue_box .private_dialogue_body .private_tips_top { width: 100%; top: -19px; z-index: 99; }
+.webim_chat_window .private_dialogue_box .private_dialogue_body .private_tips .W_tips { padding: 5px 7px 4px 6px; }
+.webim_chat_window .W_tips.tips_warn, .webim_chat_window .private_dialogue_box .private_dialogue_body .private_tips_top .W_tips.tips_warn { border: medium none; }
+.webim_chat_window .private_dialogue_box .private_dialogue_body .private_tips_top .W_tips.tips_warn { border-bottom: 1px solid rgb(228, 231, 248); }
+.webim_chat_window .private_tips_top .W_tips, .webim_chat_window .private_dialogue_box .private_dialogue_body .private_tips_top .W_tips { padding: 11px 11px 10px 10px; }
+.webim_chat_window .private_dialogue_box .private_dialogue_body .private_tips_top .W_tips .txt {  }
+.webim_chat_window .private_dialogue_box .private_dialogue_body .private_tips_top .W_tips .close { margin-left: 6px; }
+.webim_chat_window .private_dialogue_box .private_dialogue_body .private_tips .W_tips .icon { margin-right: 3px; }
+.webim_chat_window .private_dialogue_box .W_layer_tips, .webim_chat_window .private_dialogue_box .webim_tips { position: absolute; z-index: 99; cursor: pointer; }
+.webim_chat_window .private_dialogue_box .webim_tips { width: 93px; height: 28px; background: url("cssStyle/webim_tips_bg.png") no-repeat scroll 0px 0px transparent; }
+.webim_chat_window .private_dialogue_box .webim_tips { text-align: center; line-height: 22px; color: rgb(255, 255, 255); }
+.webim_chat_window .private_dialogue_box .private_information { position: relative; width: 400px; height: 33px; }
+.webim_chat_window .private_dialogue_box .private_information .layer_mini_info { padding: 10px 0px; }
+.webim_chat_window .private_dialogue_box .private_information .main_txt, .webim_chat_window .private_dialogue_box .private_information .main_txt .link { width: 90px; }
+.webim_chat_window .private_send_box { width: 400px; }
+.webim_chat_window .private_send_box .sendbox_mod { position: relative; padding: 7px 0px 7px 5px; }
+.webim_chat_window .private_send_box .sendbox_mod_l { width: 300px; border-top: 1px solid rgb(204, 204, 204); }
+.webim_chat_window .private_send_box .sendbox_area { padding-right: 22px; }
+.webim_chat_window .private_send_box .sendbox_area .W_input { padding: 5px 10px 0px; box-shadow: 0px -1px 3px 0px rgba(0, 0, 0, 0.1) inset; border-right: 1px solid rgb(204, 204, 204); border-width: medium 1px 1px; border-style: none solid solid; border-color: -moz-use-text-color rgb(204, 204, 204) rgb(204, 204, 204); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; }
+.webim_chat_window .private_send_box .layer_mini_info { padding: 10px; }
+.webim_chat_window .private_send_box .layer_mini_info .W_layer_arrow .W_arrow_bor_b { left: auto; right: 14px; }
+.webim_chat_window .private_send_box .private_information .W_layer_arrow .W_arrow_bor_b { left: 47px; }
+.webim_chat_window .WB_empty { padding-top: 86px; }
+.webim_chat_window .webim_contacts_mod .WB_empty { padding: 112px 10px 0px; text-align: left; }
+.webim_chat_window .webim_contacts_mod .WB_empty .text { line-height: 25px; }
+.webim_fold, .webim_fold .fold_bg, .webim_fold .fold_cont { width: 270px; height: 40px; }
+.webim_fold { position: absolute; box-shadow: -3px -2px 8px -1px rgba(0, 0, 0, 0.2); cursor: pointer; }
+.webim_fold .fold_bg { background: none repeat scroll 0% 0% rgb(240, 241, 244); opacity: 0.95; border-radius: 2px 0px 0px 2px; }
+.webim_fold .fold_cont { position: absolute; top: 0px; left: 0px; }
+.webim_fold .fold_icon { width: 18px; height: 16px; margin: 11px 16px 0px 20px; background: url("cssStyle/webim_icon.png") no-repeat scroll 0px -20px transparent; }
+.webim_fold .fold_font { line-height: 40px; color: rgb(51, 51, 51); }
+.webim_fold_v2, .webim_fold_v2 .fold_bg, .webim_fold_v2 .fold_cont { width: 288px; height: 40px; }
+.webim_fold_v2 .wchat_btn { width: 38px; height: 36px; line-height: 36px; background: none repeat scroll 0% 0% rgb(255, 129, 64); border-radius: 2px; margin: 2px; text-align: center; cursor: pointer; }
+.webim_fold_v2 .wchat_icon { display: inline-block; width: 22px; height: 22px; margin-top: 8px; background: url("cssStyle/webchat_icon.png") no-repeat scroll 0px -30px transparent; }
+.webim_fold_v2 .wchat_btn:hover { background: none repeat scroll 0% 0% rgb(247, 103, 29); }
+.webim_hb { position: absolute; z-index: 99; width: 43px; height: 51px; background: url("cssStyle/webim_hb_small.gif") no-repeat scroll 0px 0px transparent; cursor: pointer; }
+@media not all, not all {
+  .webim_hb { background: url("cssStyle/webim_hb_big.gif") no-repeat scroll 0px 0px / 43px 51px transparent; }
+}
+.webim_chat_window .webim_contacts_list .head { position: relative; }
+.webim_chat_window .webim_contacts_list .head .W_new { position: absolute; right: -1px; top: -1px; }

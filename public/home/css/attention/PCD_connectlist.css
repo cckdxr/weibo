@@ -1,0 +1,24 @@
+/* Code tidied up by ScrapBook */
+.PCD_connectlist .WB_innerwrap { padding: 0px; }
+@media �screen,screen	 {
+}
+.PCD_connectlist .member_box { padding-bottom: 6px; }
+.PCD_connectlist .member_box .member_li { float: left; width: 290px; height: 140px; margin: 6px 0px 0px 6px; border-radius: 2px; }
+.PCD_connectlist .member_box .member_wrap { width: 274px; height: 108px; padding: 16px 0px 16px 16px; }
+.PCD_connectlist .member_box .member_wrap .mod_pic { float: left; position: relative; width: 66px; height: 108px; border-right-width: 1px; border-right-style: solid; }
+.PCD_connectlist .member_box .member_wrap .mod_pic .pic_box { margin-top: 29px; }
+.PCD_connectlist .member_box .member_wrap .mod_info { margin-left: 82px; }
+.PCD_connectlist .member_box .member_wrap .mod_info .title, .PCD_connectlist .member_box .member_wrap .mod_info .statu, .PCD_connectlist .member_box .member_wrap .mod_info .text { width: 100%; margin-bottom: 5px; }
+.PCD_connectlist .member_box .member_wrap .mod_info .text { margin-bottom: 4px; }
+.PCD_connectlist .member_box .member_wrap .mod_info .info_from { margin-bottom: 4px; }
+.PCD_connectlist .member_box .member_wrap .mod_info .title { height: 17px; vertical-align: top; line-height: 1em; margin-bottom: 5px; font-size: 14px; }
+.PCD_connectlist .member_box .member_wrap .mod_info .title a { line-height: 16px; }
+.PCD_connectlist .member_box .member_wrap .mod_info .statu .W_ficon { margin-right: 2px; }
+.PCD_connectlist .member_box .member_wrap .mod_info .W_btn_b { width: 62px; cursor: pointer; }
+.PCD_connectlist .member_box .member_wrap .mod_info .W_btn_b .txt { display: inline-block; max-width: 4em; text-align: center; vertical-align: middle; }
+.PCD_connectlist .member_box .member_wrap .mod_info .btn_set { width: 24px; min-width: 24px; padding: 0px; }
+.PCD_connectlist .member_box .member_wrap .mod_info .opt { position: relative; margin-bottom: 4px; }
+.PCD_connectlist .member_box .member_wrap .mod_info .opt .W_btn_b { vertical-align: top; margin-right: 6px; }
+.PCD_connectlist .member_box .member_wrap .mod_info .opt .ficon_arrow_down_lite { vertical-align: middle; }
+.PCD_connectlist .member_box .member_wrap .mod_info .layer_menu_list { left: 88px; top: 29px; }
+.PCD_connectlist .member_box .W_tips { margin: 16px 6px 10px; }

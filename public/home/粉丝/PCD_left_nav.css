@@ -1,0 +1,21 @@
+/* Code tidied up by ScrapBook */
+.PCD_left_nav .WB_innerwrap { padding: 2px; position: relative; z-index: 1; }
+.PCD_left_nav .left_nav { text-shadow: none; }
+.PCD_left_nav .lev_box { position: relative; }
+.PCD_left_nav .lev { border-top-width: 1px; border-top-style: solid; }
+.PCD_left_nav .lev:first-child { border-top: medium none; }
+.PCD_left_nav .lev .lev_a { display: block; padding: 10px 14px; }
+.PCD_left_nav .lev .current { font-weight: bold; }
+.PCD_left_nav .lev .num { padding-left: 5px; }
+.PCD_left_nav a .S_ficon_dis, .PCD_left_nav a:hover .S_ficon_dis { opacity: 1; }
+.PCD_left_nav a .S_ficon_dis:hover { cursor: pointer; }
+.PCD_left_nav .expand .lev_a { padding-bottom: 5px; }
+.PCD_left_nav .lev2_list { padding: 0px 0px 5px 37px; }
+.PCD_left_nav .lev2 .lev_a { padding: 7px 0px; }
+.PCD_left_nav .lev2 .lev_a:hover .W_ficon { color: rgb(235, 115, 80); }
+.PCD_left_nav .lev2 .W_ficon { margin-right: 6px; font-size: 12px; }
+.PCD_left_nav .lev2 .W_ficon, .PCD_left_nav .lev2 .num, .PCD_left_nav .lev2 span { vertical-align: middle; }
+.PCD_left_nav .lev_add { display: block; padding: 2px 0px 15px 38px; }
+.PCD_left_nav .lev_add .W_ficon { margin-right: 6px; vertical-align: middle; }
+.PCD_left_nav .lev_add .W_btn_b { width: 88px; padding: 0px; margin-right: 6px; }
+.PCD_left_nav .ficon_p_follow, .PCD_left_nav .ficon_fans, .PCD_left_nav .ficon_subscribe, .PCD_left_nav .ficon_p_rmd, .PCD_left_nav .ficon_p_quietfollow, .PCD_left_nav .ficon_p_interest, .PCD_left_nav .ficon_p_find, .PCD_left_nav .ficon_blacklist, .PCD_left_nav .ficon_interest, .PCD_left_nav .ficon_groupmember { margin-right: 5px; font-size: 18px; }

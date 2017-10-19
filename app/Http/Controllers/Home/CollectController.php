@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Home;
 use App\Model\Home\Msg;
 use App\Model\Home\Msg_disc;
 use App\Model\Home\User_msg_index;
+use App\Model\Home\Msg_jubao;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -127,4 +128,40 @@ class CollectController extends Controller
             return "转发失败";
         }
     }
+
+    //举报微博方法
+    public function jubao(Request $request)
+    {
+        $data = [
+            "msg_id"=>$request['msgid'],
+            "user_id" => session('homeUser')['user_id'],
+            "time" => time()
+        ];
+       $res=Msg_jubao::create($data);
+        if ($res) {
+            return '1';
+        } else {
+            return "举报失败";
+        }
+    }
+//删除微博方法
+    public function delete(Request $request)
+    {
+        $msg_id=$request['msgid'];
+        $user_id=Msg::where('msg_id',$msg_id)->first()['author_id'];
+        //判断所要删除的评论是否本人评论
+
+        if($user_id!=session('homeUser')['user_id']){
+            return "删除微博失败";
+        }
+
+        $res=Msg::where('msg_id',$msg_id)->delete();
+        if ($res) {
+
+            return '1';
+        } else {
+            return "删除失败";
+        }
+    }
+
 }

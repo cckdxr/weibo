@@ -1,0 +1,16 @@
+/* Code tidied up by ScrapBook */
+.PCD_mydata .WB_innerwrap {  }
+.PCD_mydata .mydata_box { width: 266px; overflow: hidden; border-style: solid; border-width: 1px; }
+.PCD_mydata .datatop { padding: 9px 10px; border-bottom-style: solid; border-bottom-width: 1px; }
+.PCD_mydata .datatop .opt_link {  }
+.PCD_mydata .datatop .opt_link .W_ficon { margin-right: 3px; vertical-align: 1px; }
+.PCD_mydata .datatop .datanum { margin-top: 9px; }
+.PCD_mydata .datatop .data_number { margin: 2px 0px -6px 9px; font-size: 40px; color: rgb(252, 159, 0); }
+.PCD_mydata .icon_mydata_home, .PCD_mydata .icon_mydata_cmt, .PCD_mydata .icon_mydata_up, .PCD_mydata .icon_mydata_down { background: url("icon_mydata.png") no-repeat scroll 0% 0% transparent; }
+.PCD_mydata .icon_mydata_home, .PCD_mydata .icon_mydata_cmt { width: 40px; height: 40px; background-color: rgb(252, 159, 0); border-radius: 3px; }
+.PCD_mydata .icon_mydata_up, .PCD_mydata .icon_mydata_down { width: 11px; height: 10px; margin: 28px 0px 0px 4px; }
+.PCD_mydata .icon_mydata_up { background-position: -60px 0px; }
+.PCD_mydata .datamid { height: 121px; border-bottom-style: solid; border-bottom-width: 1px; overflow: hidden; }
+.PCD_mydata .databottom { height: 28px; padding: 0px 10px; overflow: hidden; line-height: 28px; }
+.PCD_mydata .t_col_data_orange { color: rgb(252, 159, 0); }
+.PCD_mydata .WB_minitab { margin: -10px 0px 6px; }

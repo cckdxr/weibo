@@ -1,0 +1,25 @@
+/* Code tidied up by ScrapBook */
+@media not all, not all {
+}
+@-moz-document url-prefix("") {
+  .W_outFrame .W_arrow { line-height: 13px; }
+}
+@media not all, not all, not all, not all {
+}
+@media not all, not all, not all, not all {
+}
+@media not all, not all, not all, not all {
+  .WB_global_nav .gn_logo { background: url("cssStyle/WB_logo-x2.png") no-repeat scroll 0% 0% / 190px 78px transparent; }
+}
+.W_nologin_main .W_reg_form .tit, .W_nologin_main .W_reg_form .inp .W_input { font-size: 14px; }
+.B_fav_sel .nologo, .B_user .nologo { height: 20px; }
+.B_user .W_reg_form .tit { width: 85px; }
+.B_user .W_reg_form .inp { float: left; }
+.B_user .W_reg_form .choose select {  }
+.W_layer_loading { width: 100%; background: url("cssStyle/reg_repeat_bg.png") repeat-x scroll 0% 0% rgb(190, 225, 245); }
+.W_layer_loading .reg_loading { margin: 0px auto; padding-top: 20px; }
+.B_user .W_reg_info_single { padding: 25px 0px 80px; }
+.B_user .W_reg_info_single .W_reg_form { padding: 60px 0px 0px 180px; }
+.B_user .W_reg_info_single .info_btn_next { margin: 30px 0px 0px 175px; }
+.B_user .W_reg_info_single .attachment_nickname { padding: 5px 0px 0px 173px; clear: both; }
+.B_user .W_reg_info_single .icon_errorM, .B_user .W_reg_info_single .icon_succM { height: 26px; margin-top: -3px; }

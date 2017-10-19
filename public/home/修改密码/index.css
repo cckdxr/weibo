@@ -1,0 +1,43 @@
+/* Code tidied up by ScrapBook */
+@charset "utf-8";
+.WB_miniblog { padding-bottom: 50px; }
+.security_bd { width: 656px; height: 514px; margin: 40px auto 0px; background: none repeat scroll 0% 0% rgb(255, 255, 255); border-top: 2px solid rgb(250, 125, 60); border-radius: 2px; box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2); font: 12px/1.3 'Arial','Microsoft YaHei'; }
+.security_bd .s_title { height: 46px; padding-left: 10px; line-height: 46px; border-bottom-width: 1px; border-bottom-style: solid; }
+.security_bd .s_title i, .security_bd .s_title a { margin: 0px 5px; }
+.security_bd .left_list { width: 139px; height: 457px; padding: 10px 0px 0px 10px; background: none repeat scroll 0% 0% rgb(242, 242, 245); border-right-width: 1px; border-right-style: solid; }
+.security_bd .left_list li { width: 129px; height: 32px; padding-left: 10px; line-height: 32px; cursor: pointer; }
+.security_bd .left_list li.on { width: 130px; padding-left: 9px; background: none repeat scroll 0% 0% rgb(255, 255, 255); border-width: 1px 0px 1px 1px; border-style: solid none solid solid; border-right: 0px none; }
+.security_bd .left_list li a { color: rgb(51, 51, 51); }
+.security_bd .left_list li .s_icon { display: inline-block; width: 20px; height: 20px; margin-right: 7px; vertical-align: middle; background-image: url("security_icon.png"); }
+.security_bd .left_list li .icon_01 { background-position: 0px 0px; }
+.security_bd .left_list li .icon_02 { background-position: 0px -20px; }
+.security_bd .left_list li .icon_05 { background-position: 0px -80px; }
+.security_bd .left_list li .icon_06 { background-position: 0px -100px; }
+.security_bd .left_list li .icon_07 { background-position: 0px -263px; }
+.security_bd .right_mod { width: 465px; padding: 0px 20px; }
+.security_bd .right_mod .hd { position: relative; height: 50px; line-height: 50px; border-bottom-width: 1px; border-bottom-style: solid; }
+.security_bd .right_mod .hd .title, .security_bd .right_mod .hd .page, .security_bd .right_mod .hd .href { float: left; }
+.security_bd .right_mod .hd .title { width: 107px; padding-left: 37px; }
+.security_bd .right_mod .hd .page { width: 287px; }
+.security_bd .right_mod .hd .href { width: 34px; }
+.security_bd .right_mod .hd .href a:hover { text-decoration: none; }
+.security_bd .right_mod .hd .icon_success, .security_bd .right_mod .hd .icon_warning { position: absolute; top: 15px; left: 9px; width: 19px; height: 19px; background-image: url("security_icon.png"); }
+.security_bd .right_mod .hd .icon_success { background-position: 0px -120px; }
+.security_bd .right_mod .hd .icon_warning { background-position: 0px -140px; }
+.security_bd .form_mod { position: relative; height: 447px; padding-top: 20px; }
+.security_bd .form_mod .form_list { margin-top: 15px; }
+.security_bd .form_mod .form_list .item { line-height: 35px; margin-bottom: 7px; }
+.security_bd .form_mod .form_list .tit { display: inline-block; width: 165px; margin-right: 3px; text-align: right; }
+.security_bd .form_mod .form_list .WB_select, .security_bd .form_mod .form_list .W_input { height: 33px; line-height: 33px; }
+.security_bd .form_mod .form_list .W_input { width: 196px; padding: 0px 0px 0px 2px; }
+.security_bd .form_mod .form_prompt { padding: 3px 0px 2px 171px; height: 17px; }
+.security_bd .form_mod .form_btn { position: absolute; bottom: 0px; width: 447px; padding: 10px 0px; text-align: center; border-top-width: 1px; border-top-style: solid; }
+.security_bd .form_mod .form_btn .W_btn_a { padding: 0px 25px; }
+.security_bd .form_mod .quesa_mod { padding-top: 20px; border-top-width: 1px; border-top-style: solid; overflow: hidden; max-height: 95px; }
+.security_bd .form_mod .quesa_mod li { line-height: 20px; }
+.security_bd .form_mod .question_mod { margin-top: 5px; }
+.security_bd .form_mod .answer_mod { display: none; }
+.security_bd .form_mod .quesa_mod .icon_ques, .security_bd .form_mod .quesa_mod .icon_answ { display: inline-block; width: 20px; height: 20px; vertical-align: middle; background-image: url("security_icon.png"); }
+.security_bd .form_mod .quesa_mod .icon_ques { background-position: 0px -219px; }
+.security_bd .form_mod .quesa_mod .icon_answ { background-position: 0px -239px; }
+.security_bd .form_mod .form_help { cursor: pointer; margin-left: 10px; }

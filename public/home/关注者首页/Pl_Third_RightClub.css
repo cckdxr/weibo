@@ -1,0 +1,23 @@
+/* Code tidied up by ScrapBook */
+.btn_22px { display: inline-block; height: 20px; line-height: 21px; min-width: 28px; }
+.btn_34px { display: inline-block; height: 34px; line-height: 35px; padding: 0px 15px; font-size: 14px; }
+@font-face {
+  font-family: "wbficonregular";
+  font-style: normal;
+  font-weight: normal;
+  src: url("wbficon_001.eot") format("embedded-opentype"), url("wbficon_001.svg") format("svg"), url("wbficon_001.woff") format("woff"), url("wbficon_001.ttf") format("truetype");
+}
+@media not all, not all, not all, not all {
+}
+@media not all {
+}
+@media not all {
+}
+@keyframes vloading {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
+@keyframes vloading {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}

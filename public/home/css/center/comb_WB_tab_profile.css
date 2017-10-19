@@ -1,0 +1,13 @@
+/* Code tidied up by ScrapBook */
+@media �screen,screen	 {
+}
+.form_table_s .f_normal { margin: 0px 0px 10px; }
+.form_table_s .f_tit { float: left; width: 57px; line-height: 26px; }
+.form_table_s .f_con { margin: 0px 0px 0px 60px; }
+.form_table_s .f_btn .f_con { margin: 0px 0px 0px 60px; }
+.form_table_s .f_ipt label { margin: 0px 10px 0px 0px; vertical-align: -5px; }
+.form_table_s .w1 { width: 224px; }
+.form_table_s .w2 { width: 100px; }
+.form_table_s .t1 { display: inline-block; width: 20px; text-align: center; }
+.feed_pop_search { position: relative; margin-bottom: 10px ! important; }
+.feed_pop_tag { position: relative; margin-bottom: 10px ! important; }

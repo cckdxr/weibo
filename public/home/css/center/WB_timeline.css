@@ -1,0 +1,17 @@
+/* Code tidied up by ScrapBook */
+.WB_timeline { position: fixed; top: 384px; left: 50%; margin-left: 470px; }
+.WB_timeline ul li { clear: both; margin-top: 3px; }
+.WB_timeline ul li a { display: inline-block; height: 26px; line-height: 26px; padding: 0px 0px 0px 5px; text-decoration: none; border-left-width: 4px; border-left-style: solid; opacity: 0.6; width: 38px; }
+.WB_timeline ul li .S_dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; position: absolute; top: 0px; left: -1px; overflow: hidden; padding: 0px; margin: 0px; }
+.WB_timeline .current { padding: 0px; opacity: 1; }
+.WB_timeline .current em { width: 41px; display: inline-block; padding: 0px 0px 0px 5px; opacity: 1; border-radius: 0px 3px 3px 0px; }
+.WB_timeline .none .month { display: none; }
+.WB_timeline a:hover { opacity: 1; }
+.WB_timeline ul li.last a { width: 85px; position: relative; border: medium none; padding: 0px 0px 8px 9px; line-height: 10px; }
+.WB_timeline ul li.last a .clearfix { padding-bottom: 5px; }
+@media screen and (max-width: 1006px) {
+  .WB_timeline { margin-left: 470px; }
+}
+@media screen and (max-width: 939px) {
+  .WB_timeline { margin-left: 305px; }
+}

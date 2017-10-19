@@ -1,0 +1,45 @@
+/* Code tidied up by ScrapBook */
+.profile_pinfo .infoblock {  }
+.profile_pinfo .W_error { color: rgb(255, 0, 0); }
+.profile_pinfo .W_btn_c_hov .W_arrow {  }
+.profile_pinfo .W_btn_c_hov span {  }
+.profile_pinfo .info_title fieldset { padding: 0px; }
+.profile_pinfo .info_title { margin: 15px 0px 11px; }
+.profile_pinfo .info_title .tit { font-size: 14px; padding: 0px 5px 0px 0px; }
+.profile_pinfo .info_title .btns { float: right; margin-top: -18px; position: relative; }
+.profile_pinfo .info_title .btns a { margin-left: 5px; vertical-align: middle; }
+.profile_pinfo .info_title .btns a:hover, .profile_pinfo .info_title .btns a:hover span { text-decoration: none; }
+.profile_pinfo .pf_item { font-size: 12px; line-height: 30px; margin-bottom: 5px; position: relative; }
+.profile_pinfo .pf_item .label { float: left; width: 53px; text-align: right; white-space: nowrap; }
+.profile_pinfo .pf_item .W_input { width: 195px; }
+.profile_pinfo .pf_item .input_sel {  }
+.profile_pinfo .pf_item .rsp { margin-right: 10px; }
+.profile_pinfo .pf_item .input_sel_text { margin: 0px 1px; }
+.profile_pinfo .pf_item textarea.W_input { height: 44px; line-height: 22px; }
+.profile_pinfo .edit_area .btn { border-width: 0px 0px 1px; border-style: solid; padding-bottom: 10px; }
+.profile_pinfo .pf_add { display: block; margin-bottom: 10px; padding: 8px 12px; border-width: 1px; border-style: solid; }
+.profile_pinfo .pf_add:hover { text-decoration: none; }
+.profile_pinfo .pf_add .addicon { margin-right: 5px; vertical-align: -1px; }
+.profile_pinfo .pf_item .status { position: absolute; left: 290px; top: 1px; }
+.profile_pinfo .pf_item .status .tips_del, .profile_pinfo .pf_item .status .tips_warn, .profile_pinfo .pf_item .status .tips_error {  }
+.profile_pinfo .pf_item .permission { margin-top: 5px; float: right; width: 120px; height: 22px; }
+.profile_pinfo .pf_item .con .status {  }
+.profile_pinfo .pf_item .con { margin-left: 67px; padding: 0px 10px; word-wrap: break-word; }
+.profile_pinfo .pf_item .con .W_btn_a { margin-right: 10px; }
+.profile_pinfo .pf_item .con .W_btn_a, .profile_pinfo .pf_item .con .W_btn_b {  }
+.profile_pinfo .pf_item .con .W_ico16 { vertical-align: middle; }
+.profile_pinfo .pf_item .tag { margin: 2px 5px 10px 0px; font-size: 12px; cursor: pointer; text-decoration: none; }
+.profile_pinfo .tags_more { text-align: right; }
+.profile_pinfo .tag_edit { padding-right: 20px; }
+.profile_pinfo .fake_input { margin: 5px 0px; border-width: 1px; border-style: solid; padding: 10px 5px 0px; position: relative; }
+.profile_pinfo .tag_edit .tag { margin: 0px 5px 10px; }
+.profile_pinfo .fake_input .tag { display: inline-block; }
+.profile_pinfo .fake_input .tag span {  }
+.profile_pinfo .tag_edit input.tag { cursor: text; border: 0px none; display: inline-block; padding: 0px 0px 0px 3px; height: 22px; line-height: 21px; }
+.profile_pinfo .tag_edit .tag .icon_close { vertical-align: -2px; margin-left: 3px; }
+.profile_pinfo .tags { margin: 5px 0px 0px; }
+.profile_pinfo .tags .tag { margin: 0px 5px; }
+.profile_pinfo .tags .tag .addicon { vertical-align: -2px; margin-right: 5px; }
+.profile_pinfo .infoblock .icon_edit { vertical-align: middle; }
+.profile_pinfo .edit_area { padding-left: 75px; }
+.profile_pinfo .pf_item .btn.S_line2 { padding-bottom: 17px; margin-bottom: 2px; }

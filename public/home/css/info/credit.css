@@ -1,0 +1,25 @@
+/* Code tidied up by ScrapBook */
+.credit_wrap_box { width: 300px; }
+.credit_wrap_box .wrapper { position: absolute; width: 285px; height: 86px; top: 55px; left: 0px; }
+.credit_wrap_box .cerditPoint { position: absolute; top: -29px; z-index: 1; left: 138px; width: 9px; height: 110px; transform: rotate(-32deg); transform-origin: 50% 100% 0px; background: url("cssStyle/principle.png") no-repeat scroll 0px 0px / cover  transparent; backface-visibility: hidden; }
+.credit_wrap_box .wrapper .data_start, .credit_wrap_box .wrapper .data_end { position: absolute; top: 90px; }
+.credit_wrap_box .wrapper .data_start { left: 0px; }
+.credit_wrap_box .wrapper .data_end { right: 0px; }
+.credit_wrap_box .canvas_box { position: relative; width: 290px; height: 200px; left: -8px; top: 10px; }
+.credit_wrap_box .canvas_box:before { content: " "; position: absolute; top: 0px; left: 2px; z-index: 1; width: 284px; height: 142px; background: url("cssStyle/stage_pan.png") no-repeat scroll 0% 0% transparent; }
+.credit_wrap_box .canvas_number:before { content: " "; position: absolute; top: 5px; left: 2px; z-index: 1; width: 284px; height: 142px; background: url("cssStyle/stage_pan_number.png") no-repeat scroll 0% 0% transparent; }
+.credit_wrap_box .canvas_writing:before { content: " "; position: absolute; top: 0px; left: 2px; z-index: 1; width: 284px; height: 142px; background: url("cssStyle/stage_pan_writing.png") no-repeat scroll 0% 0% transparent; }
+.credit_wrap_box .radius_min_box { position: absolute; top: 72px; left: 72px; width: 142px; height: 69px; overflow: hidden; text-align: center; }
+.credit_wrap_box .radius_min_box:after { content: " "; z-index: 1; position: absolute; top: 0px; left: 0px; width: 142px; height: 142px; background: none repeat scroll 0% 0% rgb(255, 255, 255); border-radius: 50%; }
+.credit_wrap_box .radiusDifferent { position: absolute; top: 79px; left: 81px; width: 121px; height: 60px; overflow: hidden; text-align: center; }
+.credit_wrap_box .radiusDifferent:after { content: " "; z-index: 1; position: absolute; top: 0px; left: 0px; width: 121px; height: 121px; background: none repeat scroll 0% 0% rgb(255, 255, 255); border-radius: 50%; }
+.credit_wrap_box .text_box { position: absolute; top: 0px; left: 0px; z-index: 2; width: 142px; height: 60px; margin: 0px auto; color: rgb(51, 51, 51); }
+.credit_wrap_box .text_box strong { display: block; font-size: 34px; color: rgb(254, 193, 114); font-weight: bold; }
+.credit_wrap_box .radiusDifferent .text_box { width: 121px; }
+.credit_wrap_box .text_box p { font-size: 16px; line-height: 0; margin-top: 0px; padding-top: 4px; }
+.credit_wrap_box .p_bar { height: 10px; border-radius: 5px; overflow: hidden; }
+.credit_wrap_box .p_bar_inner { height: 10px; }
+.credit_wrap_box .ts_color2 { background-color: rgb(93, 150, 6); }
+.credit_wrap_box .trust_box .trust_info { margin-top: 6px; }
+.credit_wrap_box .trust_box .trust_info .info { margin-right: 25px; }
+.credit_wrap_box .pointDefault { font-size: 18px; font-family: Tahoma; }

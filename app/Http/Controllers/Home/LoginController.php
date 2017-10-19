@@ -29,11 +29,11 @@ class LoginController extends Controller
     public function dologin(Request $request)
     {
         $input=$request->except('_token');
-        $user=V_user::where('user_name','=',$input['log_name'])->first();
+        $user=V_user::where('user_name','=',$input['name'])->first();
         if(!$user){
-            $user=V_user::where('email','=',$input['log_name'])->first();
+            $user=V_user::where('email','=',$input['name'])->first();
             if(!$user){
-                $user=V_user::where('phone','=',$input['log_name'])->first();
+                $user=V_user::where('phone','=',$input['name'])->first();
             }
         }
         //验证码判断,开发阶段不启用
@@ -42,11 +42,11 @@ class LoginController extends Controller
 //         }
 
         if(!$user){
-            return redirect('home/index/0')->with('errors','此用户不存在')->withInput();
+            return '用户名不存在';
         }
 
-        if(!Hash::check($input['user_password'],$user->user_password)){
-            return redirect('home/index/0')->with('errors','密码错误')->withInput();
+        if(!Hash::check($input['passwd'],$user->user_password)){
+            return '密码不正确';
         }
 
         //登录成功,维护最后登录ip和时间,设置后台登录session
@@ -55,8 +55,9 @@ class LoginController extends Controller
         $user=$user->toArray();
 
         session(['homeUser'=>$user,'homeFlag'=>'true']);
-        User::where('user_name','=',$input['log_name'])->update(['last_login_ip'=>$ip,'last_login_time'=>$time]);
-        return redirect('home/u/index');
+        session(['user'=>$user,'userinfo'=>$user]);
+        User::where('user_id','=',$user['user_id'])->update(['last_login_ip'=>$ip,'last_login_time'=>$time]);
+        return '/home/u/index';
     }
     //退出登录
     public function logout()
@@ -66,10 +67,11 @@ class LoginController extends Controller
     }
 
    //注册
-    public function register()
+    function register()
     {
-        return view('home.register');
+        return view('home.register.register');
     }
+
     //ajax上传头像
     public function upload(Request $request)
     {

@@ -1,0 +1,21 @@
+/* Code tidied up by ScrapBook */
+.PCD_connectlist .WB_innerwrap { padding: 0px; }
+.PCD_connectlist .follow_box .follow_inner { padding: 1px 16px 16px; overflow: hidden; }
+.PCD_connectlist .follow_box .follow_list { margin-bottom: -16px; }
+.PCD_connectlist .follow_box .follow_item { position: relative; margin-top: -1px; padding: 16px 0px; border-top-width: 1px; border-top-style: solid; }
+.PCD_connectlist .follow_box .follow_item:first-child { border-top: medium none; }
+.PCD_connectlist .follow_box .mod_pic { float: left; padding-right: 15px; }
+.PCD_connectlist .follow_box .mod_pic img { border-radius: 50%; }
+.PCD_connectlist .follow_box .mod_info { margin-left: 65px; vertical-align: top; }
+.PCD_connectlist .follow_box .info_connect, .PCD_connectlist .follow_box .info_add, .PCD_connectlist .follow_box .info_intro, .PCD_connectlist .follow_box .info_relation, .PCD_connectlist .follow_box .info_from, .PCD_connectlist .follow_box .info_recent { margin-top: 8px; }
+.PCD_connectlist .follow_box .tit { padding-right: 5px; }
+.PCD_connectlist .follow_box .info_connect { width: 100%; }
+.PCD_connectlist .follow_box .info_connect .conn_type { padding: 0px 10px 0px 0px; }
+.PCD_connectlist .follow_box .info_connect .W_vline { display: inline; width: auto; padding: 0px 10px; }
+.PCD_connectlist .follow_box .info_connect .count { padding-left: 5px; }
+.PCD_connectlist .follow_box .opt_box { position: absolute; top: 16px; right: 0px; font-size: 0px; }
+.PCD_connectlist .follow_box .opt_box .layer_menu_list { position: absolute; top: 29px; right: 0px; z-index: 99; font-size: 12px; }
+.PCD_connectlist .follow_box .opt_box .W_btn_b { margin-left: 6px; }
+.PCD_connectlist .follow_box .W_tips { margin: 16px 0px 0px; }
+@media �screen,screen	 {
+}

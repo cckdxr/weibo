@@ -1,0 +1,15 @@
+/* Code tidied up by ScrapBook */
+.PCD_pictext_f .WB_innerwrap { padding: 6px; }
+.PCD_pictext_f .m_wrap { margin-top: -6px; }
+.PCD_pictext_f .pt_ul { overflow: hidden; }
+.PCD_pictext_f .pt_ul .pt_li .pic_txt { cursor: pointer; }
+.PCD_pictext_f .pt_ul .pic_box { position: relative; overflow: hidden; }
+.PCD_pictext_f .pt_ul .info_box .title { margin-bottom: 5px; font-size: 14px; font-weight: bold; line-height: 16px; }
+.PCD_pictext_f .pt_ul .info_box .text { word-wrap: break-word; line-height: 18px; }
+.PCD_pictext_f .pic_list_B { overflow: hidden; }
+.PCD_pictext_f .pic_list_B .pt_ul .pt_li { margin-top: 6px; cursor: pointer; }
+.PCD_pictext_f .pic_list_B .pt_ul .pic_box { display: inline; float: left; width: 92px; }
+.PCD_pictext_f .pic_list_B .pt_ul .pic_box .pic { width: 92px; }
+.PCD_pictext_f .pic_list_B .pt_ul .info_box { position: relative; overflow: hidden; }
+.PCD_pictext_f .pic_list_B .pt_ul .text_box { padding: 6px 8px; }
+.PCD_pictext_f .pic_list_B .pt_li_a .pic_box, .PCD_pictext_f .pic_list_B .pt_li_a .pic_box .pic, .PCD_pictext_f .pic_list_B .pt_li_a .info_box { height: 92px; }

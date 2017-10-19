@@ -1,0 +1,20 @@
+/* Code tidied up by ScrapBook */
+.PCD_pictext_a .WB_innerwrap { padding: 6px; }
+.PCD_pictext_a .m_wrap { overflow: hidden; }
+.PCD_pictext_a .pt_ul { margin-top: -6px; overflow: hidden; }
+.PCD_pictext_a .pt_ul .pt_li { margin-top: 6px; }
+.PCD_pictext_a .pt_ul .pic_box { position: relative; overflow: hidden; background: none repeat scroll 0% 0% rgb(199, 203, 218); }
+.PCD_pictext_a .pt_ul .text_box { padding: 8px 10px; }
+.PCD_pictext_a .pt_ul .info_box { position: relative; overflow: hidden; }
+.PCD_pictext_a .pt_ul .info_box .title { font-size: 14px; font-weight: bold; margin-bottom: 3px; }
+.PCD_pictext_a .pt_ul .info_box .subtitle, .PCD_pictext_a .pt_ul .info_box .text { line-height: 18px; }
+.PCD_pictext_a .pt_ul .info_box .text { word-wrap: break-word; }
+.PCD_pictext_a .pt_ul .info_box .opt_box { position: absolute; right: 8px; bottom: 9px; }
+.WB_frame_b .PCD_pictext_a .pt_ul .text_box { padding: 6px 8px; }
+.WB_frame_b .PCD_pictext_a .pt_ul .info_box .opt_box { right: 6px; bottom: 7px; }
+.WB_frame_b .PCD_pictext_a .pt_ul .text_box .text { max-height: 54px; overflow: hidden; }
+.PCD_pictext_a1 .pt_ul .pt_li .pic_txt { cursor: pointer; }
+.WB_main_r .PCD_pictext_a1 .pt_ul .pt_li, .WB_frame_b .PCD_pictext_a1 .pt_ul .pt_li { display: block; }
+.WB_main_r .PCD_pictext_a1 .pt_ul .pic_box, .WB_frame_b .PCD_pictext_a1 .pt_ul .pic_box { display: inline; float: left; width: 92px; height: 92px; }
+.WB_main_r .PCD_pictext_a1 .pt_ul .pic_box .pic, .WB_frame_b .PCD_pictext_a1 .pt_ul .pic_box .pic { width: 92px; height: 92px; }
+.WB_main_r .PCD_pictext_a1 .pt_ul .info_box, .WB_frame_b .PCD_pictext_a1 .pt_ul .info_box { height: 92px; }

@@ -1,0 +1,7 @@
+/* Code tidied up by ScrapBook */
+.PCD_person_detail .bagde_list { margin: -5px 0px 0px -6px; }
+.PCD_person_detail .bagde_list .bagde_item { display: inline-block; float: left; margin: 5px 0px 0px 6px; }
+.PCD_person_detail .level_info { line-height: 20px; }
+.PCD_person_detail .level_box .info { margin-right: 10px; }
+.PCD_person_detail .level_box .info:last-child { margin-right: 0px; }
+.PCD_person_detail .level_info { margin: 6px 0px 4px; }

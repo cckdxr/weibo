@@ -1,0 +1,50 @@
+/* Code tidied up by ScrapBook */
+.PCD_feed .WB_innerwrap { padding: 0px; }
+.PCD_feed .UI_scrollView { position: relative; height: 480px; overflow: hidden; }
+.PCD_feed .UI_scrollContent { width: 100%; }
+.PCD_feed .UI_scrollBar { visibility: visible; right: 2px; }
+.PCD_feed .WB_empty { padding: 10px 0px; }
+.Tf_feed_type { padding: 10px 16px 8px; border-bottom-width: 1px; border-bottom-style: solid; }
+.Tf_feed_type:last-child { border-bottom-width: 0px; }
+.Tf_feed_detail {  }
+.Tf_screen { float: right; }
+.Tf_screen .W_btn_b { width: 58px; padding: 0px; }
+.Tf_face { float: left; width: 30px; height: 30px; margin: 0px 10px 3px 0px; }
+.Tf_face .face, .Tf_face img { width: 100%; height: 100%; }
+.Tf_info { float: left; width: 160px; }
+.Tf_info .S_txt1 { display: inline-block; max-width: 120px; height: 16px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-wrap: normal; line-height: 16px; font-weight: bold; vertical-align: top; }
+.Tf_from { width: 160px; line-height: 16px; }
+.Tf_text { margin: 0px 0px 6px; padding: 2px 0px 0px; overflow: hidden; clear: both; line-height: 18px; word-wrap: break-word; }
+.Tf_text img { vertical-align: -6px; }
+.Tf_text .W_ficon { margin: 0px 4px 0px 9px; }
+.Tf_media_wrap { position: relative; margin: 6px 0px 8px; overflow: hidden; }
+.Tf_media_wrap .media_box {  }
+.Tf_media_a li { position: relative; }
+.Tf_media_a li:after { content: ""; position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; border: 1px solid rgba(0, 0, 0, 0.05); }
+.Tf_media_a li.Tf_video:after { display: none; }
+.Tf_media_a li .W_loading { position: absolute; top: 50%; left: 50%; margin: -8px 0px 0px -8px ! important; }
+@media �screen,screen	 {
+  .Tf_media_a li img { position: absolute; left: 0px; top: 0px; }
+}
+.Tf_media_a_mn { position: relative; height: 98px; margin: 0px -4px; overflow: hidden; }
+.Tf_media_a_mn li { position: relative; float: left; width: 130px; height: 98px; margin: 0px 4px; overflow: hidden; }
+.Tf_media_a_m1 .Tf_video, .Tf_media_a_m1 .Tf_video_a { height: 151px; background: none repeat scroll 0% 0% rgb(0, 0, 0); overflow: hidden; text-align: center; }
+.Tf_media_a_m1 .icon_playvideo { position: absolute; top: 50%; left: 50%; margin: -27px 0px 0px -27px; }
+.Tf_expand_media_box { margin: 6px 0px 8px; line-height: 0; text-align: center; }
+.Tf_func {  }
+.Tf_func .Tf_handle { float: right; margin-right: -9px; }
+.Tf_func .Tf_handle li { float: left; }
+.Tf_func .Tf_handle li .line { display: block; margin: 2px 0px; padding: 0px 10px; border-right-width: 1px; border-right-style: solid; line-height: 12px; }
+.Tf_func .Tf_handle li .line span em { margin-left: 15px; }
+.Tf_func .Tf_handle li .line span em.W_ficon { margin-left: 0px; margin-right: -10px; font-size: 15px; vertical-align: top; }
+.Tf_func .Tf_handle .arrow { visibility: hidden; position: absolute; margin: 15px 0px 0px -5px; }
+.Tf_func .Tf_handle .W_arrow_bor { position: absolute; margin: -20px 0px 0px 20px; }
+.Tf_func .Tf_handle li:last-child .line { border-right-width: 0px; }
+.Tf_func .ficon_praised { display: inline-block; width: 15px; height: 12px; }
+.Tf_feed_repeat { margin: 8px -16px -8px; padding: 10px 16px; border-top-width: 1px; border-top-style: solid; }
+.Tf_publish .p_input { position: relative; margin: 0px 0px 8px; }
+.Tf_publish .p_input .W_input { width: 264px; }
+.Tf_publish .p_opt .opt ul.ipt { float: left; width: 75%; margin: 1px 0px 0px; padding: 0px 0px 4px; }
+.Tf_publish .p_opt .opt ul.ipt .W_label span { display: inline-block; width: 90%; height: 20px; line-height: 20px; overflow: hidden; cursor: default; text-overflow: ellipsis; white-space: nowrap; word-wrap: normal; }
+.Tf_publish .p_opt .btn { text-align: left; }
+.Tf_publish .p_opt .btn .W_btn_a { vertical-align: top; }

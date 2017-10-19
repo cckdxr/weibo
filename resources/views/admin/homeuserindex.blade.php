@@ -79,11 +79,11 @@
                             <tbody>
                                  @foreach($users as $k=>$v)
                                 <tr>
-                                    <td>{{$v['user_name']}}</td>
+                                    <td>{{$v['nick_name']}}</td>
                                     <td>{{$v['created_at']}}</td>
                                     <td>{{$v['last_login_time']}}</td>
                                     <td>{{$v['last_login_ip']}}</td>
-                                    <td><span class="badge badge-info">X</span>{{$type[$v['user_level']]}}</td>
+                                    <td><span class="badge badge-info">X</span>{{@$type[$v['user_level']]}}</td>
                                     <td>
                                         <span class="btn-group">
                                             <a href="{{ url('admin/user/'.$v['user_id'].'/edit')}}" class="btn btn-small" ><i class="icon-pencil" ></i></a>

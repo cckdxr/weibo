@@ -1,0 +1,17 @@
+/* Code tidied up by ScrapBook */
+.S_spetxt, a.S_ficon:hover, a:hover .S_ficon, a.current .S_ficon { color: rgb(250, 125, 60); }
+.W_btn_prev:hover, .W_btn_next:hover, a.S_ficon:hover, a:hover .S_ficon, a.current .S_ficon, a.S_txt1:hover, a.current .S_txt1, a.S_txt2:hover, .SW_fun:hover .S_func1 { text-decoration: none; cursor: pointer; }
+.WB_miniblog { padding-top: 50px; }
+body, .S_page { background-color: rgb(212, 213, 224); background-image: url("body_repeat.png"); background-repeat: repeat-x; background-position: center 0px; }
+body, legend, .W_input:focus, .S_txt1, .W_btn_b, .SW_fun .S_func1 { color: rgb(51, 51, 51); text-decoration: none; }
+.S_txt2, .W_input, .W_btn_b_disable, .W_btn_b_disable:hover { color: rgb(128, 128, 128); text-decoration: none; }
+.S_ficon, .S_ficon_dis, a.S_ficon_dis:hover, a:hover .S_ficon_dis { color: rgb(105, 110, 120); }
+a, .S_link1, a.S_txt1:hover, a.current .S_txt1, a.S_txt2:hover, .SW_fun:hover .S_func1 { color: rgb(235, 115, 80); }
+.S_bg1, .SW_fun_bg:hover, .SW_fun_bg_active { background-color: rgb(242, 242, 245); }
+.S_bg2, blockquote, .W_btn_b, .W_input, .SW_fun_bg { background-color: rgb(255, 255, 255); }
+.S_bg2_br { color: rgb(255, 255, 255); border-color: rgb(255, 255, 255); }
+.S_line1, .W_btn_prev, .W_btn_next, .W_btn_b { border-color: rgb(217, 217, 217); }
+.S_line2 { border-color: rgb(242, 242, 245); }
+.S_line3, .W_input, .send_weibo .input, .W_btn_b:hover { border-color: rgb(204, 204, 204); }
+.W_input, .send_weibo .input { background-color: rgb(255, 255, 255); }
+.WB_miniblog { background: url("body_bg.jpg") no-repeat scroll center top transparent; }
